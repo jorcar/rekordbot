@@ -12,18 +12,91 @@
 <body style="background:url('/public/cyclist3.webp');background-size: cover;background-repeat: no-repeat;height: 100%;width: 100%;">
 <div></div>
 
-<div class="d-grid justify-content-md-start pt-5">
-    <div class="container col-xxl-8 px-4 py-5 rounded-3 border shadow-lg" style="background-color: white">
-        <div class="col-10 col-sm-8 col-lg-6">
-<p>asd</p>
-
-
-            <div class="py-5">
-                <img src="public/api_logo_pwrdBy_strava_horiz_gray.png" alt="Powered by Strava"/>
+<div class="pt-5 container">
+    <div class="row">
+        <div class=" col-xl-6 col-lg-8 col-12 col-sm-12  px-4 py-5 rounded-3 border shadow-lg"
+             style="background-color: white;">
+            <div class="mb-4">
+                <h2>Create your free account</h2>
             </div>
+            <form class="needs-validation" novalidate action="/register" method="post">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom01">E-mail</label>
+                        <input type="email" name="email" class="form-control" id="validationCustom01"
+                               placeholder="E-mail"
+                               required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom02">Password</label>
+                        <input type="password" name="password" class="form-control" id="pass1" placeholder="Password"
+                               required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom03">Repeat password</label>
+                        <input type="password" class="form-control" id="pass2" placeholder="Password"
+                               required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
 
+
+                <button class="btn btn-primary" type="submit">Sign up</button>
+            </form>
         </div>
     </div>
 </div>
+</div>
 </body>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            var input1 = document.getElementById('pass1');
+            var input2 = document.getElementById('pass2');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    input2.setCustomValidity(''); // Re
+                    console.log(input1.value);
+                    console.log(input2.value);
+                    if (input1.value !== input2.value) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        // Add custom validation feedback if necessary
+                        input2.setCustomValidity('Values must match!');
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+                input1.addEventListener('input', function () {
+                    if (input1.value === input2.value) {
+                        input2.setCustomValidity('');
+                    }
+                });
+
+                input2.addEventListener('input', function () {
+                    if (input1.value === input2.value) {
+                        input2.setCustomValidity('');
+                    }
+                });
+            });
+        }, false);
+    })();
+</script>
 </html>

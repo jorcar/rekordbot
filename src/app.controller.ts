@@ -1,4 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
 
 @Controller()
 export class AppController {
@@ -10,11 +10,15 @@ export class AppController {
   @Render('login')
   login() {}
 
-  @Get('signup')
-  @Render('signup')
-  signup() {}
-
-  @Get()
+  @Get('profile')
   @Render('profile')
   profile() {}
+
+  @Post('register')
+  register(@Body() bo: any, @Res() res: any) {
+    console.log('User created');
+    console.log(bo);
+    res.cookie('user', 'asdfg');
+    res.redirect('/profile');
+  }
 }
