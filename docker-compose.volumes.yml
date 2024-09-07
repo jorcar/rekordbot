@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  rekord_postgres:
+    volumes:
+      - type: bind
+        source: /workspace/sockets
+        target: /var/run
