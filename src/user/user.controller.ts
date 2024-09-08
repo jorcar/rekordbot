@@ -11,12 +11,10 @@ export class UserController {
   @Post('register')
   async register(@Body() bo: any, @Res() res: any) {
     const email = bo.email.trim();
-    const password = bo.password.trim(); // FIXME: hash!
+    const password = bo.password.trim();
 
     const existingUser = await this.userService.findByEmail(email);
     if (existingUser) {
-      // FIXME, redirect to login (with a message)
-      console.log('User already exists');
       res.redirect('/login');
       return;
     }

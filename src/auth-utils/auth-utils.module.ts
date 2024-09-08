@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { TokenService } from './token.service';
+import { PasswordHashService } from './password-hash.service';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { TokenService } from './token.service';
     }),
   ],
   controllers: [],
-  providers: [TokenService],
-  exports: [TokenService],
+  providers: [TokenService, PasswordHashService],
+  exports: [TokenService, PasswordHashService],
 })
 export class AuthUtilsModule {}
