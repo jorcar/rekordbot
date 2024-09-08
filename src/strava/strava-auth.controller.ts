@@ -1,9 +1,19 @@
-import { Controller, Get, Logger, Query, Redirect } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Logger,
+  Query,
+  Redirect,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaCredentials } from './strava-credentials.entity';
 import { StravaService, StravaTokenResponse } from './strava.service';
 import { User } from '../user/user.entity';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('auth/strava')
 export class StravaAuthController {
@@ -17,9 +27,10 @@ export class StravaAuthController {
   private client_secret = 'bfb397cb3618f6df91fa939456ce39f7864eb3ae';
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   @Redirect()
-  getStravaUrl(@Query() params: any) {
-    const { userId } = params;
+  getStravaUrl(@Req() request: any) {
+    const userId = request.user.userId;
     // TODO: extract config
     const redirect_uri = `http://localhost:3000/auth/strava/callback?userId=${userId}`;
     const scope = 'activity:read_all,activity:write';
@@ -30,18 +41,20 @@ export class StravaAuthController {
   }
 
   @Get('callback')
-  async stravaCallback(@Query() params: any) {
+  async stravaCallback(@Query() params: any, @Res() response: any) {
     const { code, error, userId } = params;
 
     if (error) {
       this.logger.log('error from strava', error);
-      return; // TODO: redirect somewhere
+      response.redirect('/profile');
+      return;
     }
 
     const res = await this.stravaService.exchangeToken(code);
     if (!res) {
       this.logger.error('error exchanging token');
-      return; // TODO: redirect somewhere
+      response.redirect('/profile');
+      return;
     }
 
     const queryRunner = this.dataSource.createQueryRunner();
@@ -60,10 +73,12 @@ export class StravaAuthController {
       this.logger.debug(`athlete added and linked:${res.athlete.id}`);
       // TODO: trigger some kind of event to trigger backfill and webhook setup
       // TODO: redirect somewhere
+      response.redirect('/profile');
     } catch (err) {
       this.logger.error('error saving athlete', err);
       // since we have errors lets rollback the changes we made
       await queryRunner.rollbackTransaction();
+      response.redirect('/profile');
     } finally {
       // you need to release a queryRunner which was manually instantiated
       await queryRunner.release();

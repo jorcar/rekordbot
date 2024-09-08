@@ -9,5 +9,6 @@ import { StravaService } from './strava.service';
   imports: [TypeOrmModule.forFeature([StravaAthlete, StravaCredentials])],
   controllers: [StravaAuthController],
   providers: [StravaService],
+  exports: [StravaService],
 })
 export class StravaModule {}

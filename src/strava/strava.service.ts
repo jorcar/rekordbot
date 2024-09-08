@@ -1,4 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from '../user/user.entity';
+import { Repository } from 'typeorm';
+import { StravaAthlete } from './strava-athlete.entity';
 
 export interface StravaTokenResponse {
   access_token: string;
@@ -22,7 +26,16 @@ export class StravaService {
   private readonly logger = new Logger(StravaService.name);
   // TODO: move to config
   private client_id = 27973;
-  private client_secret = 'bfb397cb3618f6df91fa939456ce39f7864eb3ae';
+  private client_secret = 'bfb397cb3618f6df91fa939456ce39f7864eb3ae'; //FIXME
+
+  constructor(
+    @InjectRepository(StravaAthlete)
+    private athleteRepo: Repository<StravaAthlete>,
+  ) {}
+
+  async getAthleteForUser(user: User): Promise<StravaAthlete | undefined> {
+    return this.athleteRepo.findOne({ where: { user } });
+  }
 
   async exchangeToken(code: string): Promise<StravaTokenResponse | undefined> {
     const response = await fetch('https://www.strava.com/oauth/token', {

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CookieService } from '../auth-utils/cookie.service';
 
@@ -23,5 +23,11 @@ export class AuthController {
       await this.cookieService.generateCookie(validatedUser);
     res.cookie('token', token, cookie_options);
     res.redirect('/profile');
+  }
+
+  @Get('logout')
+  async logout(@Res() res: any) {
+    res.cookie('token', '');
+    res.redirect('/');
   }
 }

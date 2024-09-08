@@ -1,20 +1,18 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Render,
-  Req,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Render, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { UserService } from './user/user.service';
+import { StravaService } from './strava/strava.service';
 
 @Controller()
 export class AppController {
+  constructor(
+    private userService: UserService,
+    private stravaService: StravaService,
+  ) {}
+
   @Get()
   @Render('index')
-  root() {}
+  index() {}
 
   @Get('login')
   @Render('login')
@@ -35,13 +33,14 @@ export class AppController {
   @Get('profile')
   @UseGuards(JwtAuthGuard)
   @Render('profile')
-  profile() {}
-
-  @Post('register')
-  register(@Body() bo: any, @Res() res: any) {
-    console.log('User created');
-    console.log(bo);
-    res.cookie('user', 'asdfg');
-    res.redirect('/profile');
+  async profile(@Req() request: any) {
+    const user = await this.userService.findByEmail(request.user.user);
+    const athlete = await this.stravaService.getAthleteForUser(user);
+    const statistics = {
+      activities: 0,
+      segment_efforts: 0,
+      achievements: 0,
+    };
+    return { athlete, user, statistics };
   }
 }
