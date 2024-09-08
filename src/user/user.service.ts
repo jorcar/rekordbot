@@ -16,6 +16,10 @@ export class UserService {
     return await this.userRepository.findOne({ where: { email } });
   }
 
+  async findById(id: number): Promise<User | undefined> {
+    return await this.userRepository.findOne({ where: { id } });
+  }
+
   async registerUser(
     email: string,
     password: string,

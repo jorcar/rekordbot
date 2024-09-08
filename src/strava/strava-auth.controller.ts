@@ -14,6 +14,7 @@ import { StravaCredentials } from './strava-credentials.entity';
 import { StravaService, StravaTokenResponse } from './strava.service';
 import { User } from '../user/user.entity';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { UserService } from '../user/user.service';
 
 @Controller('auth/strava')
 export class StravaAuthController {
@@ -21,6 +22,7 @@ export class StravaAuthController {
   constructor(
     private dataSource: DataSource,
     private stravaService: StravaService,
+    private userService: UserService,
   ) {}
 
   private client_id = 27973;
@@ -61,13 +63,10 @@ export class StravaAuthController {
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      //FIXME: this should be a service
-      const user = await queryRunner.manager.findOneOrFail(User, {
-        where: { id: userId },
-      });
+      const user = await this.userService.findById(userId);
       const stravaCredentials = this.createCredentials(res);
       await queryRunner.manager.save(StravaCredentials, stravaCredentials);
-      const stravaAthlete = this.createAthlete(res, stravaCredentials, user);
+      const stravaAthlete = this.createAthlete(res, stravaCredentials, user!);
       await queryRunner.manager.save(StravaAthlete, stravaAthlete);
       await queryRunner.commitTransaction();
       this.logger.debug(`athlete added and linked:${res.athlete.id}`);
