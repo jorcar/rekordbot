@@ -8,7 +8,19 @@ export class AppController {
 
   @Get('login')
   @Render('login')
-  login() {}
+  login(@Req() req: any) {
+    const { error } = req.query;
+    if (error && error === 'not_found') {
+      return {
+        error: 'We could not log you in using that password. Please try again.',
+      };
+    }
+    return { error };
+  }
+
+  @Get('signup')
+  @Render('signup')
+  signup() {}
 
   @Get('profile')
   @Render('profile')

@@ -48,6 +48,7 @@ export class StravaAuthController {
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
+      //FIXME: this should be a service
       const user = await queryRunner.manager.findOneOrFail(User, {
         where: { id: userId },
       });

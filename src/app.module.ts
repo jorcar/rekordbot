@@ -5,10 +5,14 @@ import { StravaCredentials } from './strava/strava-credentials.entity';
 import { User } from './user/user.entity';
 import { StravaModule } from './strava/strava.module';
 import { AppController } from './app.controller';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     StravaModule,
+    AuthModule,
+    UserModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
