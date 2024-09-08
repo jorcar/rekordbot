@@ -1,12 +1,12 @@
 import { Body, Controller, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { TokenService } from '../auth-utils/token.service';
+import { CookieService } from '../auth-utils/cookie.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private authService: AuthService,
-    private tokenService: TokenService,
+    private cookieService: CookieService,
   ) {}
   @Post('login')
   async register(@Body() bo: any, @Res() res: any) {
@@ -15,13 +15,13 @@ export class AuthController {
 
     const validatedUser = await this.authService.validateUser(email, password);
     if (!validatedUser) {
-      console.log('User does not exist');
       res.redirect('/login?error=not_found');
       return;
     }
 
-    const token = await this.tokenService.generateToken(validatedUser);
-    res.cookie('token', token);
+    const { token, cookie_options } =
+      await this.cookieService.generateCookie(validatedUser);
+    res.cookie('token', token, cookie_options);
     res.redirect('/profile');
   }
 }

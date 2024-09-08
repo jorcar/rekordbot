@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Post, Render, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Render,
+  Req,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller()
 export class AppController {
@@ -23,6 +33,7 @@ export class AppController {
   signup() {}
 
   @Get('profile')
+  @UseGuards(JwtAuthGuard)
   @Render('profile')
   profile() {}
 
