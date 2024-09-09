@@ -27,6 +27,9 @@ export class StravaAthlete {
   @Column()
   profileUrl: string;
 
+  @Column({ nullable: true })
+  subscriptionId?: number;
+
   @OneToOne(() => User, { nullable: false })
   @JoinColumn()
   user: Promise<User>;

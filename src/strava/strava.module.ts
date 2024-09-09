@@ -4,15 +4,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaCredentials } from './strava-credentials.entity';
 import { StravaService } from './strava.service';
-import { UserService } from '../user/user.service';
+import { StravaApiService } from './strava-api.service';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([StravaAthlete, StravaCredentials]),
-    UserService,
+    UserModule,
   ],
   controllers: [StravaAuthController],
-  providers: [StravaService],
+  providers: [StravaService, StravaApiService],
   exports: [StravaService],
 })
 export class StravaModule {}

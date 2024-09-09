@@ -11,7 +11,7 @@ export class AuthController {
   @Post('login')
   async register(@Body() bo: any, @Res() res: any) {
     const email = bo.email.trim();
-    const password = bo.password.trim(); // FIXME: hash!
+    const password = bo.password.trim();
 
     const validatedUser = await this.authService.validateUser(email, password);
     if (!validatedUser) {

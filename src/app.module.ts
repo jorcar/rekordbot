@@ -10,9 +10,10 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
+    UserModule,
     StravaModule,
     AuthModule,
-    UserModule,
+
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
