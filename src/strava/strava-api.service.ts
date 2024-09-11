@@ -40,6 +40,10 @@ export interface Athlete {
   profile: string;
 }
 
+export interface StravaApiActivity {
+  id: number;
+}
+
 @Injectable()
 export class StravaApiService {
   private readonly logger = new Logger(StravaApiService.name);
@@ -90,7 +94,48 @@ export class StravaApiService {
     return await response.json();
   }
 
-  async createWebhookSubscription(
+  async getActivity(
+    activityId: number,
+    token: string,
+  ): Promise<StravaApiActivity> {
+    const response = await fetch(
+      `https://www.strava.com/api/v3/activities/${activityId}?include_all_efforts=true`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    if (response.status !== 200) {
+      this.logger.error(`error code from strava: ${response.status}`);
+      return undefined;
+    }
+    return await response.json();
+  }
+
+  async setDescription(
+    activityId: number,
+    description: string,
+    token: string,
+  ): Promise<void> {
+    const response = await fetch(
+      `https://www.strava.com/api/v3/activities/${activityId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method: 'PUT',
+        body: JSON.stringify({ description }),
+      },
+    );
+
+    if (response.status !== 200) {
+      this.logger.error(`error setting description. code: ${response.status}`);
+      return;
+    }
+  }
+
+  public async createWebhookSubscription(
     token: string,
     webhook_url: string,
   ): Promise<number> {

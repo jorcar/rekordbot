@@ -7,6 +7,10 @@ import { StravaModule } from './strava/strava.module';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { StravaAchievementEffort } from './strava/strava-achievement-effort.entity';
+import { StravaActivity } from './strava/strava-activity.entity';
+import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
+import { StravaSegment } from './strava/strava-segment.entity';
 
 @Module({
   imports: [
@@ -21,7 +25,16 @@ import { UserModule } from './user/user.module';
       username: 'postgres',
       //password: 'root',
       database: 'my_database',
-      entities: [User, StravaAthlete, StravaCredentials],
+      entities: [
+        StravaSegment,
+        StravaSegmentEffort,
+        StravaAthlete,
+        StravaAchievementEffort,
+        StravaActivity,
+        StravaCredentials,
+
+        User,
+      ],
       synchronize: true, // TODO: figure out migrations for prod setup
     }),
   ],

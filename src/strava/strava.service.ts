@@ -4,8 +4,14 @@ import { User } from '../user/user.entity';
 import { DataSource, Repository } from 'typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaCredentials } from './strava-credentials.entity';
-import { StravaApiService, StravaTokenResponse } from './strava-api.service';
+import {
+  StravaApiActivity,
+  StravaApiService,
+  StravaTokenResponse,
+} from './strava-api.service';
 import { UserService } from '../user/user.service';
+import { StravaActivity } from './strava-activity.entity';
+import { StravaSegmentEffort } from './strava-segment-effort.entity';
 
 @Injectable()
 export class StravaService {
@@ -13,6 +19,13 @@ export class StravaService {
   constructor(
     @InjectRepository(StravaAthlete)
     private athleteRepo: Repository<StravaAthlete>,
+
+    @InjectRepository(StravaActivity)
+    private activityRepo: Repository<StravaActivity>,
+    @InjectRepository(StravaSegmentEffort)
+    private segmentEfforsRepo: Repository<StravaSegmentEffort>,
+    @InjectRepository(StravaCredentials)
+    private credentialsRepo: Repository<StravaCredentials>,
     private dataSource: DataSource,
     private userService: UserService,
     private stravaApiService: StravaApiService,
@@ -24,13 +37,28 @@ export class StravaService {
     return this.athleteRepo.findOne({ where: { user } });
   }
 
+  public async getAthleteStats(athleteId: number): Promise<any> {
+    const activityCountPromise = this.activityRepo.count({
+      where: { athlete: { id: athleteId } },
+    });
+    const segmentEfforCountPromis = this.segmentEfforsRepo.count({
+      where: { athlete: { id: athleteId } },
+    });
+    const [activityCount, segmentEffortCount] = await Promise.all([
+      activityCountPromise,
+      segmentEfforCountPromis,
+    ]);
+    return { activityCount, segmentEffortCount };
+  }
+
   public async exchangeToken(code: string, userId: number): Promise<void> {
     const res = await this.stravaApiService.exchangeToken(code);
     if (!res) {
       return;
     }
     await this.createAthlete(res, userId);
-    // TODO: trigger some kind of event to trigger backfill and webhook setup
+    // FIXME: trigger some kind of event to trigger backfill and webhook setup
+    await this.registerWebhook(userId, res.athlete.id);
   }
 
   private async createAthlete(
@@ -62,6 +90,40 @@ export class StravaService {
     }
   }
 
+  public async fetchActivities(
+    activity_id: number,
+    athleteId: number,
+  ): Promise<StravaApiActivity> {
+    const athlete = await this.athleteRepo.findOne({
+      where: { stravaId: athleteId },
+    });
+    if (!athlete) {
+      this.logger.error(`athlete not found: ${athleteId}`);
+      return;
+    }
+
+    const credentials = await athlete.credentials;
+    let token = credentials.accessToken;
+    if (credentials.tokenExpiresAt < new Date()) {
+      this.logger.log('refreshing token');
+      const updated = await this.stravaApiService.refreshAccessToken(
+        credentials.refreshToken,
+      );
+      await this.credentialsRepo.update(credentials.id, {
+        accessToken: updated.access_token,
+        refreshToken: updated.refresh_token,
+        tokenExpiresAt: new Date(updated.expires_at * 1000),
+      });
+      token = updated.access_token;
+    }
+
+    const activity = await this.stravaApiService.getActivity(
+      activity_id,
+      token,
+    );
+    return activity;
+  }
+
   public async registerWebhook(userId: number, athleteId: number) {
     const user = await this.userService.findById(userId);
     const athlete = await this.athleteRepo.findOne({
@@ -75,7 +137,7 @@ export class StravaService {
     const subscriptionId =
       await this.stravaApiService.createWebhookSubscription(
         credentials.accessToken,
-        'http://localhost:3000/strava/webhook',
+        'https://46c7-90-225-125-107.ngrok-free.app/strava/webhook',
       );
 
     await this.athleteRepo.update(athlete.id, { subscriptionId });

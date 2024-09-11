@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
@@ -14,6 +14,7 @@ export class AppController {
   @Render('index')
   index() {}
 
+  // TODO: redirect to /profile if already logged in
   @Get('login')
   @Render('login')
   login(@Req() req: any) {
@@ -36,10 +37,12 @@ export class AppController {
   async profile(@Req() request: any) {
     const user = await this.userService.findByEmail(request.user.user);
     const athlete = await this.stravaService.getAthleteForUser(user);
+    const stats = await this.stravaService.getAthleteStats(athlete.id);
     const statistics = {
-      activities: 0,
-      segment_efforts: 0,
+      activities: stats.activityCount,
+      segment_efforts: stats.segmentEffortCount,
       achievements: 0,
+      segments: 0,
     };
     return { athlete, user, statistics };
   }

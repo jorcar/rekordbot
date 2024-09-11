@@ -6,13 +6,25 @@ import { StravaCredentials } from './strava-credentials.entity';
 import { StravaService } from './strava.service';
 import { StravaApiService } from './strava-api.service';
 import { UserModule } from '../user/user.module';
+import { StravaWebhookController } from './strava-webhook.controller';
+import { StravaAchievementEffort } from './strava-achievement-effort.entity';
+import { StravaActivity } from './strava-activity.entity';
+import { StravaSegmentEffort } from './strava-segment-effort.entity';
+import { StravaSegment } from './strava-segment.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([StravaAthlete, StravaCredentials]),
+    TypeOrmModule.forFeature([
+      StravaAthlete,
+      StravaAchievementEffort,
+      StravaActivity,
+      StravaCredentials,
+      StravaSegment,
+      StravaSegmentEffort,
+    ]),
     UserModule,
   ],
-  controllers: [StravaAuthController],
+  controllers: [StravaAuthController, StravaWebhookController],
   providers: [StravaService, StravaApiService],
   exports: [StravaService],
 })

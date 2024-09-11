@@ -14,7 +14,7 @@ export class StravaAthlete {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column() // might need to change to bigint
   @Index()
   stravaId: number;
 
