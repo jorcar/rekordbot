@@ -12,11 +12,8 @@ import {
 import { UserService } from '../user/user.service';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
-import { JobEnqueuerService } from '../job-q/job-enqueuer.service';
-import {
-  STRAVA_ATHLETE_ADDED_JOB,
-  StravaAthleteAddedJob,
-} from './strava-athlete-added.job-processor';
+import { JobEnqueuerService } from '../job/job-enqueuer.service';
+import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
 
 @Injectable()
 export class StravaService {

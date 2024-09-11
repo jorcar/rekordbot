@@ -12,8 +12,8 @@ import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
 import { StravaSegment } from './strava-segment.entity';
 import { StravaActivityCreatedJobProcessor } from './strava-activity-created.job-processor';
-import { StravaAthleteAddedJobProcessor } from './strava-athlete-added.job-processor';
 import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
+import { StravaAthleteAddedJobProcessor } from './strava-athlete-added-job.processor';
 
 @Module({
   imports: [
@@ -32,8 +32,8 @@ import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
     StravaService,
     StravaApiService,
     StravaActivityCreatedJobProcessor,
-    StravaAthleteAddedJobProcessor,
     StravaBackfillJobProcessor,
+    StravaAthleteAddedJobProcessor,
   ],
   exports: [StravaService],
 })

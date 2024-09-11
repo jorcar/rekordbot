@@ -6,9 +6,9 @@ import { JobEnqueuerService } from './job-enqueuer.service';
 
 @Global()
 @Module({})
-export class JobQModule {
+export class JobModule {
   constructor(
-    private joberService: JobService,
+    private jobService: JobService,
     private discovery: DiscoveryService,
   ) {
     console.log('JobQModule module constructor');
@@ -16,7 +16,7 @@ export class JobQModule {
   static forRoot(config: { connectionString: string }): DynamicModule {
     return {
       imports: [DiscoveryModule],
-      module: JobQModule,
+      module: JobModule,
       providers: [
         JobService,
         JobEnqueuerService,
@@ -36,7 +36,7 @@ export class JobQModule {
       if (wrapper.metatype) {
         const metadata = Reflect.getMetadata(JOB_PROCESSOR, wrapper.metatype);
         if (metadata) {
-          await this.joberService.registerProcessor(
+          await this.jobService.registerProcessor(
             metadata,
             wrapper.instance.processJob.bind(wrapper.instance),
           );
@@ -44,6 +44,6 @@ export class JobQModule {
       }
     }
 
-    await this.joberService.init();
+    await this.jobService.init();
   }
 }

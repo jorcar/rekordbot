@@ -1,12 +1,6 @@
 import { StravaService } from './strava.service';
-import { JobProcessor, QueuedJobProcessor } from '../job-q/job-processor';
-
-export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
-
-export interface StravaActivityCreatedJob {
-  stravaAthleteId: number;
-  stravaActivityId: number;
-}
+import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
+import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor

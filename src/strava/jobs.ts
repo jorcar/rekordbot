@@ -1,0 +1,17 @@
+export const STRAVA_ATHLETE_ADDED_JOB = 'strava-athlete-added';
+
+export interface StravaAthleteAddedJob {
+  athleteId: number;
+}
+
+export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
+
+export interface StravaActivityCreatedJob {
+  stravaAthleteId: number;
+  stravaActivityId: number;
+}
+export const STRAVA_BACKFILL_JOB = 'strava-backfill';
+
+export interface StravaBackfillJob {
+  athleteId: number;
+}
