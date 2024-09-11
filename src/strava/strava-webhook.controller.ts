@@ -13,7 +13,10 @@ import { StravaService } from './strava.service';
 export class StravaWebhookController {
   private readonly logger = new Logger(StravaWebhookController.name);
 
-  constructor(private stravaService: StravaService) {}
+  constructor(
+    private stravaService: StravaService,
+    //private jobPublisherService: JobsPublisherService,
+  ) {}
 
   @Get()
   get(@Req() req: any) {
@@ -27,16 +30,15 @@ export class StravaWebhookController {
   async post(@Body() body: any) {
     this.logger.log('Strava webhook called');
     this.logger.debug(JSON.stringify(body));
-    // TODO: put the message in a queue for async processing
-    if (body.object_type === 'activity') {
-      // temp to test
-      this.logger.log('Activity webhook');
-      const athlete = body.owner_id;
-      const acti = await this.stravaService.fetchActivities(
-        body.object_id,
-        athlete,
+    if (body.object_type === 'activity' && body.aspect_type === 'create') {
+      this.logger.debug(
+        `Creating activity created job for activity ${body.object_id}`,
       );
-      console.log(JSON.stringify(acti));
+      /*  await this.jobPublisherService.enqueue(STRAVA_ACTIVITY_CREATED_JOB, {
+        stravaAthleteId: body.owner_id,
+        stravaActivityId: body.object_id,
+      });*/
+      this.logger.log('Activity webhook');
     }
   }
 }

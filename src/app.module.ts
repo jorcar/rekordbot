@@ -11,13 +11,16 @@ import { StravaAchievementEffort } from './strava/strava-achievement-effort.enti
 import { StravaActivity } from './strava/strava-activity.entity';
 import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
 import { StravaSegment } from './strava/strava-segment.entity';
+import { JobsModule } from './jobs/jobs.module';
 
 @Module({
   imports: [
     UserModule,
     StravaModule,
     AuthModule,
-
+    JobsModule.forRoot({
+      connectionString: 'postgres://postgres:@localhost:5432/my_database',
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -32,7 +35,6 @@ import { StravaSegment } from './strava/strava-segment.entity';
         StravaAchievementEffort,
         StravaActivity,
         StravaCredentials,
-
         User,
       ],
       synchronize: true, // TODO: figure out migrations for prod setup

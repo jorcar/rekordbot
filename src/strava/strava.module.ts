@@ -11,6 +11,10 @@ import { StravaAchievementEffort } from './strava-achievement-effort.entity';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
 import { StravaSegment } from './strava-segment.entity';
+import { JobsModule } from '../jobs/jobs.module';
+import { StravaActivityCreatedJobProcessor } from './strava-activity-created.job-processor';
+import { StravaAthleteAddedJobProcessor } from './strava-athlete-added.job-processor';
+import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
 
 @Module({
   imports: [
@@ -23,9 +27,16 @@ import { StravaSegment } from './strava-segment.entity';
       StravaSegmentEffort,
     ]),
     UserModule,
+    JobsModule,
   ],
   controllers: [StravaAuthController, StravaWebhookController],
-  providers: [StravaService, StravaApiService],
+  providers: [
+    StravaService,
+    StravaApiService,
+    StravaAthleteAddedJobProcessor,
+    StravaBackfillJobProcessor,
+    StravaActivityCreatedJobProcessor,
+  ],
   exports: [StravaService],
 })
 export class StravaModule {}

@@ -29,6 +29,7 @@ export class StravaService {
     private dataSource: DataSource,
     private userService: UserService,
     private stravaApiService: StravaApiService,
+    //private jobPublisher: JobsPublisherService,
   ) {}
 
   public async getAthleteForUser(
@@ -57,8 +58,9 @@ export class StravaService {
       return;
     }
     await this.createAthlete(res, userId);
-    // FIXME: trigger some kind of event to trigger backfill and webhook setup
-    await this.registerWebhook(userId, res.athlete.id);
+    /*await this.jobPublisher.enqueue(STRAVA_ATHLETE_ADDED_JOB, {
+      athleteId: res.athlete.id,
+    });*/
   }
 
   private async createAthlete(
@@ -90,15 +92,15 @@ export class StravaService {
     }
   }
 
-  public async fetchActivities(
+  public async fetchActivity(
     activity_id: number,
-    athleteId: number,
+    stravaAthleteId: number,
   ): Promise<StravaApiActivity> {
     const athlete = await this.athleteRepo.findOne({
-      where: { stravaId: athleteId },
+      where: { stravaId: stravaAthleteId },
     });
     if (!athlete) {
-      this.logger.error(`athlete not found: ${athleteId}`);
+      this.logger.error(`athlete not found: ${stravaAthleteId}`);
       return;
     }
 
@@ -124,10 +126,9 @@ export class StravaService {
     return activity;
   }
 
-  public async registerWebhook(userId: number, athleteId: number) {
-    const user = await this.userService.findById(userId);
+  public async registerWebhook(athleteId: number) {
     const athlete = await this.athleteRepo.findOne({
-      where: { user },
+      where: { id: athleteId },
     });
     if (!athlete) {
       this.logger.error(`athlete not found: ${athleteId}`);
