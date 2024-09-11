@@ -1,11 +1,5 @@
-import {
-  JobProcessor,
-  JobProcessorProvider,
-} from '../jobs/job-processor.provider';
 import { StravaService } from './strava.service';
-import { JobsPublisherService } from '../jobs/jobs-publisher.service';
-import { STRAVA_BACKFILL_JOB } from './strava-backfill.job-processor';
-import { Inject } from '@nestjs/common';
+import { JobProcessor, QueuedJobProcessor } from '../jobs/job-processor';
 
 export const STRAVA_ATHLETE_ADDED_JOB = 'strava-athlete-added';
 
@@ -15,7 +9,7 @@ export interface StravaAthleteAddedJob {
 
 @JobProcessor(STRAVA_ATHLETE_ADDED_JOB)
 export class StravaAthleteAddedJobProcessor
-  implements JobProcessorProvider<StravaAthleteAddedJob>
+  implements QueuedJobProcessor<StravaAthleteAddedJob>
 {
   constructor(
     //@Inject() private jobPublisher: JobsPublisherService,

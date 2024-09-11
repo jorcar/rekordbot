@@ -8,6 +8,8 @@ import {
   Req,
 } from '@nestjs/common';
 import { StravaService } from './strava.service';
+import { JobsPublisherService } from '../jobs/jobs-publisher.service';
+import { STRAVA_ACTIVITY_CREATED_JOB } from './strava-activity-created.job-processor';
 
 @Controller('/strava/webhook')
 export class StravaWebhookController {
@@ -15,7 +17,7 @@ export class StravaWebhookController {
 
   constructor(
     private stravaService: StravaService,
-    //private jobPublisherService: JobsPublisherService,
+    private jobPublisherService: JobsPublisherService,
   ) {}
 
   @Get()
@@ -34,10 +36,10 @@ export class StravaWebhookController {
       this.logger.debug(
         `Creating activity created job for activity ${body.object_id}`,
       );
-      /*  await this.jobPublisherService.enqueue(STRAVA_ACTIVITY_CREATED_JOB, {
+      await this.jobPublisherService.enqueue(STRAVA_ACTIVITY_CREATED_JOB, {
         stravaAthleteId: body.owner_id,
         stravaActivityId: body.object_id,
-      });*/
+      });
       this.logger.log('Activity webhook');
     }
   }

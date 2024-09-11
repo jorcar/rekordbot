@@ -1,7 +1,4 @@
-import {
-  JobProcessor,
-  JobProcessorProvider,
-} from '../jobs/job-processor.provider';
+import { JobProcessor, QueuedJobProcessor } from '../jobs/job-processor';
 
 export const STRAVA_BACKFILL_JOB = 'strava-backfill';
 
@@ -11,7 +8,7 @@ export interface StravBackfillJob {
 
 @JobProcessor(STRAVA_BACKFILL_JOB)
 export class StravaBackfillJobProcessor
-  implements JobProcessorProvider<StravBackfillJob>
+  implements QueuedJobProcessor<StravBackfillJob>
 {
   constructor() {}
 

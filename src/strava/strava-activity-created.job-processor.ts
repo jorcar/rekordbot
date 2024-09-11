@@ -1,9 +1,5 @@
-import {
-  JobProcessor,
-  JobProcessorProvider,
-} from '../jobs/job-processor.provider';
-import { Inject } from '@nestjs/common';
 import { StravaService } from './strava.service';
+import { JobProcessor, QueuedJobProcessor } from '../jobs/job-processor';
 
 export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
 
@@ -14,7 +10,7 @@ export interface StravaActivityCreatedJob {
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor
-  implements JobProcessorProvider<StravaActivityCreatedJob>
+  implements QueuedJobProcessor<StravaActivityCreatedJob>
 {
   constructor(private stravaService: StravaService) {}
 

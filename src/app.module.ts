@@ -18,9 +18,7 @@ import { JobsModule } from './jobs/jobs.module';
     UserModule,
     StravaModule,
     AuthModule,
-    JobsModule.forRoot({
-      connectionString: 'postgres://postgres:@localhost:5432/my_database',
-    }),
+    JobsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
