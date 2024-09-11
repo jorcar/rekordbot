@@ -11,14 +11,16 @@ import { StravaAchievementEffort } from './strava/strava-achievement-effort.enti
 import { StravaActivity } from './strava/strava-activity.entity';
 import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
 import { StravaSegment } from './strava/strava-segment.entity';
-import { JobsModule } from './jobs/jobs.module';
+import { JobQModule } from './job-q/job-q.module';
 
 @Module({
   imports: [
     UserModule,
     StravaModule,
     AuthModule,
-    JobsModule,
+    JobQModule.forRoot({
+      connectionString: 'postgres://postgres@localhost:5432/my_database2',
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -40,5 +42,6 @@ import { JobsModule } from './jobs/jobs.module';
   ],
   controllers: [AppController],
   providers: [],
+  exports: [],
 })
 export class AppModule {}

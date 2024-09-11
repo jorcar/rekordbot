@@ -1,5 +1,5 @@
 import { StravaService } from './strava.service';
-import { JobProcessor, QueuedJobProcessor } from '../jobs/job-processor';
+import { JobProcessor, QueuedJobProcessor } from '../job-q/job-processor';
 
 export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
 

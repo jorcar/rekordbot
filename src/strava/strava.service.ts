@@ -12,6 +12,11 @@ import {
 import { UserService } from '../user/user.service';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
+import { JobEnqueuerService } from '../job-q/job-enqueuer.service';
+import {
+  STRAVA_ATHLETE_ADDED_JOB,
+  StravaAthleteAddedJob,
+} from './strava-athlete-added.job-processor';
 
 @Injectable()
 export class StravaService {
@@ -29,7 +34,7 @@ export class StravaService {
     private dataSource: DataSource,
     private userService: UserService,
     private stravaApiService: StravaApiService,
-    //private jobPublisher: JobsPublisherService,
+    private jobPublisher: JobEnqueuerService,
   ) {}
 
   public async getAthleteForUser(
@@ -58,9 +63,12 @@ export class StravaService {
       return;
     }
     await this.createAthlete(res, userId);
-    /*await this.jobPublisher.enqueue(STRAVA_ATHLETE_ADDED_JOB, {
-      athleteId: res.athlete.id,
-    });*/
+    await this.jobPublisher.enqueue<StravaAthleteAddedJob>(
+      STRAVA_ATHLETE_ADDED_JOB,
+      {
+        athleteId: res.athlete.id,
+      },
+    );
   }
 
   private async createAthlete(
