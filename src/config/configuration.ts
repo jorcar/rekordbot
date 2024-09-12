@@ -16,19 +16,21 @@ export interface StravaConfig {
   webhook_url: string;
 }
 
-export interface AuthConfig {
-  jwt_secret: string;
+export interface JwtConfig {
+  secret: string;
+  expiresIn: string;
 }
 
 export interface Config {
-  jwt: AuthConfig;
+  jwt: JwtConfig;
   database: DatabaseConfig;
   strava: StravaConfig;
 }
 
 const test: Config = {
   jwt: {
-    jwt_secret: 'asd',
+    secret: 'asd',
+    expiresIn: '8d',
   },
   database: {
     type: 'postgres',
