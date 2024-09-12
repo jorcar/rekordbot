@@ -2,6 +2,12 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { Request as RequestType } from 'express';
+import { TokenPayload } from '../auth-utils/token.service';
+
+export interface ValidatedUser {
+  userId: number;
+  user: string;
+}
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -22,7 +28,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
   }
 
-  async validate(payload: any) {
-    return { userId: payload.sub, user: payload.user }; // TODO: type this
+  validate(payload: TokenPayload): ValidatedUser {
+    return { userId: payload.sub, user: payload.user };
   }
 }
