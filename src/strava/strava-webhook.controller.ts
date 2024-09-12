@@ -9,7 +9,13 @@ import {
 } from '@nestjs/common';
 import { StravaService } from './strava.service';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
-import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
+import {
+  STRAVA_ACTIVITY_CREATED_JOB,
+  STRAVA_ACTIVITY_DELETED_JOB,
+  StravaActivityCreatedJob,
+  StravaActivityDeletedJob,
+} from './jobs';
+import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job-processor';
 
 @Controller('/strava/webhook')
 export class StravaWebhookController {
@@ -43,7 +49,18 @@ export class StravaWebhookController {
           stravaActivityId: body.object_id,
         },
       );
-      this.logger.log('Activity webhook');
+    }
+    if (body.object_type === 'activity' && body.aspect_type === 'delete') {
+      this.logger.debug(
+        `Creating activity deleted job for activity ${body.object_id}`,
+      );
+      await this.jobPublisher.enqueue<StravaActivityDeletedJob>(
+        STRAVA_ACTIVITY_DELETED_JOB,
+        {
+          stravaAthleteId: body.owner_id,
+          stravaActivityId: body.object_id,
+        },
+      );
     }
   }
 }

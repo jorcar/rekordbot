@@ -66,11 +66,11 @@ export class StravaService {
     if (!res) {
       return;
     }
-    await this.createAthlete(res, userId);
+    const athlete = await this.createAthlete(res, userId);
     await this.jobPublisher.enqueue<StravaAthleteAddedJob>(
       STRAVA_ATHLETE_ADDED_JOB,
       {
-        athleteId: res.athlete.id,
+        athleteId: athlete.id,
       },
     );
   }
@@ -78,7 +78,7 @@ export class StravaService {
   private async createAthlete(
     tokenResponse: StravaTokenResponse,
     userId: number,
-  ): Promise<void> {
+  ): Promise<StravaAthlete> {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
@@ -94,6 +94,7 @@ export class StravaService {
       await queryRunner.manager.save(StravaAthlete, stravaAthlete);
       await queryRunner.commitTransaction();
       this.logger.debug(`athlete added and linked:${tokenResponse.athlete.id}`);
+      return stravaAthlete;
     } catch (err) {
       this.logger.error('error saving athlete', err);
       // since we have errors lets rollback the changes we made
@@ -116,17 +117,39 @@ export class StravaService {
   }
 
   public async registerWebhook(athleteId: number) {
+    try {
+      const athlete = await this.athleteRepo.findOneOrFail({
+        where: { id: athleteId },
+      });
+      const token = await this.getFreshToken(athlete);
+      const subscriptionId =
+        await this.stravaApiService.createWebhookSubscription(
+          token,
+          this.webhookUrl,
+        );
+
+      await this.athleteRepo.update(athleteId, { subscriptionId });
+    } catch (err) {
+      this.logger.error('error registering webhook', err);
+    }
+  }
+
+  public async refreshWebhook(userId: number) {
     const athlete = await this.athleteRepo.findOneOrFail({
-      where: { id: athleteId },
+      where: { user: { id: userId } as User },
     });
     const token = await this.getFreshToken(athlete);
+    await this.stravaApiService.deleteWebhookSubscription(
+      token,
+      athlete.subscriptionId,
+    );
     const subscriptionId =
       await this.stravaApiService.createWebhookSubscription(
         token,
         this.webhookUrl,
       );
 
-    await this.athleteRepo.update(athleteId, { subscriptionId });
+    await this.athleteRepo.update(athlete.id, { subscriptionId });
   }
 
   private async getFreshToken(athlete: StravaAthlete): Promise<string> {

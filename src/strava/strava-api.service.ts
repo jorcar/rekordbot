@@ -162,7 +162,31 @@ export class StravaApiService {
     );
     if (!response.ok) {
       this.logger.error(`error code from strava: ${response.status}`);
+      this.logger.error(
+        `error code from strava: ${JSON.stringify(await response.json())}`,
+      );
       throw new Error('error creating webhook subscription');
+    }
+    const data = await response.json();
+    return data.id;
+  }
+
+  public async deleteWebhookSubscription(
+    token: string,
+    subscriptionId: number,
+  ): Promise<number> {
+    const url = `https://www.strava.com/api/v3/push_subscriptions/${subscriptionId}?client_id=${this.client_id}&client_secret=${this.client_secret}`;
+    console.log(url);
+    console.log(token);
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      this.logger.error(`error code from strava: ${response.status}`);
+      throw new Error('error deleting webhook subscription');
     }
     const data = await response.json();
     return data.id;

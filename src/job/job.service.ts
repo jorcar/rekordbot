@@ -27,7 +27,14 @@ export class JobService {
   ) {
     this.logger.debug(`Registering processor for queue ${queue}`);
     await this.boss.createQueue(queue);
-    await this.boss.work(queue, handler);
+    await this.boss.work(queue, async ([job]) => {
+      try {
+        await handler(job.data);
+      } catch (error) {
+        this.logger.error('Error processing job', error);
+        throw error;
+      }
+    });
   }
 
   async enqueue<T extends object>(queue: string, job: T) {

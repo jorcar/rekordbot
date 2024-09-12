@@ -37,6 +37,9 @@ export class AppController {
   async profile(@Req() request: any) {
     const user = await this.userService.findByEmail(request.user.user);
     const athlete = await this.stravaService.getAthleteForUser(user);
+    if (!athlete) {
+      return { user };
+    }
     const stats = await this.stravaService.getAthleteStats(athlete.id);
     const statistics = {
       activities: stats.activityCount,
