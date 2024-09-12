@@ -3,6 +3,7 @@ import { JobService } from './job.service';
 import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
 import { JOB_PROCESSOR } from './job-processor';
 import { JobEnqueuerService } from './job-enqueuer.service';
+import { JobsModuleConfig } from './job-module-config';
 
 @Global()
 @Module({})
@@ -13,7 +14,7 @@ export class JobModule {
   ) {
     console.log('JobQModule module constructor');
   }
-  static forRoot(config: { connectionString: string }): DynamicModule {
+  static forRoot(config: JobsModuleConfig): DynamicModule {
     return {
       imports: [DiscoveryModule],
       module: JobModule,
@@ -31,7 +32,7 @@ export class JobModule {
 
   async onModuleInit(): Promise<void> {
     const wrappers = this.discovery.getProviders();
-
+    await this.jobService.init();
     for (const wrapper of wrappers) {
       if (wrapper.metatype) {
         const metadata = Reflect.getMetadata(JOB_PROCESSOR, wrapper.metatype);
@@ -43,7 +44,5 @@ export class JobModule {
         }
       }
     }
-
-    await this.jobService.init();
   }
 }

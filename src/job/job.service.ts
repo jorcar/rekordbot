@@ -9,9 +9,7 @@ export class JobService {
 
   constructor(@Inject('PG_BOSS_CONFIG') private config: JobsModuleConfig) {
     console.log('JobsService constructor');
-    this.boss = new PgBoss(
-      'postgres://postgres:password@localhost:5432/postgres',
-    );
+    this.boss = new PgBoss(this.config.connectionString);
   }
   public async init(): Promise<void> {
     await this.boss.start();

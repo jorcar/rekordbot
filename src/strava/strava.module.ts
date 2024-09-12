@@ -14,6 +14,7 @@ import { StravaSegment } from './strava-segment.entity';
 import { StravaActivityCreatedJobProcessor } from './strava-activity-created.job-processor';
 import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
 import { StravaAthleteAddedJobProcessor } from './strava-athlete-added-job.processor';
+import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job-processor';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { StravaAthleteAddedJobProcessor } from './strava-athlete-added-job.proce
     StravaService,
     StravaApiService,
     StravaActivityCreatedJobProcessor,
+    StravaActivityDeletedJobProcessor,
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
   ],
