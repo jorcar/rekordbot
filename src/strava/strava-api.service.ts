@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaCredentials } from './strava-credentials.entity';
+import { ConfigService } from '@nestjs/config';
+import { StravaConfig } from '../config/configuration';
 
 export interface StravaTokenResponse {
   access_token: string;
@@ -47,14 +49,18 @@ export interface StravaApiActivity {
 @Injectable()
 export class StravaApiService {
   private readonly logger = new Logger(StravaApiService.name);
-  // TODO: move to config
-  private client_id = 27973;
-  private client_secret = 'bfb397cb3618f6df91fa939456ce39f7864eb3ae'; //FIXME
+  private readonly client_id: number;
+  private readonly client_secret: string;
 
   constructor(
     @InjectRepository(StravaAthlete)
     private credentialsRepo: Repository<StravaCredentials>,
-  ) {}
+    private configService: ConfigService,
+  ) {
+    const config = this.configService.get<StravaConfig>('strava');
+    this.client_id = config.client_id;
+    this.client_secret = config.client_secret;
+  }
 
   async exchangeToken(
     code: string,

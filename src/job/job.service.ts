@@ -8,7 +8,6 @@ export class JobService {
   private boss: PgBoss;
 
   constructor(@Inject('PG_BOSS_CONFIG') private config: JobsModuleConfig) {
-    console.log('JobsService constructor');
     this.boss = new PgBoss(this.config.connectionString);
   }
   public async init(): Promise<void> {

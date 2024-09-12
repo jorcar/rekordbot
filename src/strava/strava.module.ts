@@ -15,6 +15,7 @@ import { StravaActivityCreatedJobProcessor } from './strava-activity-created.job
 import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
 import { StravaAthleteAddedJobProcessor } from './strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job-processor';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job
       StravaSegmentEffort,
     ]),
     UserModule,
+    ConfigModule,
   ],
   controllers: [StravaAuthController, StravaWebhookController],
   providers: [

@@ -14,10 +14,13 @@ import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
 import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
+import { ConfigService } from '@nestjs/config';
+import { StravaConfig } from '../config/configuration';
 
 @Injectable()
 export class StravaService {
   private readonly logger = new Logger(StravaService.name);
+  private webhookUrl: string;
   constructor(
     @InjectRepository(StravaAthlete)
     private athleteRepo: Repository<StravaAthlete>,
@@ -25,14 +28,18 @@ export class StravaService {
     @InjectRepository(StravaActivity)
     private activityRepo: Repository<StravaActivity>,
     @InjectRepository(StravaSegmentEffort)
-    private segmentEfforsRepo: Repository<StravaSegmentEffort>,
+    private segmentEffortsRepo: Repository<StravaSegmentEffort>,
     @InjectRepository(StravaCredentials)
     private credentialsRepo: Repository<StravaCredentials>,
     private dataSource: DataSource,
     private userService: UserService,
     private stravaApiService: StravaApiService,
     private jobPublisher: JobEnqueuerService,
-  ) {}
+    private configService: ConfigService,
+  ) {
+    this.webhookUrl =
+      this.configService.get<StravaConfig>('strava').webhook_url;
+  }
 
   public async getAthleteForUser(
     user: User,
@@ -44,12 +51,12 @@ export class StravaService {
     const activityCountPromise = this.activityRepo.count({
       where: { athlete: { id: athleteId } },
     });
-    const segmentEfforCountPromis = this.segmentEfforsRepo.count({
+    const segmentEffortCountPromise = this.segmentEffortsRepo.count({
       where: { athlete: { id: athleteId } },
     });
     const [activityCount, segmentEffortCount] = await Promise.all([
       activityCountPromise,
-      segmentEfforCountPromis,
+      segmentEffortCountPromise,
     ]);
     return { activityCount, segmentEffortCount };
   }
@@ -101,18 +108,32 @@ export class StravaService {
     activity_id: number,
     stravaAthleteId: number,
   ): Promise<StravaApiActivity> {
-    const athlete = await this.athleteRepo.findOne({
+    const athlete = await this.athleteRepo.findOneOrFail({
       where: { stravaId: stravaAthleteId },
     });
-    if (!athlete) {
-      this.logger.error(`athlete not found: ${stravaAthleteId}`);
-      return;
-    }
+    const token = await this.getFreshToken(athlete);
+    return await this.stravaApiService.getActivity(activity_id, token);
+  }
 
+  public async registerWebhook(athleteId: number) {
+    const athlete = await this.athleteRepo.findOneOrFail({
+      where: { id: athleteId },
+    });
+    const token = await this.getFreshToken(athlete);
+    const subscriptionId =
+      await this.stravaApiService.createWebhookSubscription(
+        token,
+        this.webhookUrl,
+      );
+
+    await this.athleteRepo.update(athleteId, { subscriptionId });
+  }
+
+  private async getFreshToken(athlete: StravaAthlete): Promise<string> {
     const credentials = await athlete.credentials;
     let token = credentials.accessToken;
     if (credentials.tokenExpiresAt < new Date()) {
-      this.logger.log('refreshing token');
+      this.logger.log('refreshing strava access token');
       const updated = await this.stravaApiService.refreshAccessToken(
         credentials.refreshToken,
       );
@@ -123,30 +144,7 @@ export class StravaService {
       });
       token = updated.access_token;
     }
-
-    const activity = await this.stravaApiService.getActivity(
-      activity_id,
-      token,
-    );
-    return activity;
-  }
-
-  public async registerWebhook(athleteId: number) {
-    const athlete = await this.athleteRepo.findOne({
-      where: { id: athleteId },
-    });
-    if (!athlete) {
-      this.logger.error(`athlete not found: ${athleteId}`);
-      return;
-    }
-    const credentials = await athlete.credentials;
-    const subscriptionId =
-      await this.stravaApiService.createWebhookSubscription(
-        credentials.accessToken,
-        'https://46c7-90-225-125-107.ngrok-free.app/strava/webhook',
-      );
-
-    await this.athleteRepo.update(athlete.id, { subscriptionId });
+    return token;
   }
 
   private createStravaAthleteRecord(

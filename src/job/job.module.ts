@@ -11,9 +11,7 @@ export class JobModule {
   constructor(
     private jobService: JobService,
     private discovery: DiscoveryService,
-  ) {
-    console.log('JobQModule module constructor');
-  }
+  ) {}
   static forRoot(config: JobsModuleConfig): DynamicModule {
     return {
       imports: [DiscoveryModule],
