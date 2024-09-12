@@ -12,8 +12,8 @@ import { StravaActivity } from './strava/strava-activity.entity';
 import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
 import { StravaSegment } from './strava/strava-segment.entity';
 import { JobModule } from './job/job.module';
-import configuration from './config/configuration';
-import { ConfigModule } from '@nestjs/config';
+import configuration, { DatabaseConfig } from './config/configuration';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -26,23 +26,30 @@ import { ConfigModule } from '@nestjs/config';
     JobModule.forRoot({
       connectionString: 'postgres://postgres@localhost:5432/my_database',
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      //password: 'root',
-      database: 'my_database',
-      entities: [
-        StravaSegment,
-        StravaSegmentEffort,
-        StravaAthlete,
-        StravaAchievementEffort,
-        StravaActivity,
-        StravaCredentials,
-        User,
-      ],
-      synchronize: true, // TODO: figure out migrations for prod setup
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const config = configService.get<DatabaseConfig>('database');
+        return {
+          type: 'postgres',
+          host: config.host,
+          port: config.port,
+          username: config.username,
+          password: config.password,
+          database: config.database,
+          entities: [
+            StravaSegment,
+            StravaSegmentEffort,
+            StravaAthlete,
+            StravaAchievementEffort,
+            StravaActivity,
+            StravaCredentials,
+            User,
+          ],
+          synchronize: config.synchronize,
+        };
+      },
     }),
   ],
   controllers: [AppController],

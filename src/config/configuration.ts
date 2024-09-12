@@ -7,6 +7,7 @@ export interface DatabaseConfig {
   username: string;
   password: string;
   database: string;
+  synchronize: boolean;
 }
 
 export interface StravaConfig {
@@ -39,6 +40,7 @@ const test: Config = {
     username: 'postgres',
     password: '',
     database: 'my_database',
+    synchronize: true, // TODO: deal with this for production
   },
   strava: {
     client_id: 27973,
