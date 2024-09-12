@@ -1,13 +1,14 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import * as PgBoss from 'pg-boss';
 import { JobsModuleConfig } from './job-module-config';
+import { MODULE_OPTIONS_TOKEN } from './job.module-definition';
 
 @Injectable()
 export class JobService {
   private readonly logger = new Logger(JobService.name);
   private boss: PgBoss;
 
-  constructor(@Inject('PG_BOSS_CONFIG') private config: JobsModuleConfig) {
+  constructor(@Inject(MODULE_OPTIONS_TOKEN) private config: JobsModuleConfig) {
     this.boss = new PgBoss(this.config.connectionString);
   }
   public async init(): Promise<void> {

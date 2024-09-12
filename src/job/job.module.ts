@@ -1,31 +1,22 @@
-import { DynamicModule, Global, Module } from '@nestjs/common';
-import { JobService } from './job.service';
-import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
+import { Global, Module } from '@nestjs/common';
 import { JOB_PROCESSOR } from './job-processor';
+import { ConfigurableModuleClass } from './job.module-definition';
+import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
 import { JobEnqueuerService } from './job-enqueuer.service';
-import { JobsModuleConfig } from './job-module-config';
+import { JobService } from './job.service';
 
 @Global()
-@Module({})
-export class JobModule {
+@Module({
+  imports: [DiscoveryModule],
+  providers: [JobService, JobEnqueuerService],
+  exports: [JobEnqueuerService],
+})
+export class JobModule extends ConfigurableModuleClass {
   constructor(
     private jobService: JobService,
     private discovery: DiscoveryService,
-  ) {}
-  static forRoot(config: JobsModuleConfig): DynamicModule {
-    return {
-      imports: [DiscoveryModule],
-      module: JobModule,
-      providers: [
-        JobService,
-        JobEnqueuerService,
-        {
-          provide: 'PG_BOSS_CONFIG',
-          useValue: config,
-        },
-      ],
-      exports: [JobEnqueuerService],
-    };
+  ) {
+    super();
   }
 
   async onModuleInit(): Promise<void> {

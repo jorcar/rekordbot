@@ -12,7 +12,10 @@ import { StravaActivity } from './strava/strava-activity.entity';
 import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
 import { StravaSegment } from './strava/strava-segment.entity';
 import { JobModule } from './job/job.module';
-import configuration, { DatabaseConfig } from './config/configuration';
+import configuration, {
+  DatabaseConfig,
+  toConnectionString,
+} from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
@@ -23,8 +26,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     UserModule,
     StravaModule,
     AuthModule,
-    JobModule.forRoot({
-      connectionString: 'postgres://postgres@localhost:5432/my_database',
+    JobModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const config = configService.get<DatabaseConfig>('database');
+        return {
+          connectionString: toConnectionString(config),
+        };
+      },
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
