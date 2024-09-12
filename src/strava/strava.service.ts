@@ -20,11 +20,11 @@ import { StravaConfig } from '../config/configuration';
 @Injectable()
 export class StravaService {
   private readonly logger = new Logger(StravaService.name);
-  private webhookUrl: string;
+  private readonly webhookUrl: string;
+
   constructor(
     @InjectRepository(StravaAthlete)
     private athleteRepo: Repository<StravaAthlete>,
-
     @InjectRepository(StravaActivity)
     private activityRepo: Repository<StravaActivity>,
     @InjectRepository(StravaSegmentEffort)
@@ -51,6 +51,7 @@ export class StravaService {
     const activityCountPromise = this.activityRepo.count({
       where: { athlete: { id: athleteId } },
     });
+
     const segmentEffortCountPromise = this.segmentEffortsRepo.count({
       where: { athlete: { id: athleteId } },
     });

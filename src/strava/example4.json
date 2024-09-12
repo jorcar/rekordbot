@@ -1,0 +1,3863 @@
+{
+  "resource_state": 3,
+  "athlete": {
+    "id": 1168772,
+    "resource_state": 1
+  },
+  "name": "Afternoon Ride",
+  "distance": 47357.9,
+  "moving_time": 6203,
+  "elapsed_time": 6203,
+  "total_elevation_gain": 472.4,
+  "type": "Ride",
+  "sport_type": "Ride",
+  "workout_type": null,
+  "id": 12391693335,
+  "start_date": "2024-09-12T11:16:21Z",
+  "start_date_local": "2024-09-12T13:16:21Z",
+  "timezone": "(GMT+01:00) Europe/Stockholm",
+  "utc_offset": 7200,
+  "location_city": null,
+  "location_state": null,
+  "location_country": "Sverige",
+  "achievement_count": 1,
+  "kudos_count": 0,
+  "comment_count": 0,
+  "athlete_count": 1,
+  "photo_count": 0,
+  "map": {
+    "id": "a12391693335",
+    "polyline": "af`iJ}~inBKTB\\A^CN_@x@Il@QnDCjCGl@Mj@Yz@q@jBGDECKUuA_FeCqLUcAs@_CwCaOa@cCoAsI_AwEIUKOMIe@Ma@SWIY@y@d@WJK?ICIIU_@cAkCiAgB]w@Mq@c@wDKc@M]UWGAG@QRM^u@zCo@hDi@pE]xB[pAWx@[x@_@r@W^c@f@a@`@c@Xa@R]HiAJs@E]I_@Os@g@u@y@w@kAa@{@wAkD_A_Bu@{@e@_@g@Ug@OQCg@Ce@BiANyCr@y@Ne@Du@?_@G]Qu@o@e@i@_@q@u@{Ak@uA_@mAg@uBgAsGq@}BS}@Ca@?eA^}EFuB?qACoAIqAi@sGOsBEoA?wBHyBX}Ch@mDj@wBBi@Ki@g@oASo@cAkFe@eBk@qAa@g@a@[OIc@Ka@E_@A{EZ[Di@PYPWZ_@x@kBxGeBjH]lBs@jFYjBUhAg@fBm@zA{GfOa@l@MJOFMAKKKSIYYuAQu@c@eAu@kAoBeCYg@Wo@S{@OcA{AuNQ_A_@{AYw@o@mA{CqEi@o@i@i@g@_@e@QSAQ@SDgAn@e@Ng@?SEe@WeAeAa@Yc@MeAI_@KOKMOi@aAMQc@Ya@IeBGMEMIIQGWE]?aAByCEu@GWIQMMMIOCO?MB]R{@n@a@NU@ICIGEMEg@@k@NoBCs@Km@s@cC_AcEqAmLQmBCmAHiATaARk@Te@jBcC`AcA\\Y|A{@\\Y\\c@Xq@Rw@hDqQfAmF\\oA`@y@\\_@PIRCf@@f@N`ClAdA^VDV@VCVGTMTShB_CdCoCj@u@h@cAb@mA\\wA~CgQb@qCb@gEHo@Pg@JM|AkAp@u@j@eAf@qAV}@VqAdBqLd@oCNo@Ri@`@s@LMZUNE\\GP?^D`@RPLp@~@rGxK^f@PPb@VRBR?f@Ix@]rAq@f@c@|A}Bh@i@DK^}Bt@}GbAuFh@uE|AsH^aC`@uF^{LJeBJaAX}A\\sAbBsE^sAPcANeAJgAHcBDaCAgBGaBSuBCo@D{DGuMN_M?gBCmAO}BW}B_@kCcAeGUeBQgBUwDM{DGeFBgEXmI@{BEmAIiAOaAg@sCO{DCuAd@qIVkCh@mCNk@\\u@pBsCh@_AXy@\\yA\\wDPmAX}Aj@oFHaBNcFAy@MsAuAqHSa@MIKEO?MBk@\\y@r@kBpBe@\\c@No@JkBP_BDc@EYKWQWWa@q@Sg@Qo@Ms@QsAo@cHWaCU{AYwA_@oA}DiMu@qBo@oAeIyMs@cAw@{@gA}@_BkAs@[m@K_@@i@Le@ZYZY^kBfD_@b@c@Xe@Li@Ak@O_@UOOo@eAmBqE}@_Ce@cBSeAOiAKoBSkFKu@Mm@Ue@W]MK]OoAYs@Ua@W]a@OSYo@e@sAqCkKg@sBa@sBYqBQoBKqBGoB?aCBmBLkCt@eLtGs~@De@H[FMBCB@@ABOKo@iBsF}AkFe@iBUgAa@kCYeCQ_CMeDEsB@{BNqJxB}d@FeCBmDImKKgKKaDI}@Oy@Ss@MW_@g@gCqBq@y@k@aAgEuJi@eAa@g@a@YYI_Ek@sA[g@UcB_B]We@W]KMAOAg@FU?IEOMOe@CAAL?HJRNJNFZB~@INBVJf@Z~A~Al@^|Ah@hC`@v@Nb@P^T\\^Zh@lDdInAfCd@n@XZdBrA\\Zb@t@Z`APpAH~AVtTBpGIlEIrB}AxZOxDI`DIfHBnDLlDZrD\\pCl@zCr@jChD~KNt@h@xCjAjJxFvf@`@rCj@fCh@xAl@nAZh@bAjAlA~@|@^~@N`A@~@IVE~Ag@`G}A\\K^Sx@w@fC}CbAyAl@gAd@iATs@x@kDbJuZjBcHjCgHdAyDnA{Fh@cBVk@Ze@tBmBb@g@R]h@wAx@}C\\}@P[x@y@fAwAfBoB^g@t@sApB}Bp@_A`@q@f@gAb@iA`HoSVeAFe@@g@?g@Cw@Iq@Oi@Qe@cB_Di@sAYgAg@mDYyAiDcKs@eCQ_AOaAM{AAs@D{@VsBJiAPcE@oBQ}EBaANaBf@cDR}@Pe@`AsB~HgSx@sCd@wBLaALoB@mAAmASqCc@_EOu@Qo@{AgDa@gASs@O{@E_@MoCIgAMeA[_Bu@qD_BaF}@qDSi@Wa@YW[Qk@Q{@KyAAkAE]G]M[YWc@Uk@Oq@Mw@IyA[kRa@yOBeJBmANkDCYEYIUMQq@k@MSKYG]IiA@gDAmAEa@G]KSMMQCQAqEd@uAF{@TYAOGOUKa@Go@@[Jw@\\kAF]B_@@e@GkAMgAM{@IUIQKIMCe@EeAOsAAw@IkCw@[Ua@a@I?EFCL?PBPDLHHJBv@Iv@@`A`@`@Hj@DjA@ZFrA`@XPJPFVD^JdBDzAG`Ai@fBEZA\\B^HXJTRTNFP?TCb@SZGjBItCYd@BNFLLJTFXD\\@\\CpB?zAFxAH\\Rd@PRf@^NRJ^BR?f@MvBGnBCjIb@lRTjNL`CNrAPl@^x@V\\f@\\f@LvCBh@DZFh@Pd@XXXT^Z~@j@jC`B~Ed@lBz@hFNzAJ~BJz@Hf@j@hBbBbEPl@Lt@\\tDTvD@tACv@M`Bi@vCo@xBuDvJiDrIw@`BM`@Qv@c@|CSxBCtANzD@dCStDe@hECdA@d@JnAZlBt@lC`ClHb@xAVfAn@bET`Ab@nAbBdD`@hAH\\FfAAjAMdASv@iAxCiErMm@~Ae@bAu@lAsCrDWd@]|@KNs@p@wA|Aq@`Am@j@OTOXUp@u@lCYx@]t@W^WZqBhBe@p@Ub@Qf@Y~@iAtFqAvEWv@aA`Cg@xAoBlHmJp[k@dCOj@k@nAyA`CyCpDi@h@[Ri@TcB\\{A^mDbAq@Jq@Be@?g@Ek@Mk@Sk@]q@g@_@e@c@k@a@s@q@yA]eAg@oBUiA_@qCwD{\\kByOYoBOo@GQIKIAIHIPIt@i@~ImB~WiDrg@K|BCjCBpCFhBPbCN|Al@lDXpA~@lDbBfG`@nAj@jAj@p@n@^dBh@^NRNRVVn@Lh@Hp@ZhHLrAPlAVbAj@fBzApD~@rBR^\\`@VVXNXJVBX?ZGf@Wf@i@h@w@jAyBf@o@\\YPIb@KPAh@DRFz@`@`ClBpAtAhAdBnH`Mx@bBj@|AxDdMn@bCb@nC`ArJPzAP~@Tx@N^\\j@`@`@XNXJh@Dj@AxCWt@Md@Sd@[|B_Cp@k@n@[h@QBS@_@NyCHQLEDGp@eDx@{Bz@iCfBcEz@_Bp@eBp@qAt@oAdBwBv@sAPg@zAsFh@sA\\cBFUFADDFLt@lDRvAf@|Dp@nEDz@?ZU|B?VFl@Nd@RXRRz@h@t@|@Tf@J`@HjAZdL@rAEfAKr@UbAmAlESfACr@LzBFrCr@~H^jGRzEH`APzAZfBX|@V\\~@h@LPLXPhANtAJxABxAGrAQrB?lAHhA^pC\\|D^fDDzACx@Gr@]vBSfBKf@cC`FUv@UvAMXIDKBIAWO[e@gAoBc@q@USUEODMJuChCi@n@]l@Up@UhAm@tFq@xCe@dBMr@G|@E|COjAu@hCk@fDU|@Ub@u@r@Y^Wl@G\\KbAOdEOhAI\\[p@mArAi@v@sA|BiAdC_A|@QZOd@EDMBUMC?CBCv@@`AVxCFvBCfDOfCS`BY|Ae@xAuAtDe@dBSfAMdAMfBG|AU|IO|BUdCYrB_AlEg@fCo@jF}@jFw@lH_@lBM`BA~@H~@l@xDvAdFd@pCl@~AV|@j@lCRlBLfDRfCBrADv@`@rC`@dFNt@d@fAt@zBV`AXh@f@h@^Zl@ZXFd@DbEMj@@f@Fx@Rp@Zh@`@^b@\\n@Zv@V~@\\dB`@~AxAxDnBvGv@vBpArFzA~F|@vEnAnHR|AL|BDTb@lANbAdAvKZbC|@vJzBbR|BpQTnA^|Ad@nC\\`BdAfGbA~Hb@zAl@rD`@vCx@~CdChOd@`DXdDj@rClAzIv@rExBnK\\vA`@nAT`AvBnKzAfF^~@@AHkAj@kB^gBBu@BsCNiCDe@H]P[HS@WG{@@EJB",
+    "resource_state": 3,
+    "summary_polyline": "e|`iJqyjnB_CsMyBeAkCd@aEkIq@iFo@yAa@RcAzDkD`SwBtDeCxA}BDqBaAmBeCyDgIcCqBgCSyJxAyCsBaDqHuDeQb@mOmAqVb@wGxAoIqD{N_C_DoIHuBtAeFlR{CvQeIfR_BzAqBkGwEiHeDsVeAiCkDkFaDkCcF~@mCwBiCc@yBiCcDa@WgAAqGm@aAsEhA@eG_CuJeBoPFcC~@sClDgExCoBv@uAdGwZ~@iCjBk@nF|B~ACpJkL`FmVpAiKlDwDrAwCzDqUdAmCvAq@dBf@dIxMtApA|EuAnDkEhEsZ|BuLxAyYzDyMv@uHBiF_@gGHgg@iEs_@UaL^qSgAmJSqGd@qI`AyGhEuHv@sCtBsQXeIOmCuAqHm@q@yHtF{Fb@mB{@uA}DiCmTcI{UyJ}OsGaF}C^cF`HoAJ{Au@aG{N}AoQ{@oAaD_AoAmAqEoOuBiMOqMxIepAd@cBoGaU{@qG_@eHJaR`Cci@]eb@{@cEyEsE_IePoIkBoEeDyBGo@m@j@p@bCHtDzCbJbCvHvOjEdEz@zBXvDXr\\iCnn@KfLZrItAxJdFdQx@nEtJfx@bCvG|DpD`FTvKwC~C{CrDoFdQcm@jCgH~DyO`FeGrCoIdOmR~I_Wh@yBBiC[mBoAiCoAoC{AoI}EiOq@qGz@}LKoKv@eGfL_ZlBmILkGq@sHyDgLwAyMgFoRyB}A}Gi@yA{CuAwg@V_RSiAaBiCW_K}@g@mKx@a@cCv@gFw@wFqGo@sEoBIf@Rh@zBCdJnBj@jGy@bFl@dBxJ{@nAn@R|JvB~DYzQx@xa@\\tEp@fB~@z@dG^~BdBnExOlBhPnDpKr@lJOnFyApGwLf[w@vGLvK}@dMh@bFzEtO|AlIhD~HNpDa@|BgJpWkGtJ{FrGsChI}EzFgEtPaCrGyOpj@{BbE}DxEsPlEgDq@cDgDsAwCkA}EcIgr@i@_De@UuIzmAGbNhAtKlEtPhBpD~DbBx@dAxAxP~EpMbBhBfBFnAaA|CaFdBq@xBn@rEbExJfPdB`EhFhQhC~SdBfD|A`@zFg@tIiGTmEdEkMfG{MrE{GxDaNXHn@zCrBvNGzGhDzD`@hAf@dQQzBwBxIPbIbCd]t@dDrBrB`@~CNrDYtGfB`QEhE}@fGcC`Fy@hDw@GgCgEk@Y{FxF_EdT]fHwBnJeBvB_@jAu@pJsK`Qq@?\\jKSnHm@~DuD|L_BlZoF`\\gB|Pv@xFnFbTbCb\\bCzHnCjCvIHtDtBpClJ`GhQlDrNlCfO`@zEx@fD~Cr[nFhc@dE~TtFz[dHle@"
+  },
+  "trainer": false,
+  "commute": false,
+  "manual": false,
+  "private": true,
+  "visibility": "only_me",
+  "flagged": false,
+  "gear_id": "b5684678",
+  "start_latlng": [
+    59.31633076630533,
+    18.24255494400859
+  ],
+  "end_latlng": [
+    59.316367814317346,
+    18.242641109973192
+  ],
+  "average_speed": 7.635,
+  "max_speed": 14.126,
+  "has_heartrate": true,
+  "average_heartrate": 140.9,
+  "max_heartrate": 173,
+  "heartrate_opt_out": false,
+  "display_hide_heartrate_option": true,
+  "elev_high": 56.6,
+  "elev_low": 2,
+  "upload_id": 13211495379,
+  "upload_id_str": "13211495379",
+  "external_id": "D90686BD-87A9-4CCF-BC72-534B5640E8F7.fit",
+  "from_accepted_tag": false,
+  "pr_count": 0,
+  "total_photo_count": 0,
+  "has_kudoed": false,
+  "suffer_score": 91,
+  "description": null,
+  "calories": 1566,
+  "perceived_exertion": null,
+  "prefer_perceived_exertion": null,
+  "segment_efforts": [
+    {
+      "id": 3269302230561032000,
+      "resource_state": 2,
+      "name": "Omringad av ormar",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 217,
+      "moving_time": 217,
+      "start_date": "2024-09-12T11:19:21Z",
+      "start_date_local": "2024-09-12T13:19:21Z",
+      "distance": 1651,
+      "start_index": 164,
+      "end_index": 381,
+      "device_watts": false,
+      "average_heartrate": 129.9,
+      "max_heartrate": 153,
+      "segment": {
+        "id": 30298391,
+        "resource_state": 2,
+        "name": "Omringad av ormar",
+        "activity_type": "Ride",
+        "distance": 1651,
+        "average_grade": 0.8,
+        "maximum_grade": 6.7,
+        "elevation_high": 77,
+        "elevation_low": 60.8,
+        "start_latlng": [
+          59.32184,
+          18.249404
+        ],
+        "end_latlng": [
+          59.333454,
+          18.252059
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558235600,
+      "resource_state": 2,
+      "name": "Fartsträcka, Skarpövägen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 50,
+      "moving_time": 50,
+      "start_date": "2024-09-12T11:23:14Z",
+      "start_date_local": "2024-09-12T13:23:14Z",
+      "distance": 555.1,
+      "start_index": 397,
+      "end_index": 447,
+      "device_watts": false,
+      "average_heartrate": 134.3,
+      "max_heartrate": 136,
+      "segment": {
+        "id": 4255492,
+        "resource_state": 2,
+        "name": "Fartsträcka, Skarpövägen",
+        "activity_type": "Ride",
+        "distance": 555.1,
+        "average_grade": -1.6,
+        "maximum_grade": -0.9,
+        "elevation_high": 44,
+        "elevation_low": 35,
+        "start_latlng": [
+          59.334304,
+          18.254745
+        ],
+        "end_latlng": [
+          59.33395,
+          18.264039
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo, Sweden",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559175700,
+      "resource_state": 2,
+      "name": "Kummelnäs genomfart",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 670,
+      "moving_time": 670,
+      "start_date": "2024-09-12T11:24:12Z",
+      "start_date_local": "2024-09-12T13:24:12Z",
+      "distance": 5720.3,
+      "start_index": 455,
+      "end_index": 1125,
+      "device_watts": false,
+      "average_heartrate": 148.2,
+      "max_heartrate": 166,
+      "segment": {
+        "id": 24135055,
+        "resource_state": 2,
+        "name": "Kummelnäs genomfart",
+        "activity_type": "Ride",
+        "distance": 5720.3,
+        "average_grade": -0.5,
+        "maximum_grade": 10.2,
+        "elevation_high": 87.2,
+        "elevation_low": 50.2,
+        "start_latlng": [
+          59.334122,
+          18.264779
+        ],
+        "end_latlng": [
+          59.335628,
+          18.296151
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560755700,
+      "resource_state": 2,
+      "name": "Kummelhill",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 51,
+      "moving_time": 51,
+      "start_date": "2024-09-12T11:30:41Z",
+      "start_date_local": "2024-09-12T13:30:41Z",
+      "distance": 314.2,
+      "start_index": 844,
+      "end_index": 895,
+      "device_watts": false,
+      "average_heartrate": 162.3,
+      "max_heartrate": 166,
+      "segment": {
+        "id": 21134186,
+        "resource_state": 2,
+        "name": "Kummelhill",
+        "activity_type": "Ride",
+        "distance": 314.2,
+        "average_grade": 3.3,
+        "maximum_grade": 9.4,
+        "elevation_high": 48.7,
+        "elevation_low": 36.9,
+        "start_latlng": [
+          59.351155,
+          18.278407
+        ],
+        "end_latlng": [
+          59.349473,
+          18.28261
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Kummelnäs",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560716000,
+      "resource_state": 2,
+      "name": "Kummelnäsvägen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 122,
+      "moving_time": 122,
+      "start_date": "2024-09-12T11:33:18Z",
+      "start_date_local": "2024-09-12T13:33:18Z",
+      "distance": 1078.8,
+      "start_index": 1001,
+      "end_index": 1123,
+      "device_watts": false,
+      "average_heartrate": 148.7,
+      "max_heartrate": 159,
+      "segment": {
+        "id": 36835700,
+        "resource_state": 2,
+        "name": "Kummelnäsvägen",
+        "activity_type": "Ride",
+        "distance": 1078.8,
+        "average_grade": -1,
+        "maximum_grade": 9.5,
+        "elevation_high": 33.6,
+        "elevation_low": 14.6,
+        "start_latlng": [
+          59.343253,
+          18.291642
+        ],
+        "end_latlng": [
+          59.335806,
+          18.296267
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Nacka kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558232600,
+      "resource_state": 2,
+      "name": "Värmdövägen snabba tryck",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 40,
+      "moving_time": 40,
+      "start_date": "2024-09-12T11:36:00Z",
+      "start_date_local": "2024-09-12T13:36:00Z",
+      "distance": 308,
+      "start_index": 1163,
+      "end_index": 1203,
+      "device_watts": false,
+      "average_heartrate": 139.5,
+      "max_heartrate": 144,
+      "segment": {
+        "id": 23473493,
+        "resource_state": 2,
+        "name": "Värmdövägen snabba tryck",
+        "activity_type": "Ride",
+        "distance": 308,
+        "average_grade": 2.1,
+        "maximum_grade": 5.6,
+        "elevation_high": 23,
+        "elevation_low": 16.4,
+        "start_latlng": [
+          59.334468,
+          18.301319
+        ],
+        "end_latlng": [
+          59.333636,
+          18.30639
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560958500,
+      "resource_state": 2,
+      "name": "Upp genom Velamsundskorset och upp igen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 112,
+      "moving_time": 112,
+      "start_date": "2024-09-12T11:36:32Z",
+      "start_date_local": "2024-09-12T13:36:32Z",
+      "distance": 922.6,
+      "start_index": 1195,
+      "end_index": 1307,
+      "device_watts": false,
+      "average_heartrate": 156.4,
+      "max_heartrate": 166,
+      "segment": {
+        "id": 10369688,
+        "resource_state": 2,
+        "name": "Upp genom Velamsundskorset och upp igen",
+        "activity_type": "Ride",
+        "distance": 922.6,
+        "average_grade": 3.2,
+        "maximum_grade": 17.7,
+        "elevation_high": 39.1,
+        "elevation_low": 9.9,
+        "start_latlng": [
+          59.333742,
+          18.305195
+        ],
+        "end_latlng": [
+          59.332403,
+          18.320469
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": 2,
+      "achievements": [
+        {
+          "type_id": 3,
+          "type": "pr",
+          "rank": 2
+        }
+      ],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230561059000,
+      "resource_state": 2,
+      "name": "Velamsund-Lagnö-Aspvik-Gurra",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 2699,
+      "moving_time": 2698,
+      "start_date": "2024-09-12T11:37:49Z",
+      "start_date_local": "2024-09-12T13:37:49Z",
+      "distance": 20579.8,
+      "start_index": 1272,
+      "end_index": 3969,
+      "device_watts": false,
+      "average_heartrate": 145,
+      "max_heartrate": 173,
+      "segment": {
+        "id": 28858172,
+        "resource_state": 2,
+        "name": "Velamsund-Lagnö-Aspvik-Gurra",
+        "activity_type": "Ride",
+        "distance": 20579.8,
+        "average_grade": 0,
+        "maximum_grade": 16.3,
+        "elevation_high": 44.6,
+        "elevation_low": 11.8,
+        "start_latlng": [
+          59.332401,
+          18.315241
+        ],
+        "end_latlng": [
+          59.328693,
+          18.393649
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560169000,
+      "resource_state": 2,
+      "name": "Värmdöv ned mot Lagnökorset",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 160,
+      "moving_time": 160,
+      "start_date": "2024-09-12T11:38:28Z",
+      "start_date_local": "2024-09-12T13:38:28Z",
+      "distance": 1411.4,
+      "start_index": 1311,
+      "end_index": 1471,
+      "device_watts": false,
+      "average_heartrate": 154.2,
+      "max_heartrate": 173,
+      "segment": {
+        "id": 10369741,
+        "resource_state": 2,
+        "name": "Värmdöv ned mot Lagnökorset",
+        "activity_type": "Ride",
+        "distance": 1411.4,
+        "average_grade": -1.8,
+        "maximum_grade": 5.8,
+        "elevation_high": 38.8,
+        "elevation_low": 11.1,
+        "start_latlng": [
+          59.332482,
+          18.320985
+        ],
+        "end_latlng": [
+          59.331283,
+          18.343746
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558938000,
+      "resource_state": 2,
+      "name": "Gamla Skärgårdsvägen till Skevik (tempo)",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 408,
+      "moving_time": 408,
+      "start_date": "2024-09-12T11:41:36Z",
+      "start_date_local": "2024-09-12T13:41:36Z",
+      "distance": 3420.7,
+      "start_index": 1499,
+      "end_index": 1907,
+      "device_watts": false,
+      "average_heartrate": 145.2,
+      "max_heartrate": 153,
+      "segment": {
+        "id": 7254232,
+        "resource_state": 2,
+        "name": "Gamla Skärgårdsvägen till Skevik (tempo)",
+        "activity_type": "Ride",
+        "distance": 3420.7,
+        "average_grade": 0,
+        "maximum_grade": 7.5,
+        "elevation_high": 24.2,
+        "elevation_low": 7.2,
+        "start_latlng": [
+          59.332515,
+          18.346303
+        ],
+        "end_latlng": [
+          59.347604,
+          18.381912
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo, Sweden",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560315400,
+      "resource_state": 2,
+      "name": "Insjön – N. Lagnö",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 706,
+      "moving_time": 705,
+      "start_date": "2024-09-12T11:41:36Z",
+      "start_date_local": "2024-09-12T13:41:36Z",
+      "distance": 5657.8,
+      "start_index": 1499,
+      "end_index": 2205,
+      "device_watts": false,
+      "average_heartrate": 145.2,
+      "max_heartrate": 161,
+      "segment": {
+        "id": 21615444,
+        "resource_state": 2,
+        "name": "Insjön – N. Lagnö",
+        "activity_type": "Ride",
+        "distance": 5657.8,
+        "average_grade": 0.1,
+        "maximum_grade": 11.5,
+        "elevation_high": 55.8,
+        "elevation_low": 34,
+        "start_latlng": [
+          59.332497,
+          18.34624
+        ],
+        "end_latlng": [
+          59.354893,
+          18.411221
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559858700,
+      "resource_state": 2,
+      "name": "Echelon Hell Yeah Skevik",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 397,
+      "moving_time": 397,
+      "start_date": "2024-09-12T11:41:50Z",
+      "start_date_local": "2024-09-12T13:41:50Z",
+      "distance": 3350,
+      "start_index": 1513,
+      "end_index": 1910,
+      "device_watts": false,
+      "average_heartrate": 145.4,
+      "max_heartrate": 153,
+      "segment": {
+        "id": 34237424,
+        "resource_state": 2,
+        "name": "Echelon Hell Yeah Skevik",
+        "activity_type": "Ride",
+        "distance": 3350,
+        "average_grade": 0,
+        "maximum_grade": 14.3,
+        "elevation_high": 14,
+        "elevation_low": 0,
+        "start_latlng": [
+          59.333508,
+          18.345363
+        ],
+        "end_latlng": [
+          59.347592,
+          18.382215
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Nacka kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230557672400,
+      "resource_state": 2,
+      "name": "Flygande kilometern",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 113,
+      "moving_time": 113,
+      "start_date": "2024-09-12T11:42:26Z",
+      "start_date_local": "2024-09-12T13:42:26Z",
+      "distance": 1004.4,
+      "start_index": 1549,
+      "end_index": 1662,
+      "device_watts": false,
+      "average_heartrate": 148.7,
+      "max_heartrate": 152,
+      "segment": {
+        "id": 24479078,
+        "resource_state": 2,
+        "name": "Flygande kilometern",
+        "activity_type": "Ride",
+        "distance": 1004.4,
+        "average_grade": 0,
+        "maximum_grade": 5.8,
+        "elevation_high": 22,
+        "elevation_low": 17.4,
+        "start_latlng": [
+          59.33561,
+          18.345693
+        ],
+        "end_latlng": [
+          59.341826,
+          18.357353
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö-boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559456000,
+      "resource_state": 2,
+      "name": "Hovet Intervall retur",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 320,
+      "moving_time": 320,
+      "start_date": "2024-09-12T11:42:38Z",
+      "start_date_local": "2024-09-12T13:42:38Z",
+      "distance": 2734.6,
+      "start_index": 1561,
+      "end_index": 1881,
+      "device_watts": false,
+      "average_heartrate": 145.6,
+      "max_heartrate": 153,
+      "segment": {
+        "id": 34544716,
+        "resource_state": 2,
+        "name": "Hovet Intervall retur",
+        "activity_type": "Ride",
+        "distance": 2734.6,
+        "average_grade": -0.1,
+        "maximum_grade": 9.9,
+        "elevation_high": 3.8,
+        "elevation_low": -12.2,
+        "start_latlng": [
+          59.336001,
+          18.347213
+        ],
+        "end_latlng": [
+          59.348149,
+          18.377883
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Nacka kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230558718000,
+      "resource_state": 2,
+      "name": "2:a kilometern",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 129,
+      "moving_time": 129,
+      "start_date": "2024-09-12T11:46:18Z",
+      "start_date_local": "2024-09-12T13:46:18Z",
+      "distance": 1009.5,
+      "start_index": 1781,
+      "end_index": 1910,
+      "device_watts": false,
+      "average_heartrate": 141.2,
+      "max_heartrate": 148,
+      "segment": {
+        "id": 37178695,
+        "resource_state": 2,
+        "name": "2:a kilometern",
+        "activity_type": "Ride",
+        "distance": 1009.5,
+        "average_grade": 0.1,
+        "maximum_grade": 4.5,
+        "elevation_high": 10.4,
+        "elevation_low": 3.4,
+        "start_latlng": [
+          59.348616,
+          18.365182
+        ],
+        "end_latlng": [
+          59.347576,
+          18.382195
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559639600,
+      "resource_state": 2,
+      "name": "Lagnövägen ut",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 211,
+      "moving_time": 211,
+      "start_date": "2024-09-12T11:48:48Z",
+      "start_date_local": "2024-09-12T13:48:48Z",
+      "distance": 1723.7,
+      "start_index": 1931,
+      "end_index": 2142,
+      "device_watts": false,
+      "average_heartrate": 145.9,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 9917017,
+        "resource_state": 2,
+        "name": "Lagnövägen ut",
+        "activity_type": "Ride",
+        "distance": 1723.7,
+        "average_grade": -0.6,
+        "maximum_grade": 14.4,
+        "elevation_high": 27.7,
+        "elevation_low": 8.1,
+        "start_latlng": [
+          59.347398,
+          18.383465
+        ],
+        "end_latlng": [
+          59.351455,
+          18.409705
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230560001000,
+      "resource_state": 2,
+      "name": "Lagnökorset -> Långsunda",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 166,
+      "moving_time": 166,
+      "start_date": "2024-09-12T11:48:50Z",
+      "start_date_local": "2024-09-12T13:48:50Z",
+      "distance": 1189.2,
+      "start_index": 1933,
+      "end_index": 2099,
+      "device_watts": false,
+      "average_heartrate": 149.2,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 15137226,
+        "resource_state": 2,
+        "name": "Lagnökorset -> Långsunda",
+        "activity_type": "Ride",
+        "distance": 1189.2,
+        "average_grade": -0.4,
+        "maximum_grade": 5.9,
+        "elevation_high": 27.6,
+        "elevation_low": 11.6,
+        "start_latlng": [
+          59.347448,
+          18.38364
+        ],
+        "end_latlng": [
+          59.348599,
+          18.405091
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": null,
+        "state": null,
+        "country": null,
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559289300,
+      "resource_state": 2,
+      "name": "Värsta backen mot Lagnö sprint",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 69,
+      "moving_time": 69,
+      "start_date": "2024-09-12T11:49:39Z",
+      "start_date_local": "2024-09-12T13:49:39Z",
+      "distance": 373.5,
+      "start_index": 1982,
+      "end_index": 2051,
+      "device_watts": false,
+      "average_heartrate": 151.1,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 24238199,
+        "resource_state": 2,
+        "name": "Värsta backen mot Lagnö sprint",
+        "activity_type": "Ride",
+        "distance": 373.5,
+        "average_grade": 3.9,
+        "maximum_grade": 7.2,
+        "elevation_high": -29.6,
+        "elevation_low": -44,
+        "start_latlng": [
+          59.349183,
+          18.390283
+        ],
+        "end_latlng": [
+          59.348678,
+          18.396758
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558071000,
+      "resource_state": 2,
+      "name": "N. Lagnö Sprint Climb",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 63,
+      "moving_time": 63,
+      "start_date": "2024-09-12T11:52:07Z",
+      "start_date_local": "2024-09-12T13:52:07Z",
+      "distance": 407.7,
+      "start_index": 2130,
+      "end_index": 2193,
+      "device_watts": false,
+      "average_heartrate": 139.7,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 18787404,
+        "resource_state": 2,
+        "name": "N. Lagnö Sprint Climb",
+        "activity_type": "Ride",
+        "distance": 407.7,
+        "average_grade": 3.1,
+        "maximum_grade": 9.3,
+        "elevation_high": 5.2,
+        "elevation_low": -7.6,
+        "start_latlng": [
+          59.350811,
+          18.408505
+        ],
+        "end_latlng": [
+          59.354114,
+          18.411025
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558469000,
+      "resource_state": 2,
+      "name": "Från färjan och ner igen ",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 84,
+      "moving_time": 84,
+      "start_date": "2024-09-12T11:53:36Z",
+      "start_date_local": "2024-09-12T13:53:36Z",
+      "distance": 629.7,
+      "start_index": 2219,
+      "end_index": 2302,
+      "device_watts": false,
+      "average_heartrate": 161.9,
+      "max_heartrate": 169,
+      "segment": {
+        "id": 33656470,
+        "resource_state": 2,
+        "name": "Från färjan och ner igen ",
+        "activity_type": "Ride",
+        "distance": 629.7,
+        "average_grade": 0.1,
+        "maximum_grade": 12.8,
+        "elevation_high": 20.2,
+        "elevation_low": 7,
+        "start_latlng": [
+          59.355054,
+          18.411269
+        ],
+        "end_latlng": [
+          59.350057,
+          18.407059
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230557456400,
+      "resource_state": 2,
+      "name": "Från toppen till botten",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 60,
+      "moving_time": 60,
+      "start_date": "2024-09-12T11:54:10Z",
+      "start_date_local": "2024-09-12T13:54:10Z",
+      "distance": 547.5,
+      "start_index": 2252,
+      "end_index": 2312,
+      "device_watts": false,
+      "average_heartrate": 161.1,
+      "max_heartrate": 169,
+      "segment": {
+        "id": 33656458,
+        "resource_state": 2,
+        "name": "Från toppen till botten",
+        "activity_type": "Ride",
+        "distance": 547.5,
+        "average_grade": -2.5,
+        "maximum_grade": 1.6,
+        "elevation_high": 20.2,
+        "elevation_low": 6.6,
+        "start_latlng": [
+          59.353677,
+          18.410562
+        ],
+        "end_latlng": [
+          59.349425,
+          18.40641
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559204400,
+      "resource_state": 2,
+      "name": "Lagnövägen till korsning",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 255,
+      "moving_time": 255,
+      "start_date": "2024-09-12T11:54:13Z",
+      "start_date_local": "2024-09-12T13:54:13Z",
+      "distance": 1955.9,
+      "start_index": 2255,
+      "end_index": 2510,
+      "device_watts": false,
+      "average_heartrate": 148.2,
+      "max_heartrate": 169,
+      "segment": {
+        "id": 34480793,
+        "resource_state": 2,
+        "name": "Lagnövägen till korsning",
+        "activity_type": "Ride",
+        "distance": 1955.9,
+        "average_grade": -0.5,
+        "maximum_grade": 6.5,
+        "elevation_high": 24.2,
+        "elevation_low": 6.6,
+        "start_latlng": [
+          59.35356,
+          18.410418
+        ],
+        "end_latlng": [
+          59.347454,
+          18.383414
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560398300,
+      "resource_state": 2,
+      "name": "Norra Lagnö - Aspvik",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 1168,
+      "moving_time": 1168,
+      "start_date": "2024-09-12T11:54:24Z",
+      "start_date_local": "2024-09-12T13:54:24Z",
+      "distance": 8809,
+      "start_index": 2266,
+      "end_index": 3433,
+      "device_watts": false,
+      "average_heartrate": 141.8,
+      "max_heartrate": 166,
+      "segment": {
+        "id": 7172544,
+        "resource_state": 2,
+        "name": "Norra Lagnö - Aspvik",
+        "activity_type": "Ride",
+        "distance": 8809,
+        "average_grade": 0,
+        "maximum_grade": 8.9,
+        "elevation_high": 37.5,
+        "elevation_low": 6.4,
+        "start_latlng": [
+          59.352738,
+          18.410121
+        ],
+        "end_latlng": [
+          59.33754,
+          18.443353
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230559431700,
+      "resource_state": 2,
+      "name": "Lagnö till Gustavsberg",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 620,
+      "moving_time": 620,
+      "start_date": "2024-09-12T11:54:34Z",
+      "start_date_local": "2024-09-12T13:54:34Z",
+      "distance": 4568,
+      "start_index": 2276,
+      "end_index": 2896,
+      "device_watts": false,
+      "average_heartrate": 144.1,
+      "max_heartrate": 164,
+      "segment": {
+        "id": 7078451,
+        "resource_state": 2,
+        "name": "Lagnö till Gustavsberg",
+        "activity_type": "Ride",
+        "distance": 4568,
+        "average_grade": 0.3,
+        "maximum_grade": 7.1,
+        "elevation_high": 36.6,
+        "elevation_low": 8,
+        "start_latlng": [
+          59.351727,
+          18.409896
+        ],
+        "end_latlng": [
+          59.330189,
+          18.390849
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560504000,
+      "resource_state": 2,
+      "name": "Skeviksvägen short",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 354,
+      "moving_time": 354,
+      "start_date": "2024-09-12T11:58:09Z",
+      "start_date_local": "2024-09-12T13:58:09Z",
+      "distance": 2526.4,
+      "start_index": 2491,
+      "end_index": 2845,
+      "device_watts": false,
+      "average_heartrate": 142.6,
+      "max_heartrate": 156,
+      "segment": {
+        "id": 4606539,
+        "resource_state": 2,
+        "name": "Skeviksvägen short",
+        "activity_type": "Ride",
+        "distance": 2526.4,
+        "average_grade": 0,
+        "maximum_grade": 10.2,
+        "elevation_high": 37.6,
+        "elevation_low": 10,
+        "start_latlng": [
+          59.348075,
+          18.385256
+        ],
+        "end_latlng": [
+          59.333099,
+          18.386348
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230557629400,
+      "resource_state": 2,
+      "name": "lagnöv/Skevikskorset -> Gustafsbeg",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 397,
+      "moving_time": 397,
+      "start_date": "2024-09-12T11:58:42Z",
+      "start_date_local": "2024-09-12T13:58:42Z",
+      "distance": 2916.1,
+      "start_index": 2524,
+      "end_index": 2921,
+      "device_watts": false,
+      "average_heartrate": 142.3,
+      "max_heartrate": 156,
+      "segment": {
+        "id": 7633990,
+        "resource_state": 2,
+        "name": "lagnöv/Skevikskorset -> Gustafsbeg",
+        "activity_type": "Ride",
+        "distance": 2916.1,
+        "average_grade": -0.5,
+        "maximum_grade": 11.7,
+        "elevation_high": 37.6,
+        "elevation_low": 9,
+        "start_latlng": [
+          59.347049,
+          18.382056
+        ],
+        "end_latlng": [
+          59.328948,
+          18.393033
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg, Värmdö",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560846000,
+      "resource_state": 2,
+      "name": "Skeviksvägen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 116,
+      "moving_time": 116,
+      "start_date": "2024-09-12T12:02:11Z",
+      "start_date_local": "2024-09-12T14:02:11Z",
+      "distance": 1006.8,
+      "start_index": 2733,
+      "end_index": 2849,
+      "device_watts": false,
+      "average_heartrate": 134.7,
+      "max_heartrate": 142,
+      "segment": {
+        "id": 4549803,
+        "resource_state": 2,
+        "name": "Skeviksvägen",
+        "activity_type": "Ride",
+        "distance": 1006.8,
+        "average_grade": -1.2,
+        "maximum_grade": 7,
+        "elevation_high": 29.2,
+        "elevation_low": 11.6,
+        "start_latlng": [
+          59.338726,
+          18.373616
+        ],
+        "end_latlng": [
+          59.3329,
+          18.386788
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230557257700,
+      "resource_state": 2,
+      "name": "Skeviksvägen Extended",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 166,
+      "moving_time": 166,
+      "start_date": "2024-09-12T12:02:14Z",
+      "start_date_local": "2024-09-12T14:02:14Z",
+      "distance": 1408.5,
+      "start_index": 2736,
+      "end_index": 2902,
+      "device_watts": false,
+      "average_heartrate": 135.7,
+      "max_heartrate": 144,
+      "segment": {
+        "id": 20009814,
+        "resource_state": 2,
+        "name": "Skeviksvägen Extended",
+        "activity_type": "Ride",
+        "distance": 1408.5,
+        "average_grade": -1.1,
+        "maximum_grade": 4.1,
+        "elevation_high": 4.4,
+        "elevation_low": -12.2,
+        "start_latlng": [
+          59.338611,
+          18.374114
+        ],
+        "end_latlng": [
+          59.32976,
+          18.39127
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560807000,
+      "resource_state": 2,
+      "name": "Räknäs T&R",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 1046,
+      "moving_time": 1046,
+      "start_date": "2024-09-12T12:05:23Z",
+      "start_date_local": "2024-09-12T14:05:23Z",
+      "distance": 8132.9,
+      "start_index": 2925,
+      "end_index": 3970,
+      "device_watts": false,
+      "average_heartrate": 142.5,
+      "max_heartrate": 159,
+      "segment": {
+        "id": 35132318,
+        "resource_state": 2,
+        "name": "Räknäs T&R",
+        "activity_type": "Ride",
+        "distance": 8132.9,
+        "average_grade": 0,
+        "maximum_grade": 12.2,
+        "elevation_high": 20.6,
+        "elevation_low": 5.6,
+        "start_latlng": [
+          59.328756,
+          18.393479
+        ],
+        "end_latlng": [
+          59.328757,
+          18.393491
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230557831000,
+      "resource_state": 2,
+      "name": "Badhuskurvan Gustavsberg",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 90,
+      "moving_time": 90,
+      "start_date": "2024-09-12T12:05:25Z",
+      "start_date_local": "2024-09-12T14:05:25Z",
+      "distance": 573.9,
+      "start_index": 2927,
+      "end_index": 3017,
+      "device_watts": false,
+      "average_heartrate": 141.7,
+      "max_heartrate": 149,
+      "segment": {
+        "id": 7178934,
+        "resource_state": 2,
+        "name": "Badhuskurvan Gustavsberg",
+        "activity_type": "Ride",
+        "distance": 573.9,
+        "average_grade": 2.4,
+        "maximum_grade": 9.1,
+        "elevation_high": 27.1,
+        "elevation_low": 6.1,
+        "start_latlng": [
+          59.328693,
+          18.393688
+        ],
+        "end_latlng": [
+          59.32988,
+          18.401647
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230560358400,
+      "resource_state": 2,
+      "name": "Aspviksvägen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 506,
+      "moving_time": 506,
+      "start_date": "2024-09-12T12:05:27Z",
+      "start_date_local": "2024-09-12T14:05:27Z",
+      "distance": 3925.29,
+      "start_index": 2929,
+      "end_index": 3434,
+      "device_watts": false,
+      "average_heartrate": 138.9,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 1675496,
+        "resource_state": 2,
+        "name": "Aspviksvägen",
+        "activity_type": "Ride",
+        "distance": 3925.29,
+        "average_grade": 0.1,
+        "maximum_grade": 15,
+        "elevation_high": 35.2,
+        "elevation_low": 21.8,
+        "start_latlng": [
+          59.32860572822392,
+          18.393815020099282
+        ],
+        "end_latlng": [
+          59.33765382505953,
+          18.44340294599533
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Värmdö, Sweden",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559146000,
+      "resource_state": 2,
+      "name": "Betsede 4ever",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 228,
+      "moving_time": 228,
+      "start_date": "2024-09-12T12:05:42Z",
+      "start_date_local": "2024-09-12T14:05:42Z",
+      "distance": 1727,
+      "start_index": 2944,
+      "end_index": 3172,
+      "device_watts": false,
+      "average_heartrate": 138,
+      "max_heartrate": 149,
+      "segment": {
+        "id": 31649938,
+        "resource_state": 2,
+        "name": "Betsede 4ever",
+        "activity_type": "Ride",
+        "distance": 1727,
+        "average_grade": 0.1,
+        "maximum_grade": 6.8,
+        "elevation_high": 23.5,
+        "elevation_low": 12.4,
+        "start_latlng": [
+          59.327971,
+          18.395311
+        ],
+        "end_latlng": [
+          59.32848,
+          18.420563
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559450000,
+      "resource_state": 2,
+      "name": "Grinden till Eken",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 209,
+      "moving_time": 209,
+      "start_date": "2024-09-12T12:07:49Z",
+      "start_date_local": "2024-09-12T14:07:49Z",
+      "distance": 1792.4,
+      "start_index": 3071,
+      "end_index": 3280,
+      "device_watts": false,
+      "average_heartrate": 132.4,
+      "max_heartrate": 144,
+      "segment": {
+        "id": 28506197,
+        "resource_state": 2,
+        "name": "Grinden till Eken",
+        "activity_type": "Ride",
+        "distance": 1792.4,
+        "average_grade": -0.6,
+        "maximum_grade": 2.6,
+        "elevation_high": 23.7,
+        "elevation_low": 10.3,
+        "start_latlng": [
+          59.330339,
+          18.408176
+        ],
+        "end_latlng": [
+          59.332896,
+          18.431917
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230557947000,
+      "resource_state": 2,
+      "name": "Aspinkvägen Backe",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 50,
+      "moving_time": 50,
+      "start_date": "2024-09-12T12:11:24Z",
+      "start_date_local": "2024-09-12T14:11:24Z",
+      "distance": 283.6,
+      "start_index": 3286,
+      "end_index": 3336,
+      "device_watts": false,
+      "average_heartrate": 144,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 14114312,
+        "resource_state": 2,
+        "name": "Aspinkvägen Backe",
+        "activity_type": "Ride",
+        "distance": 283.6,
+        "average_grade": 4.6,
+        "maximum_grade": 12.9,
+        "elevation_high": -9.4,
+        "elevation_low": -22.8,
+        "start_latlng": [
+          59.332952,
+          18.432562
+        ],
+        "end_latlng": [
+          59.332972,
+          18.43742
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": null,
+        "state": null,
+        "country": null,
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559702000,
+      "resource_state": 2,
+      "name": "The G's special treat",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 156,
+      "moving_time": 156,
+      "start_date": "2024-09-12T12:14:18Z",
+      "start_date_local": "2024-09-12T14:14:18Z",
+      "distance": 1060.6,
+      "start_index": 3459,
+      "end_index": 3615,
+      "device_watts": false,
+      "average_heartrate": 146.9,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 34507817,
+        "resource_state": 2,
+        "name": "The G's special treat",
+        "activity_type": "Ride",
+        "distance": 1060.6,
+        "average_grade": 1.4,
+        "maximum_grade": 10.1,
+        "elevation_high": 42.4,
+        "elevation_low": 27.4,
+        "start_latlng": [
+          59.338077,
+          18.443531
+        ],
+        "end_latlng": [
+          59.333031,
+          18.434291
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560826400,
+      "resource_state": 2,
+      "name": "Räknäs till Insjön",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 1289,
+      "moving_time": 1289,
+      "start_date": "2024-09-12T12:14:52Z",
+      "start_date_local": "2024-09-12T14:14:52Z",
+      "distance": 10244.7,
+      "start_index": 3493,
+      "end_index": 4781,
+      "device_watts": false,
+      "average_heartrate": 142.2,
+      "max_heartrate": 159,
+      "segment": {
+        "id": 7717069,
+        "resource_state": 2,
+        "name": "Räknäs till Insjön",
+        "activity_type": "Ride",
+        "distance": 10244.7,
+        "average_grade": 0,
+        "maximum_grade": 9.6,
+        "elevation_high": 16,
+        "elevation_low": -6.4,
+        "start_latlng": [
+          59.336207,
+          18.443057
+        ],
+        "end_latlng": [
+          59.332955,
+          18.345748
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg, Värmdö",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230557833000,
+      "resource_state": 2,
+      "name": "Betsede Highway",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 118,
+      "moving_time": 118,
+      "start_date": "2024-09-12T12:18:58Z",
+      "start_date_local": "2024-09-12T14:18:58Z",
+      "distance": 863.2,
+      "start_index": 3739,
+      "end_index": 3857,
+      "device_watts": false,
+      "average_heartrate": 147.9,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 4549795,
+        "resource_state": 2,
+        "name": "Betsede Highway",
+        "activity_type": "Ride",
+        "distance": 863.2,
+        "average_grade": 0.1,
+        "maximum_grade": 6.9,
+        "elevation_high": 21.9,
+        "elevation_low": 12,
+        "start_latlng": [
+          59.328446,
+          18.420453
+        ],
+        "end_latlng": [
+          59.33033,
+          18.408604
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558290000,
+      "resource_state": 2,
+      "name": "Lagnövägen från Gurraberg",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 736,
+      "moving_time": 736,
+      "start_date": "2024-09-12T12:23:54Z",
+      "start_date_local": "2024-09-12T14:23:54Z",
+      "distance": 5839.42,
+      "start_index": 4035,
+      "end_index": 4770,
+      "device_watts": false,
+      "average_heartrate": 139.2,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 1324327,
+        "resource_state": 2,
+        "name": "Lagnövägen från Gurraberg",
+        "activity_type": "Ride",
+        "distance": 5839.42,
+        "average_grade": 0,
+        "maximum_grade": 4.8,
+        "elevation_high": 48.2,
+        "elevation_low": 28.2,
+        "start_latlng": [
+          59.33254698291421,
+          18.388235606253147
+        ],
+        "end_latlng": [
+          59.33396360836923,
+          18.34509671665728
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Värmdö, Sweden",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230560153600,
+      "resource_state": 2,
+      "name": "Lagnövägen from Skeviksvägen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 450,
+      "moving_time": 450,
+      "start_date": "2024-09-12T12:29:03Z",
+      "start_date_local": "2024-09-12T14:29:03Z",
+      "distance": 3559.7,
+      "start_index": 4344,
+      "end_index": 4793,
+      "device_watts": false,
+      "average_heartrate": 137.5,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 23821993,
+        "resource_state": 2,
+        "name": "Lagnövägen from Skeviksvägen",
+        "activity_type": "Ride",
+        "distance": 3559.7,
+        "average_grade": -0.2,
+        "maximum_grade": 8.9,
+        "elevation_high": 21,
+        "elevation_low": 2.4,
+        "start_latlng": [
+          59.347378,
+          18.382972
+        ],
+        "end_latlng": [
+          59.331961,
+          18.34634
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230559353000,
+      "resource_state": 2,
+      "name": "Skevik till Gamla Skärgårdsvägen (tempo)",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 434,
+      "moving_time": 434,
+      "start_date": "2024-09-12T12:29:13Z",
+      "start_date_local": "2024-09-12T14:29:13Z",
+      "distance": 3435.7,
+      "start_index": 4354,
+      "end_index": 4787,
+      "device_watts": false,
+      "average_heartrate": 137.9,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 7254248,
+        "resource_state": 2,
+        "name": "Skevik till Gamla Skärgårdsvägen (tempo)",
+        "activity_type": "Ride",
+        "distance": 3435.7,
+        "average_grade": -0.3,
+        "maximum_grade": 7.1,
+        "elevation_high": 24.6,
+        "elevation_low": 0.8,
+        "start_latlng": [
+          59.347671,
+          18.381765
+        ],
+        "end_latlng": [
+          59.332414,
+          18.346223
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558731300,
+      "resource_state": 2,
+      "name": "Skeviksgård sprint",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 73,
+      "moving_time": 73,
+      "start_date": "2024-09-12T12:29:23Z",
+      "start_date_local": "2024-09-12T14:29:23Z",
+      "distance": 504,
+      "start_index": 4364,
+      "end_index": 4436,
+      "device_watts": false,
+      "average_heartrate": 125.8,
+      "max_heartrate": 141,
+      "segment": {
+        "id": 12675276,
+        "resource_state": 2,
+        "name": "Skeviksgård sprint",
+        "activity_type": "Ride",
+        "distance": 504,
+        "average_grade": 1.4,
+        "maximum_grade": 4.6,
+        "elevation_high": 8.4,
+        "elevation_low": 0.6,
+        "start_latlng": [
+          59.347992,
+          18.38028
+        ],
+        "end_latlng": [
+          59.349137,
+          18.371692
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559725600,
+      "resource_state": 2,
+      "name": "Hovet Intervall",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 319,
+      "moving_time": 319,
+      "start_date": "2024-09-12T12:30:51Z",
+      "start_date_local": "2024-09-12T14:30:51Z",
+      "distance": 2540.2,
+      "start_index": 4451,
+      "end_index": 4770,
+      "device_watts": false,
+      "average_heartrate": 141.2,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 34366667,
+        "resource_state": 2,
+        "name": "Hovet Intervall",
+        "activity_type": "Ride",
+        "distance": 2540.2,
+        "average_grade": 0,
+        "maximum_grade": 8.7,
+        "elevation_high": 40.8,
+        "elevation_low": 24.8,
+        "start_latlng": [
+          59.349337,
+          18.369413
+        ],
+        "end_latlng": [
+          59.333935,
+          18.345168
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Värmdö kommun",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230558589000,
+      "resource_state": 2,
+      "name": "Lagnövägen mitten",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 228,
+      "moving_time": 228,
+      "start_date": "2024-09-12T12:32:05Z",
+      "start_date_local": "2024-09-12T14:32:05Z",
+      "distance": 1807.4,
+      "start_index": 4525,
+      "end_index": 4753,
+      "device_watts": false,
+      "average_heartrate": 144.2,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 17827287,
+        "resource_state": 2,
+        "name": "Lagnövägen mitten",
+        "activity_type": "Ride",
+        "distance": 1807.4,
+        "average_grade": 0.1,
+        "maximum_grade": 6.5,
+        "elevation_high": -3,
+        "elevation_low": -13.6,
+        "start_latlng": [
+          59.346621,
+          18.361806
+        ],
+        "end_latlng": [
+          59.335264,
+          18.345119
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230561124400,
+      "resource_state": 2,
+      "name": "Mur de Trash",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 55,
+      "moving_time": 55,
+      "start_date": "2024-09-12T12:32:52Z",
+      "start_date_local": "2024-09-12T14:32:52Z",
+      "distance": 312.4,
+      "start_index": 4572,
+      "end_index": 4627,
+      "device_watts": false,
+      "average_heartrate": 143.6,
+      "max_heartrate": 157,
+      "segment": {
+        "id": 23480306,
+        "resource_state": 2,
+        "name": "Mur de Trash",
+        "activity_type": "Ride",
+        "distance": 312.4,
+        "average_grade": 3.1,
+        "maximum_grade": 7.2,
+        "elevation_high": 13.4,
+        "elevation_low": 3.8,
+        "start_latlng": [
+          59.344994,
+          18.356862
+        ],
+        "end_latlng": [
+          59.342574,
+          18.356611
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230557598700,
+      "resource_state": 2,
+      "name": "En värdig omväg - mot stan",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 465,
+      "moving_time": 465,
+      "start_date": "2024-09-12T12:38:43Z",
+      "start_date_local": "2024-09-12T14:38:43Z",
+      "distance": 3158.4,
+      "start_index": 4923,
+      "end_index": 5388,
+      "device_watts": false,
+      "average_heartrate": 143.5,
+      "max_heartrate": 163,
+      "segment": {
+        "id": 7199724,
+        "resource_state": 2,
+        "name": "En värdig omväg - mot stan",
+        "activity_type": "Ride",
+        "distance": 3158.4,
+        "average_grade": 0.5,
+        "maximum_grade": 20.5,
+        "elevation_high": 46.5,
+        "elevation_low": 9.4,
+        "start_latlng": [
+          59.327445,
+          18.356059
+        ],
+        "end_latlng": [
+          59.332365,
+          18.314002
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Gustavsberg",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230559606000,
+      "resource_state": 2,
+      "name": "Spurtspegeln",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 444,
+      "moving_time": 444,
+      "start_date": "2024-09-12T12:38:49Z",
+      "start_date_local": "2024-09-12T14:38:49Z",
+      "distance": 3055.6,
+      "start_index": 4929,
+      "end_index": 5373,
+      "device_watts": false,
+      "average_heartrate": 144.3,
+      "max_heartrate": 163,
+      "segment": {
+        "id": 16166814,
+        "resource_state": 2,
+        "name": "Spurtspegeln",
+        "activity_type": "Ride",
+        "distance": 3055.6,
+        "average_grade": 0.5,
+        "maximum_grade": 7.8,
+        "elevation_high": 23.2,
+        "elevation_low": -0.8,
+        "start_latlng": [
+          59.327262,
+          18.355596
+        ],
+        "end_latlng": [
+          59.331748,
+          18.314666
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": null,
+        "state": null,
+        "country": null,
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230558613500,
+      "resource_state": 2,
+      "name": "Backe till backe",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 482,
+      "moving_time": 482,
+      "start_date": "2024-09-12T12:46:31Z",
+      "start_date_local": "2024-09-12T14:46:31Z",
+      "distance": 3658.9,
+      "start_index": 5391,
+      "end_index": 5871,
+      "device_watts": false,
+      "average_heartrate": 130.8,
+      "max_heartrate": 154,
+      "segment": {
+        "id": 7921053,
+        "resource_state": 2,
+        "name": "Backe till backe",
+        "activity_type": "Ride",
+        "distance": 3658.9,
+        "average_grade": 0.5,
+        "maximum_grade": 7.5,
+        "elevation_high": 88.6,
+        "elevation_low": 63.2,
+        "start_latlng": [
+          59.332377,
+          18.314581
+        ],
+        "end_latlng": [
+          59.323693,
+          18.262171
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Boo",
+        "state": "Stockholm County",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558633000,
+      "resource_state": 2,
+      "name": "Boo-backen",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 83,
+      "moving_time": 83,
+      "start_date": "2024-09-12T12:53:43Z",
+      "start_date_local": "2024-09-12T14:53:43Z",
+      "distance": 549.61,
+      "start_index": 5821,
+      "end_index": 5904,
+      "device_watts": false,
+      "average_heartrate": 148.5,
+      "max_heartrate": 168,
+      "segment": {
+        "id": 1652930,
+        "resource_state": 2,
+        "name": "Boo-backen",
+        "activity_type": "Ride",
+        "distance": 549.61,
+        "average_grade": 3.5,
+        "maximum_grade": 11,
+        "elevation_high": 33,
+        "elevation_low": 14,
+        "start_latlng": [
+          59.32487787678838,
+          18.267593532800674
+        ],
+        "end_latlng": [
+          59.322913242504,
+          18.25877543538809
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö Boo",
+        "state": "Nacka, Sweden",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    },
+    {
+      "id": 3269302230558439400,
+      "resource_state": 2,
+      "name": "boo-backen enbart",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 58,
+      "moving_time": 58,
+      "start_date": "2024-09-12T12:53:52Z",
+      "start_date_local": "2024-09-12T14:53:52Z",
+      "distance": 369.41,
+      "start_index": 5830,
+      "end_index": 5888,
+      "device_watts": false,
+      "average_heartrate": 146.4,
+      "max_heartrate": 167,
+      "segment": {
+        "id": 2376453,
+        "resource_state": 2,
+        "name": "boo-backen enbart",
+        "activity_type": "Ride",
+        "distance": 369.41,
+        "average_grade": 4.3,
+        "maximum_grade": 27.3,
+        "elevation_high": 53.8,
+        "elevation_low": 37.8,
+        "start_latlng": [
+          59.32463086210191,
+          18.266378827393055
+        ],
+        "end_latlng": [
+          59.32338170707226,
+          18.260318879038095
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Saltsjö Boo",
+        "state": "Nacka, Sweden",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": true
+    },
+    {
+      "id": 3269302230558415000,
+      "resource_state": 2,
+      "name": "Orminge to Boo Energi",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 113,
+      "moving_time": 113,
+      "start_date": "2024-09-12T12:55:36Z",
+      "start_date_local": "2024-09-12T14:55:36Z",
+      "distance": 765.9,
+      "start_index": 5934,
+      "end_index": 6047,
+      "device_watts": false,
+      "average_heartrate": 142.5,
+      "max_heartrate": 158,
+      "segment": {
+        "id": 10312113,
+        "resource_state": 2,
+        "name": "Orminge to Boo Energi",
+        "activity_type": "Ride",
+        "distance": 765.9,
+        "average_grade": 0.6,
+        "maximum_grade": 3.2,
+        "elevation_high": 48.6,
+        "elevation_low": 43.4,
+        "start_latlng": [
+          59.322097,
+          18.255721
+        ],
+        "end_latlng": [
+          59.318988,
+          18.243758
+        ],
+        "elevation_profile": null,
+        "elevation_profiles": null,
+        "climb_category": 0,
+        "city": "Boo",
+        "state": "Stockholms län",
+        "country": "Sweden",
+        "private": false,
+        "hazardous": false,
+        "starred": false
+      },
+      "pr_rank": null,
+      "achievements": [],
+      "visibility": "only_me",
+      "kom_rank": null,
+      "hidden": false
+    }
+  ],
+  "splits_metric": [
+    {
+      "distance": 1003.7,
+      "elapsed_time": 163,
+      "elevation_difference": -5,
+      "moving_time": 147,
+      "split": 1,
+      "average_speed": 6.83,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 98.10691823899371,
+      "pace_zone": 0
+    },
+    {
+      "distance": 997.3,
+      "elapsed_time": 154,
+      "elevation_difference": 14,
+      "moving_time": 154,
+      "split": 2,
+      "average_speed": 6.48,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 119.84415584415585,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999.9,
+      "elapsed_time": 101,
+      "elevation_difference": -11.6,
+      "moving_time": 101,
+      "split": 3,
+      "average_speed": 9.9,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.35643564356437,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000,
+      "elapsed_time": 99,
+      "elevation_difference": -9.8,
+      "moving_time": 99,
+      "split": 4,
+      "average_speed": 10.1,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 131.4747474747475,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.8,
+      "elapsed_time": 108,
+      "elevation_difference": -9.2,
+      "moving_time": 108,
+      "split": 5,
+      "average_speed": 9.27,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 145.4351851851852,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1004.8,
+      "elapsed_time": 94,
+      "elevation_difference": -19.6,
+      "moving_time": 94,
+      "split": 6,
+      "average_speed": 10.69,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 150.39361702127658,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.8,
+      "elapsed_time": 154,
+      "elevation_difference": 23,
+      "moving_time": 154,
+      "split": 7,
+      "average_speed": 6.5,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 151.74025974025975,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.9,
+      "elapsed_time": 122,
+      "elevation_difference": -8.4,
+      "moving_time": 122,
+      "split": 8,
+      "average_speed": 8.2,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 153.4672131147541,
+      "pace_zone": 0
+    },
+    {
+      "distance": 998.4,
+      "elapsed_time": 119,
+      "elevation_difference": -6.8,
+      "moving_time": 119,
+      "split": 9,
+      "average_speed": 8.39,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.15126050420167,
+      "pace_zone": 0
+    },
+    {
+      "distance": 993.8,
+      "elapsed_time": 116,
+      "elevation_difference": -4.6,
+      "moving_time": 116,
+      "split": 10,
+      "average_speed": 8.57,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 139.39655172413794,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1003.3,
+      "elapsed_time": 122,
+      "elevation_difference": 10.6,
+      "moving_time": 122,
+      "split": 11,
+      "average_speed": 8.22,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 161.81967213114754,
+      "pace_zone": 0
+    },
+    {
+      "distance": 998.9,
+      "elapsed_time": 109,
+      "elevation_difference": -13.2,
+      "moving_time": 109,
+      "split": 12,
+      "average_speed": 9.16,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 153.11009174311926,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1006.7,
+      "elapsed_time": 128,
+      "elevation_difference": 6.4,
+      "moving_time": 128,
+      "split": 13,
+      "average_speed": 7.86,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 143.4453125,
+      "pace_zone": 0
+    },
+    {
+      "distance": 994.9,
+      "elapsed_time": 123,
+      "elevation_difference": 8.6,
+      "moving_time": 123,
+      "split": 14,
+      "average_speed": 8.09,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 147.34146341463415,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1001.1,
+      "elapsed_time": 101,
+      "elevation_difference": -14,
+      "moving_time": 101,
+      "split": 15,
+      "average_speed": 9.91,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 146.17821782178217,
+      "pace_zone": 0
+    },
+    {
+      "distance": 998.9,
+      "elapsed_time": 141,
+      "elevation_difference": -0.2,
+      "moving_time": 141,
+      "split": 16,
+      "average_speed": 7.08,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 141.14285714285714,
+      "pace_zone": 0
+    },
+    {
+      "distance": 998.8,
+      "elapsed_time": 137,
+      "elevation_difference": 5.2,
+      "moving_time": 137,
+      "split": 17,
+      "average_speed": 7.29,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 150.05109489051094,
+      "pace_zone": 0
+    },
+    {
+      "distance": 997,
+      "elapsed_time": 121,
+      "elevation_difference": 0.6,
+      "moving_time": 121,
+      "split": 18,
+      "average_speed": 8.24,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 140.13223140495867,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.5,
+      "elapsed_time": 147,
+      "elevation_difference": -2.8,
+      "moving_time": 147,
+      "split": 19,
+      "average_speed": 6.81,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 157.77551020408163,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1005.9,
+      "elapsed_time": 137,
+      "elevation_difference": -0.6,
+      "moving_time": 137,
+      "split": 20,
+      "average_speed": 7.34,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 147.08029197080293,
+      "pace_zone": 0
+    },
+    {
+      "distance": 996.9,
+      "elapsed_time": 149,
+      "elevation_difference": 13.4,
+      "moving_time": 149,
+      "split": 21,
+      "average_speed": 6.69,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 142.46308724832215,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999.2,
+      "elapsed_time": 141,
+      "elevation_difference": -4.2,
+      "moving_time": 141,
+      "split": 22,
+      "average_speed": 7.09,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 146.47517730496455,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.2,
+      "elapsed_time": 119,
+      "elevation_difference": -11.4,
+      "moving_time": 119,
+      "split": 23,
+      "average_speed": 8.41,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 135.0672268907563,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1006,
+      "elapsed_time": 142,
+      "elevation_difference": 2.6,
+      "moving_time": 142,
+      "split": 24,
+      "average_speed": 7.08,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 140.3943661971831,
+      "pace_zone": 0
+    },
+    {
+      "distance": 992.9,
+      "elapsed_time": 124,
+      "elevation_difference": -1.6,
+      "moving_time": 124,
+      "split": 25,
+      "average_speed": 8.01,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 136.75,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999.8,
+      "elapsed_time": 114,
+      "elevation_difference": -4.4,
+      "moving_time": 114,
+      "split": 26,
+      "average_speed": 8.77,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 129.2982456140351,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1003.7,
+      "elapsed_time": 142,
+      "elevation_difference": 5.2,
+      "moving_time": 142,
+      "split": 27,
+      "average_speed": 7.07,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 145.1549295774648,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999.8,
+      "elapsed_time": 142,
+      "elevation_difference": -1.4,
+      "moving_time": 142,
+      "split": 28,
+      "average_speed": 7.04,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 143.5211267605634,
+      "pace_zone": 0
+    },
+    {
+      "distance": 996.7,
+      "elapsed_time": 120,
+      "elevation_difference": -4.4,
+      "moving_time": 120,
+      "split": 29,
+      "average_speed": 8.31,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 150.96666666666667,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1001.1,
+      "elapsed_time": 135,
+      "elevation_difference": 14.6,
+      "moving_time": 135,
+      "split": 30,
+      "average_speed": 7.42,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 140.26666666666668,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999,
+      "elapsed_time": 126,
+      "elevation_difference": -5.4,
+      "moving_time": 126,
+      "split": 31,
+      "average_speed": 7.93,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 149.73809523809524,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1004,
+      "elapsed_time": 123,
+      "elevation_difference": -2.2,
+      "moving_time": 123,
+      "split": 32,
+      "average_speed": 8.16,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 143.78861788617886,
+      "pace_zone": 0
+    },
+    {
+      "distance": 995.3,
+      "elapsed_time": 128,
+      "elevation_difference": 9.8,
+      "moving_time": 128,
+      "split": 33,
+      "average_speed": 7.78,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.484375,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000.4,
+      "elapsed_time": 120,
+      "elevation_difference": -4.4,
+      "moving_time": 120,
+      "split": 34,
+      "average_speed": 8.34,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 142.26666666666668,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1002.3,
+      "elapsed_time": 128,
+      "elevation_difference": -2.4,
+      "moving_time": 128,
+      "split": 35,
+      "average_speed": 7.83,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 123.3203125,
+      "pace_zone": 0
+    },
+    {
+      "distance": 997,
+      "elapsed_time": 129,
+      "elevation_difference": -4.6,
+      "moving_time": 129,
+      "split": 36,
+      "average_speed": 7.73,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 134.88372093023256,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1001.9,
+      "elapsed_time": 129,
+      "elevation_difference": 2,
+      "moving_time": 129,
+      "split": 37,
+      "average_speed": 7.77,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.34108527131784,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999,
+      "elapsed_time": 119,
+      "elevation_difference": -5.4,
+      "moving_time": 119,
+      "split": 38,
+      "average_speed": 8.39,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 142.53781512605042,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1000,
+      "elapsed_time": 159,
+      "elevation_difference": 4.8,
+      "moving_time": 159,
+      "split": 39,
+      "average_speed": 6.29,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 134.42767295597486,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1009,
+      "elapsed_time": 151,
+      "elevation_difference": 3.6,
+      "moving_time": 151,
+      "split": 40,
+      "average_speed": 6.68,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 153.158940397351,
+      "pace_zone": 0
+    },
+    {
+      "distance": 991.8,
+      "elapsed_time": 154,
+      "elevation_difference": 14.4,
+      "moving_time": 154,
+      "split": 41,
+      "average_speed": 6.44,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 137.52597402597402,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1002.7,
+      "elapsed_time": 138,
+      "elevation_difference": -12.2,
+      "moving_time": 138,
+      "split": 42,
+      "average_speed": 7.27,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 136.47101449275362,
+      "pace_zone": 0
+    },
+    {
+      "distance": 997.8,
+      "elapsed_time": 110,
+      "elevation_difference": -3.6,
+      "moving_time": 110,
+      "split": 43,
+      "average_speed": 9.07,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 120.73636363636363,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1002.5,
+      "elapsed_time": 142,
+      "elevation_difference": 6.4,
+      "moving_time": 142,
+      "split": 44,
+      "average_speed": 7.06,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 137.83098591549296,
+      "pace_zone": 0
+    },
+    {
+      "distance": 996.3,
+      "elapsed_time": 137,
+      "elevation_difference": 0,
+      "moving_time": 137,
+      "split": 45,
+      "average_speed": 7.27,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 131.78832116788323,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1004.4,
+      "elapsed_time": 146,
+      "elevation_difference": 17.6,
+      "moving_time": 146,
+      "split": 46,
+      "average_speed": 6.88,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.2945205479452,
+      "pace_zone": 0
+    },
+    {
+      "distance": 999.8,
+      "elapsed_time": 143,
+      "elevation_difference": 8.4,
+      "moving_time": 143,
+      "split": 47,
+      "average_speed": 6.99,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 140.4055944055944,
+      "pace_zone": 0
+    },
+    {
+      "distance": 352,
+      "elapsed_time": 97,
+      "elevation_difference": 1.6,
+      "moving_time": 87,
+      "split": 48,
+      "average_speed": 4.05,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 117.8395061728395,
+      "pace_zone": 0
+    }
+  ],
+  "splits_standard": [
+    {
+      "distance": 1610.4,
+      "elapsed_time": 258,
+      "elevation_difference": -1.4,
+      "moving_time": 242,
+      "split": 1,
+      "average_speed": 6.65,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 104.95669291338582,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1618.1,
+      "elapsed_time": 180,
+      "elevation_difference": -4.2,
+      "moving_time": 180,
+      "split": 2,
+      "average_speed": 8.99,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 137.01666666666668,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608,
+      "elapsed_time": 169,
+      "elevation_difference": -15.2,
+      "moving_time": 169,
+      "split": 3,
+      "average_speed": 9.51,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 137.8698224852071,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1604.3,
+      "elapsed_time": 178,
+      "elevation_difference": -7.8,
+      "moving_time": 178,
+      "split": 4,
+      "average_speed": 9.01,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.27528089887642,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608.7,
+      "elapsed_time": 215,
+      "elevation_difference": 2.8,
+      "moving_time": 215,
+      "split": 5,
+      "average_speed": 7.48,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 154.66976744186047,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1609.7,
+      "elapsed_time": 189,
+      "elevation_difference": -11.4,
+      "moving_time": 189,
+      "split": 6,
+      "average_speed": 8.52,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.3862433862434,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1611.7,
+      "elapsed_time": 187,
+      "elevation_difference": -2.8,
+      "moving_time": 187,
+      "split": 7,
+      "average_speed": 8.62,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 158.12299465240642,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1611.1,
+      "elapsed_time": 200,
+      "elevation_difference": 6.6,
+      "moving_time": 200,
+      "split": 8,
+      "average_speed": 8.06,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 145.375,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1604.1,
+      "elapsed_time": 183,
+      "elevation_difference": -1.4,
+      "moving_time": 183,
+      "split": 9,
+      "average_speed": 8.77,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.0601092896175,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1607.5,
+      "elapsed_time": 204,
+      "elevation_difference": -6.8,
+      "moving_time": 204,
+      "split": 10,
+      "average_speed": 7.88,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 141.87192118226602,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1611.5,
+      "elapsed_time": 200,
+      "elevation_difference": 0.4,
+      "moving_time": 200,
+      "split": 11,
+      "average_speed": 8.06,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 145.95,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608,
+      "elapsed_time": 249,
+      "elevation_difference": 11.8,
+      "moving_time": 249,
+      "split": 12,
+      "average_speed": 6.46,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 152.53413654618473,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1611.9,
+      "elapsed_time": 219,
+      "elevation_difference": 1,
+      "moving_time": 219,
+      "split": 13,
+      "average_speed": 7.36,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.5068493150685,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1613.1,
+      "elapsed_time": 217,
+      "elevation_difference": -5.6,
+      "moving_time": 217,
+      "split": 14,
+      "average_speed": 7.43,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 142.55299539170508,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1605.5,
+      "elapsed_time": 221,
+      "elevation_difference": 0.8,
+      "moving_time": 221,
+      "split": 15,
+      "average_speed": 7.26,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 138.77828054298644,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1610.3,
+      "elapsed_time": 186,
+      "elevation_difference": -12,
+      "moving_time": 186,
+      "split": 16,
+      "average_speed": 8.66,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 133.44086021505376,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608.3,
+      "elapsed_time": 216,
+      "elevation_difference": 0.8,
+      "moving_time": 216,
+      "split": 17,
+      "average_speed": 7.45,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 142.53240740740742,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1609.1,
+      "elapsed_time": 214,
+      "elevation_difference": 1.2,
+      "moving_time": 214,
+      "split": 18,
+      "average_speed": 7.52,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.07943925233644,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1607.8,
+      "elapsed_time": 217,
+      "elevation_difference": 9.6,
+      "moving_time": 217,
+      "split": 19,
+      "average_speed": 7.41,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 145.0552995391705,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608.1,
+      "elapsed_time": 193,
+      "elevation_difference": -1.6,
+      "moving_time": 193,
+      "split": 20,
+      "average_speed": 8.33,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 144.73056994818654,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1614.3,
+      "elapsed_time": 206,
+      "elevation_difference": 2.2,
+      "moving_time": 206,
+      "split": 21,
+      "average_speed": 7.84,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 143.81553398058253,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1604.4,
+      "elapsed_time": 192,
+      "elevation_difference": -7.8,
+      "moving_time": 192,
+      "split": 22,
+      "average_speed": 8.36,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 127.5625,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1614.4,
+      "elapsed_time": 216,
+      "elevation_difference": 4.6,
+      "moving_time": 216,
+      "split": 23,
+      "average_speed": 7.47,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 139.71296296296296,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1610.2,
+      "elapsed_time": 221,
+      "elevation_difference": 2.4,
+      "moving_time": 221,
+      "split": 24,
+      "average_speed": 7.29,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 137.18099547511312,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1606.9,
+      "elapsed_time": 225,
+      "elevation_difference": -6.4,
+      "moving_time": 225,
+      "split": 25,
+      "average_speed": 7.14,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 148.02666666666667,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1606,
+      "elapsed_time": 243,
+      "elevation_difference": 13.4,
+      "moving_time": 243,
+      "split": 26,
+      "average_speed": 6.61,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 140.25102880658437,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1613.8,
+      "elapsed_time": 203,
+      "elevation_difference": -9.8,
+      "moving_time": 203,
+      "split": 27,
+      "average_speed": 7.95,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 124.66502463054188,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1611.1,
+      "elapsed_time": 224,
+      "elevation_difference": 8,
+      "moving_time": 224,
+      "split": 28,
+      "average_speed": 7.19,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 134.45089285714286,
+      "pace_zone": 0
+    },
+    {
+      "distance": 1608,
+      "elapsed_time": 237,
+      "elevation_difference": 28,
+      "moving_time": 237,
+      "split": 29,
+      "average_speed": 6.78,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 146.14345991561183,
+      "pace_zone": 0
+    },
+    {
+      "distance": 681.6,
+      "elapsed_time": 141,
+      "elevation_difference": 0,
+      "moving_time": 131,
+      "split": 30,
+      "average_speed": 5.2,
+      "average_grade_adjusted_speed": null,
+      "average_heartrate": 124.856,
+      "pace_zone": 0
+    }
+  ],
+  "laps": [
+    {
+      "id": 43418895727,
+      "resource_state": 2,
+      "name": "Lap 1",
+      "activity": {
+        "id": 12391693335,
+        "visibility": "only_me",
+        "resource_state": 1
+      },
+      "athlete": {
+        "id": 1168772,
+        "resource_state": 1
+      },
+      "elapsed_time": 6202,
+      "moving_time": 6177,
+      "start_date": "2024-09-12T11:16:21Z",
+      "start_date_local": "2024-09-12T13:16:21Z",
+      "distance": 47347.9,
+      "average_speed": 7.67,
+      "max_speed": 14.126,
+      "lap_index": 1,
+      "split": 1,
+      "start_index": 0,
+      "end_index": 5891,
+      "total_elevation_gain": 472.4,
+      "device_watts": false,
+      "average_heartrate": 140.9,
+      "max_heartrate": 173
+    }
+  ],
+  "gear": {
+    "id": "b5684678",
+    "primary": false,
+    "name": "blåa",
+    "nickname": "blåa",
+    "resource_state": 2,
+    "retired": false,
+    "distance": 8769611,
+    "converted_distance": 8769.6
+  },
+  "photos": {
+    "primary": null,
+    "count": 0
+  },
+  "stats_visibility": [
+    {
+      "type": "heart_rate",
+      "visibility": "everyone"
+    },
+    {
+      "type": "pace",
+      "visibility": "everyone"
+    },
+    {
+      "type": "power",
+      "visibility": "everyone"
+    },
+    {
+      "type": "speed",
+      "visibility": "everyone"
+    },
+    {
+      "type": "calories",
+      "visibility": "everyone"
+    }
+  ],
+  "hide_from_home": false,
+  "device_name": "Apple Watch Ultra",
+  "embed_token": "ea615dd7d611a0379d65aecb7e533eeaea6f50fb",
+  "available_zones": [
+    "heartrate"
+  ]
+}

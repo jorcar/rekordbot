@@ -1,13 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { StravaActivity } from './strava-activity.entity';
-import { StravaAthlete } from './strava-athlete.entity';
+import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class StravaSegment {
@@ -20,8 +11,4 @@ export class StravaSegment {
 
   @Column()
   name: string;
-
-  @ManyToOne(() => StravaAthlete, { nullable: false })
-  @JoinColumn()
-  athlete: Promise<StravaAthlete>;
 }

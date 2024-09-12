@@ -10,5 +10,6 @@ export class StravaActivityDeletedJobProcessor
 
   async processJob(job: StravaActivityDeletedJob): Promise<void> {
     // FIXME: delete from db
+    throw new Error('Method not implemented.');
   }
 }

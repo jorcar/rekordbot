@@ -44,6 +44,8 @@ export interface Athlete {
 
 export interface StravaApiActivity {
   id: number;
+  segment_efforts: any[];
+  best_efforts?: any[];
 }
 
 @Injectable()

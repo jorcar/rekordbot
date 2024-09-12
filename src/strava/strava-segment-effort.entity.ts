@@ -26,6 +26,9 @@ export class StravaSegmentEffort {
   @Column()
   elapsedTime: number;
 
+  @Column({ type: 'timestamptz' })
+  startDate: Date;
+
   @ManyToOne(() => StravaActivity, { nullable: false })
   @JoinColumn()
   @Index()

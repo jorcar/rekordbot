@@ -35,9 +35,6 @@ export class StravaActivity {
   @Column()
   totalElevationGain: number;
 
-  @Column()
-  type: string;
-
   @Column({ type: 'timestamptz' })
   startDate: Date;
 
@@ -45,3 +42,6 @@ export class StravaActivity {
   @JoinColumn()
   athlete: Promise<StravaAthlete>;
 }
+
+// watts?
+// heartrate?
