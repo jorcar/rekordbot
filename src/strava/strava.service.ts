@@ -2,16 +2,16 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../user/user.entity';
 import { Repository } from 'typeorm';
-import { StravaAthlete } from './strava-athlete.entity';
-import { StravaCredentials } from './strava-credentials.entity';
+import { StravaAthlete } from './entities/strava-athlete.entity';
+import { StravaCredentials } from './entities/strava-credentials.entity';
 import {
   StravaApiActivity,
   StravaApiService,
   StravaTokenResponse,
 } from './strava-api.service';
 import { UserService } from '../user/user.service';
-import { StravaActivity } from './strava-activity.entity';
-import { StravaSegmentEffort } from './strava-segment-effort.entity';
+import { StravaActivity } from './entities/strava-activity.entity';
+import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
 import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
 import { ConfigService } from '@nestjs/config';

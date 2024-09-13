@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StravaAthlete } from './strava/strava-athlete.entity';
-import { StravaCredentials } from './strava/strava-credentials.entity';
+import { StravaAthlete } from './strava/entities/strava-athlete.entity';
+import { StravaCredentials } from './strava/entities/strava-credentials.entity';
 import { User } from './user/user.entity';
 import { StravaModule } from './strava/strava.module';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { StravaAchievementEffort } from './strava/strava-achievement-effort.entity';
-import { StravaActivity } from './strava/strava-activity.entity';
-import { StravaSegmentEffort } from './strava/strava-segment-effort.entity';
-import { StravaSegment } from './strava/strava-segment.entity';
+import { StravaAchievementEffort } from './strava/entities/strava-achievement-effort.entity';
+import { StravaActivity } from './strava/entities/strava-activity.entity';
+import { StravaSegmentEffort } from './strava/entities/strava-segment-effort.entity';
+import { StravaSegment } from './strava/entities/strava-segment.entity';
 import { JobModule } from './job/job.module';
 import configuration, {
   DatabaseConfig,

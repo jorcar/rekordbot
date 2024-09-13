@@ -8,10 +8,10 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { StravaService } from './strava.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { StravaService } from '../strava.service';
+import { JwtAuthGuard } from '../../auth/jwt-auth.guard';
 import { ConfigService } from '@nestjs/config';
-import { StravaConfig } from '../config/configuration';
+import { StravaConfig } from '../../config/configuration';
 
 @Controller('auth/strava')
 export class StravaAuthController {

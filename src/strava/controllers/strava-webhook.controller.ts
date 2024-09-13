@@ -7,15 +7,15 @@ import {
   Post,
   Req,
 } from '@nestjs/common';
-import { StravaService } from './strava.service';
-import { JobEnqueuerService } from '../job/job-enqueuer.service';
+import { StravaService } from '../strava.service';
+import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 import {
   STRAVA_ACTIVITY_CREATED_JOB,
   STRAVA_ACTIVITY_DELETED_JOB,
   StravaActivityCreatedJob,
   StravaActivityDeletedJob,
-} from './jobs';
-import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job-processor';
+} from '../jobs';
+import { StravaActivityDeletedJobProcessor } from '../jobs/strava-activity-deleted.job-processor';
 
 @Controller('/strava/webhook')
 export class StravaWebhookController {

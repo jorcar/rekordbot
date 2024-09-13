@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { StravaAthlete } from './strava-athlete.entity';
-import { StravaCredentials } from './strava-credentials.entity';
+import { StravaAthlete } from './entities/strava-athlete.entity';
+import { StravaCredentials } from './entities/strava-credentials.entity';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 
@@ -128,7 +128,6 @@ export class StravaApiService {
     token: string,
   ): Promise<void> {
     this.logger.debug(`setting description for activity ${activityId}`);
-    console.log(JSON.stringify({ description }));
     const response = await fetch(
       `https://www.strava.com/api/v3/activities/${activityId}`,
       {
@@ -140,8 +139,6 @@ export class StravaApiService {
         body: JSON.stringify({ description }),
       },
     );
-
-    console.log(response.status);
 
     if (response.status !== 200) {
       this.logger.error(`error setting description. code: ${response.status}`);
@@ -184,8 +181,6 @@ export class StravaApiService {
     subscriptionId: number,
   ): Promise<number> {
     const url = `https://www.strava.com/api/v3/push_subscriptions/${subscriptionId}?client_id=${this.client_id}&client_secret=${this.client_secret}`;
-    console.log(url);
-    console.log(token);
     const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`,

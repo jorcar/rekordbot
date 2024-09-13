@@ -1,6 +1,6 @@
-import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
-import { StravaService } from './strava.service';
-import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from './jobs';
+import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
+import { StravaService } from '../strava.service';
+import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from '../jobs';
 
 @JobProcessor(STRAVA_BACKFILL_JOB)
 export class StravaBackfillJobProcessor

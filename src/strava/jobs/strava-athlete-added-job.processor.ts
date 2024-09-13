@@ -1,6 +1,6 @@
-import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
-import { StravaService } from './strava.service';
-import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
+import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
+import { StravaService } from '../strava.service';
+import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from '../jobs';
 import { Logger } from '@nestjs/common';
 
 @JobProcessor(STRAVA_ATHLETE_ADDED_JOB)

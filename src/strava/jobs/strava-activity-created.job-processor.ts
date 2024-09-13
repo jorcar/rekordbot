@@ -1,14 +1,14 @@
-import { StravaService } from './strava.service';
-import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
-import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
-import { StravaAthlete } from './strava-athlete.entity';
+import { StravaService } from '../strava.service';
+import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
+import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from '../jobs';
+import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { Logger } from '@nestjs/common';
-import { StravaActivity } from './strava-activity.entity';
-import { StravaSegmentEffort } from './strava-segment-effort.entity';
-import { StravaSegment } from './strava-segment.entity';
-import { StravaAchievementEffort } from './strava-achievement-effort.entity';
-import { StravaApiActivity } from './strava-api.service';
-import { TransactionRunner } from './transaction-runner.provider';
+import { StravaActivity } from '../entities/strava-activity.entity';
+import { StravaSegmentEffort } from '../entities/strava-segment-effort.entity';
+import { StravaSegment } from '../entities/strava-segment.entity';
+import { StravaAchievementEffort } from '../entities/strava-achievement-effort.entity';
+import { StravaApiActivity } from '../strava-api.service';
+import { TransactionRunner } from '../transaction-runner.provider';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
