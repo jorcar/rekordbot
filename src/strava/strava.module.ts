@@ -17,6 +17,7 @@ import { StravaAthleteAddedJobProcessor } from './jobs/strava-athlete-added-job.
 import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
 import { TransactionRunner } from './transaction-runner.provider';
+import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-updated.job-processor';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { TransactionRunner } from './transaction-runner.provider';
     StravaApiService,
     StravaActivityCreatedJobProcessor,
     StravaActivityDeletedJobProcessor,
+    StravaActivityUpdatedJobProcessor,
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
     TransactionRunner,

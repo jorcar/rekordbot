@@ -13,7 +13,7 @@ import { UserService } from '../user/user.service';
 import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
-import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
+import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs/jobs';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 import { TransactionRunner } from './transaction-runner.provider';

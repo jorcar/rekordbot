@@ -1,6 +1,6 @@
 import { StravaService } from '../strava.service';
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_ACTIVITY_DELETED_JOB, StravaActivityDeletedJob } from '../jobs';
+import { STRAVA_ACTIVITY_DELETED_JOB, StravaActivityDeletedJob } from './jobs';
 
 @JobProcessor(STRAVA_ACTIVITY_DELETED_JOB)
 export class StravaActivityDeletedJobProcessor

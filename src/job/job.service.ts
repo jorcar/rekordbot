@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import * as PgBoss from 'pg-boss';
-import { JobsModuleConfig } from './job-module-config';
+import { default_retry_options, JobsModuleConfig } from './job-module-config';
 import { MODULE_OPTIONS_TOKEN } from './job.module-definition';
 
 @Injectable()
@@ -27,6 +27,10 @@ export class JobService {
   ) {
     this.logger.debug(`Registering processor for queue ${queue}`);
     await this.boss.createQueue(queue);
+    await this.boss.updateQueue(queue, {
+      name: queue,
+      ...default_retry_options,
+    });
     await this.boss.work(queue, async ([job]) => {
       try {
         await handler(job.data);

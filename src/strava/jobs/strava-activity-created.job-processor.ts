@@ -1,6 +1,6 @@
 import { StravaService } from '../strava.service';
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from '../jobs';
+import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { Logger } from '@nestjs/common';
 import { StravaActivity } from '../entities/strava-activity.entity';
