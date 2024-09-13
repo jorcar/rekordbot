@@ -16,6 +16,7 @@ import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
 import { StravaAthleteAddedJobProcessor } from './strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
+import { TransactionRunner } from './transaction-runner.provider';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ConfigModule } from '@nestjs/config';
     StravaActivityDeletedJobProcessor,
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
+    TransactionRunner,
   ],
   exports: [StravaService],
 })

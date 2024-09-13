@@ -2,7 +2,6 @@ import { StravaService } from './strava.service';
 import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
 import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
 import { StravaAthlete } from './strava-athlete.entity';
-import { DataSource } from 'typeorm';
 import { Logger } from '@nestjs/common';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
@@ -10,6 +9,7 @@ import { StravaSegment } from './strava-segment.entity';
 import { StravaAchievementEffort } from './strava-achievement-effort.entity';
 import { StravaApiActivity } from './strava-api.service';
 import { TransactionRunner } from './transaction-runner.provider';
+import { EntityManager } from 'typeorm/entity-manager/EntityManager';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor
@@ -19,7 +19,6 @@ export class StravaActivityCreatedJobProcessor
 
   constructor(
     private stravaService: StravaService,
-    private dataSource: DataSource,
     private transactionRunner: TransactionRunner,
   ) {}
 
@@ -30,6 +29,11 @@ export class StravaActivityCreatedJobProcessor
     );
     this.logger.debug(`Found activity on Strava ${activity.id}`);
     await this.storeActivity(activity, job.stravaAthleteId);
+    await this.stravaService.setDescription(
+      job.stravaAthleteId,
+      job.stravaActivityId,
+      '🤖 bipbopbop - rekordbot.com is analyzing efforts',
+    );
     // publish something new to trigger analysis
   }
 
@@ -49,6 +53,7 @@ export class StravaActivityCreatedJobProcessor
       this.logger.debug(`Saving segment efforts for athlete ${athlete.id}`);
       for (const activitySegmentEffort of activity.segment_efforts) {
         const segment = await this.getOrCreateSegment(
+          manager,
           activitySegmentEffort.segment,
         );
         this.logger.debug(`Creating segment efforts on segment ${segment.id}`);
@@ -110,21 +115,27 @@ export class StravaActivityCreatedJobProcessor
     return segment;
   }
 
-  private async getOrCreateSegment(segment: any): Promise<StravaSegment> {
-    const segmentRecord = await this.dataSource.manager.findOne(StravaSegment, {
+  private async getOrCreateSegment(
+    manager: EntityManager,
+    segment: any,
+  ): Promise<StravaSegment> {
+    const segmentRecord = await manager.findOne(StravaSegment, {
       where: { stravaId: segment.id },
     });
     if (segmentRecord) {
       return segmentRecord;
     }
-    return await this.createSegmentRecord(segment);
+    return await this.createSegmentRecord(manager, segment);
   }
 
-  private async createSegmentRecord(segment: any): Promise<StravaSegment> {
+  private async createSegmentRecord(
+    manager: EntityManager,
+    segment: any,
+  ): Promise<StravaSegment> {
     const newSegment = new StravaSegment();
     newSegment.stravaId = segment.id;
     newSegment.name = segment.name;
-    await this.dataSource.manager.save(newSegment);
+    await manager.save(newSegment);
     return newSegment;
   }
 

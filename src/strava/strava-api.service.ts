@@ -44,6 +44,7 @@ export interface Athlete {
 
 export interface StravaApiActivity {
   id: number;
+  description?: string;
   segment_efforts: any[];
   best_efforts?: any[];
 }
@@ -126,20 +127,25 @@ export class StravaApiService {
     description: string,
     token: string,
   ): Promise<void> {
+    this.logger.debug(`setting description for activity ${activityId}`);
+    console.log(JSON.stringify({ description }));
     const response = await fetch(
       `https://www.strava.com/api/v3/activities/${activityId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
         method: 'PUT',
         body: JSON.stringify({ description }),
       },
     );
 
+    console.log(response.status);
+
     if (response.status !== 200) {
       this.logger.error(`error setting description. code: ${response.status}`);
-      return;
+      throw new Error('error setting description');
     }
   }
 

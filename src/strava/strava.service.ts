@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../user/user.entity';
-import { DataSource, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaCredentials } from './strava-credentials.entity';
 import {
@@ -16,6 +16,7 @@ import { JobEnqueuerService } from '../job/job-enqueuer.service';
 import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
+import { TransactionRunner } from './transaction-runner.provider';
 
 @Injectable()
 export class StravaService {
@@ -31,11 +32,11 @@ export class StravaService {
     private segmentEffortsRepo: Repository<StravaSegmentEffort>,
     @InjectRepository(StravaCredentials)
     private credentialsRepo: Repository<StravaCredentials>,
-    private dataSource: DataSource,
     private userService: UserService,
     private stravaApiService: StravaApiService,
     private jobPublisher: JobEnqueuerService,
     private configService: ConfigService,
+    private transactionRunner: TransactionRunner,
   ) {
     this.webhookUrl =
       this.configService.get<StravaConfig>('strava').webhook_url;
@@ -80,30 +81,19 @@ export class StravaService {
     tokenResponse: StravaTokenResponse,
     userId: number,
   ): Promise<StravaAthlete> {
-    const queryRunner = this.dataSource.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    try {
+    return await this.transactionRunner.runInTransaction(async (manager) => {
       const user = await this.userService.findById(userId);
       const stravaCredentials = this.createCredentialsRecord(tokenResponse);
-      await queryRunner.manager.save(StravaCredentials, stravaCredentials);
+      await manager.save(StravaCredentials, stravaCredentials);
       const stravaAthlete = this.createStravaAthleteRecord(
         tokenResponse,
         stravaCredentials,
         user!,
       );
-      await queryRunner.manager.save(StravaAthlete, stravaAthlete);
-      await queryRunner.commitTransaction();
+      await manager.save(StravaAthlete, stravaAthlete);
       this.logger.debug(`athlete added and linked:${tokenResponse.athlete.id}`);
       return stravaAthlete;
-    } catch (err) {
-      this.logger.error('error saving athlete', err);
-      // since we have errors lets rollback the changes we made
-      await queryRunner.rollbackTransaction();
-    } finally {
-      // you need to release a queryRunner which was manually instantiated
-      await queryRunner.release();
-    }
+    });
   }
 
   public async fetchActivity(
@@ -133,6 +123,22 @@ export class StravaService {
     } catch (err) {
       this.logger.error('error registering webhook', err);
     }
+  }
+
+  async setDescription(
+    stravaAthleteId: number,
+    stravaActivityId: number,
+    description: string,
+  ): Promise<void> {
+    const athlete = await this.athleteRepo.findOneOrFail({
+      where: { stravaId: stravaAthleteId },
+    });
+    const token = await this.getFreshToken(athlete);
+    await this.stravaApiService.setDescription(
+      stravaActivityId,
+      description,
+      token,
+    );
   }
 
   public async refreshWebhook(userId: number) {
