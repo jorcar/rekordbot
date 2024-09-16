@@ -32,6 +32,7 @@ export class StravaBackfillJobProcessor
     private activityEffortCreationService: ActivityEffortsCreationService,
   ) {}
 
+  // TODO: 365 days backfill should suffice
   async processJob(job: StravaBackfillJob): Promise<void> {
     this.logger.log(`Backfilling data for athlete ${job.athleteId}`);
     const athlete = await this.athleteRepository.findOneOrFail({
