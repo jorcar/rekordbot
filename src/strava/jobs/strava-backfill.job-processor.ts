@@ -14,6 +14,8 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ActivityEffortsCreationService } from './activity-efforts-cretation.service';
 
+const FIFTEEN_MINUTE_BUDGET = 9;
+
 @JobProcessor(STRAVA_BACKFILL_JOB)
 export class StravaBackfillJobProcessor
   implements QueuedJobProcessor<StravaBackfillJob>
@@ -24,7 +26,7 @@ export class StravaBackfillJobProcessor
     private transactionRunner: TransactionRunner,
     private backfillScheduler: BackfillScheduler,
     @InjectRepository(StravaBackfillStatus)
-    private backfillStatuRepository: Repository<StravaBackfillStatus>,
+    private backfillStatusRepository: Repository<StravaBackfillStatus>,
     @InjectRepository(StravaAthlete)
     private athleteRepository: Repository<StravaAthlete>,
     private activityEffortCreationService: ActivityEffortsCreationService,
@@ -37,7 +39,7 @@ export class StravaBackfillJobProcessor
     });
     // check if status exists or create it
     const backfillStatus = await this.findOrCreteBackfillStatus(job, athlete);
-    let budget = 7; // TODO: make this configurable
+    let budget = FIFTEEN_MINUTE_BUDGET;
     if (!backfillStatus.progress.activitiesSynched) {
       const { remainingBudget, done } = await this.backfillActivities(
         backfillStatus,
@@ -140,7 +142,7 @@ export class StravaBackfillJobProcessor
     job: StravaBackfillJob,
     athlete: StravaAthlete,
   ): Promise<StravaBackfillStatus> {
-    let backfillStatus = await this.backfillStatuRepository.findOne({
+    let backfillStatus = await this.backfillStatusRepository.findOne({
       where: { athlete: { id: job.athleteId } },
     });
     if (!backfillStatus) {
@@ -156,7 +158,7 @@ export class StravaBackfillJobProcessor
       };
       backfillStatus.createdAt = now;
       backfillStatus.updatedAt = now;
-      await this.backfillStatuRepository.save(backfillStatus);
+      await this.backfillStatusRepository.save(backfillStatus);
     }
     return backfillStatus;
   }

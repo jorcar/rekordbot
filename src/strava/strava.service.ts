@@ -19,6 +19,7 @@ import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 import { TransactionRunner } from './transaction-runner.provider';
 import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
+import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
 
 @Injectable()
 export class StravaService {
@@ -36,6 +37,8 @@ export class StravaService {
     private achievementEffortsRepo: Repository<StravaAchievementEffort>,
     @InjectRepository(StravaCredentials)
     private credentialsRepo: Repository<StravaCredentials>,
+    @InjectRepository(StravaBackfillStatus)
+    private backfillStatusRepository: Repository<StravaBackfillStatus>,
     private userService: UserService,
     private stravaApiService: StravaApiService,
     private jobPublisher: JobEnqueuerService,
@@ -52,6 +55,31 @@ export class StravaService {
     return this.athleteRepo.findOne({ where: { user } });
   }
 
+  // FIXME: typeme
+  public async getOnboardingStatus(atheleteId: number): Promise<any> {
+    const backfillStatus = await this.backfillStatusRepository.findOne({
+      where: { athlete: { id: atheleteId } },
+    });
+    return {
+      activitiesSynched: backfillStatus.progress.activitiesSynched,
+      segmentEffortsSynched: backfillStatus.progress.segmentEffortsSynched,
+      activity_percentage: backfillStatus.progress.activitiesSynched
+        ? 100
+        : Math.round(
+            (backfillStatus.progress.processedPages /
+              backfillStatus.progress.processedPages +
+              1) *
+              100,
+          ),
+      segment_effort_percentage: Math.round(
+        ((backfillStatus.progress.lastProcessedActivityIdx || 0) /
+          (backfillStatus.progress.processedPages * 200)) *
+          100,
+      ),
+    };
+  }
+
+  // FIXME: typeme
   public async getAthleteStats(athleteId: number): Promise<any> {
     const activityCountPromise = this.activityRepo.count({
       where: { athlete: { id: athleteId } },

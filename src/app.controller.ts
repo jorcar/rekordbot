@@ -48,6 +48,20 @@ export class AppController {
       achievements: 0,
       segments: stats.segmentCount,
     };
-    return { athlete, user, statistics };
+    const onboardingStatus = await this.stravaService.getOnboardingStatus(
+      athlete.id,
+    );
+
+    const onboarding =
+      onboardingStatus.activitiesSynched &&
+      onboardingStatus.segmentEffortsSynched
+        ? undefined
+        : {
+            activities_synched: true,
+            activity_percentage: onboardingStatus.activity_percentage,
+            segment_effort_percentage:
+              onboardingStatus.segment_effort_percentage,
+          };
+    return { athlete, user, statistics, onboarding };
   }
 }
