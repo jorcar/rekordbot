@@ -12,7 +12,7 @@ import { StravaActivity } from '../entities/strava-activity.entity';
 import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../transaction-runner.provider';
 import { createStravaActivityRecord } from '../entities/entity-factory';
-import { ActivityEffortsCreationService } from './activity-efforts-cretation.service';
+import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)

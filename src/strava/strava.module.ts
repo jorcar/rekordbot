@@ -21,7 +21,7 @@ import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-update
 import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
 import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
-import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretation.service';
+import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation.service';
 import { AthleteStatisticsService } from './athlete-statistics.service';
 
 @Module({

@@ -12,7 +12,7 @@ import { SimpleStravaApiActivity } from '../strava-api.service';
 import { createStravaActivityRecord } from '../entities/entity-factory';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ActivityEffortsCreationService } from './activity-efforts-cretation.service';
+import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
 
 const FIFTEEN_MINUTE_BUDGET = 9;
 
