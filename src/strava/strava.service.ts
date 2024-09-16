@@ -55,67 +55,6 @@ export class StravaService {
     return this.athleteRepo.findOne({ where: { user } });
   }
 
-  // FIXME: typeme
-  public async getOnboardingStatus(atheleteId: number): Promise<any> {
-    const backfillStatus = await this.backfillStatusRepository.findOne({
-      where: { athlete: { id: atheleteId } },
-    });
-    return {
-      activitiesSynched: backfillStatus.progress.activitiesSynched,
-      segmentEffortsSynched: backfillStatus.progress.segmentEffortsSynched,
-      activity_percentage: backfillStatus.progress.activitiesSynched
-        ? 100
-        : Math.round(
-            (backfillStatus.progress.processedPages /
-              backfillStatus.progress.processedPages +
-              1) *
-              100,
-          ),
-      segment_effort_percentage: Math.round(
-        ((backfillStatus.progress.lastProcessedActivityIdx || 0) /
-          (backfillStatus.progress.processedPages * 200)) *
-          100,
-      ),
-    };
-  }
-
-  // FIXME: typeme
-  public async getAthleteStats(athleteId: number): Promise<any> {
-    const activityCountPromise = this.activityRepo.count({
-      where: { athlete: { id: athleteId } },
-    });
-
-    const segmentEffortCountPromise = this.segmentEffortsRepo.count({
-      where: { athlete: { id: athleteId } },
-    });
-
-    const segmentCountPromise = this.segmentEffortsRepo.query(
-      'SELECT COUNT(DISTINCT "segmentId") FROM strava_segment_effort WHERE "athleteId" = $1',
-      [athleteId],
-    );
-
-    const achievementEffortCountPromise = this.achievementEffortsRepo.count({
-      where: { athlete: { id: athleteId } },
-    });
-    const [
-      activityCount,
-      segmentEffortCount,
-      [segmentCount],
-      achievementEffortCount,
-    ] = await Promise.all([
-      activityCountPromise,
-      segmentEffortCountPromise,
-      segmentCountPromise,
-      achievementEffortCountPromise,
-    ]);
-    return {
-      activityCount,
-      segmentEffortCount,
-      segmentCount: segmentCount.count,
-      achievementEffortCount,
-    };
-  }
-
   public async exchangeToken(code: string, userId: number): Promise<void> {
     const res = await this.stravaApiService.exchangeToken(code);
     if (!res) {

@@ -2,12 +2,14 @@ import { Controller, Get, Render, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
+import { AthleteStatisticsService } from './strava/athlete-statistics.service';
 
 @Controller()
 export class AppController {
   constructor(
     private userService: UserService,
     private stravaService: StravaService,
+    private athleteStatisticsService: AthleteStatisticsService,
   ) {}
 
   @Get()
@@ -40,7 +42,9 @@ export class AppController {
     if (!athlete) {
       return { user };
     }
-    const stats = await this.stravaService.getAthleteStats(athlete.id);
+    const stats = await this.athleteStatisticsService.getAthleteStats(
+      athlete.id,
+    );
     const statistics = {
       activities: stats.activityCount,
       segment_efforts: stats.segmentEffortCount,
@@ -48,9 +52,8 @@ export class AppController {
       achievements: 0,
       segments: stats.segmentCount,
     };
-    const onboardingStatus = await this.stravaService.getOnboardingStatus(
-      athlete.id,
-    );
+    const onboardingStatus =
+      await this.athleteStatisticsService.getOnboardingStatus(athlete.id);
 
     const onboarding =
       onboardingStatus.activitiesSynched &&

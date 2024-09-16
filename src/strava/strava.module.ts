@@ -22,6 +22,7 @@ import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
 import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
 import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretation.service';
+import { AthleteStatisticsService } from './athlete-statistics.service';
 
 @Module({
   imports: [
@@ -53,7 +54,8 @@ import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretatio
     TransactionRunner,
     ThrottledScheduler,
     ActivityEffortsCreationService,
+    AthleteStatisticsService,
   ],
-  exports: [StravaService],
+  exports: [StravaService, AthleteStatisticsService],
 })
 export class StravaModule {}
