@@ -17,6 +17,7 @@ import configuration, {
   toConnectionString,
 } from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { StravaBackfillStatus } from './strava/entities/strava-backfill-status.entity';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         const config = configService.get<DatabaseConfig>('database');
         return {
           connectionString: toConnectionString(config),
+          maxNumberConnections: 5,
         };
       },
     }),
@@ -48,6 +50,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           username: config.username,
           password: config.password,
           database: config.database,
+          /*namingStrategy: {
+            tableName: 'snake_case',
+            columnName: 'snake_case',
+            relationName: 'snake_case',
+          }*/
+          poolSize: 5,
           entities: [
             StravaSegment,
             StravaSegmentEffort,
@@ -55,6 +63,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
             StravaAchievementEffort,
             StravaActivity,
             StravaCredentials,
+            StravaBackfillStatus,
             User,
           ],
           synchronize: config.synchronize,

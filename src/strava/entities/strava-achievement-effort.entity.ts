@@ -1,17 +1,11 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaAthlete } from './strava-athlete.entity';
 
 @Entity()
 export class StravaAchievementEffort {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ type: 'bigint' })
+  stravaId: bigint;
 
   @Column()
   effortName: string;

@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { StravaAthlete } from './entities/strava-athlete.entity';
 import { StravaCredentials } from './entities/strava-credentials.entity';
 import {
+  SimpleStravaApiActivity,
   StravaApiActivity,
   StravaApiService,
   StravaTokenResponse,
@@ -17,6 +18,7 @@ import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs/jobs';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 import { TransactionRunner } from './transaction-runner.provider';
+import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
 
 @Injectable()
 export class StravaService {
@@ -30,6 +32,8 @@ export class StravaService {
     private activityRepo: Repository<StravaActivity>,
     @InjectRepository(StravaSegmentEffort)
     private segmentEffortsRepo: Repository<StravaSegmentEffort>,
+    @InjectRepository(StravaAchievementEffort)
+    private achievementEffortsRepo: Repository<StravaAchievementEffort>,
     @InjectRepository(StravaCredentials)
     private credentialsRepo: Repository<StravaCredentials>,
     private userService: UserService,
@@ -56,11 +60,32 @@ export class StravaService {
     const segmentEffortCountPromise = this.segmentEffortsRepo.count({
       where: { athlete: { id: athleteId } },
     });
-    const [activityCount, segmentEffortCount] = await Promise.all([
+
+    const segmentCountPromise = this.segmentEffortsRepo.query(
+      'SELECT COUNT(DISTINCT "segmentId") FROM strava_segment_effort WHERE "athleteId" = $1',
+      [athleteId],
+    );
+
+    const achievementEffortCountPromise = this.achievementEffortsRepo.count({
+      where: { athlete: { id: athleteId } },
+    });
+    const [
+      activityCount,
+      segmentEffortCount,
+      [segmentCount],
+      achievementEffortCount,
+    ] = await Promise.all([
       activityCountPromise,
       segmentEffortCountPromise,
+      segmentCountPromise,
+      achievementEffortCountPromise,
     ]);
-    return { activityCount, segmentEffortCount };
+    return {
+      activityCount,
+      segmentEffortCount,
+      segmentCount: segmentCount.count,
+      achievementEffortCount,
+    };
   }
 
   public async exchangeToken(code: string, userId: number): Promise<void> {
@@ -97,7 +122,7 @@ export class StravaService {
   }
 
   public async fetchActivity(
-    activity_id: number,
+    activity_id: bigint,
     stravaAthleteId: number,
   ): Promise<StravaApiActivity> {
     const athlete = await this.athleteRepo.findOneOrFail({
@@ -105,6 +130,24 @@ export class StravaService {
     });
     const token = await this.getFreshToken(athlete);
     return await this.stravaApiService.getActivity(activity_id, token);
+  }
+
+  public async fetchActivities(
+    athleteId: number,
+    before: Date,
+    page?: number,
+    perPage?: number,
+  ): Promise<SimpleStravaApiActivity[]> {
+    const athlete = await this.athleteRepo.findOneOrFail({
+      where: { id: athleteId },
+    });
+    const token = await this.getFreshToken(athlete);
+    return await this.stravaApiService.getActivities(
+      token,
+      before,
+      page,
+      perPage,
+    );
   }
 
   public async registerWebhook(athleteId: number) {
@@ -127,7 +170,7 @@ export class StravaService {
 
   async setDescription(
     stravaAthleteId: number,
-    stravaActivityId: number,
+    stravaActivityId: bigint,
     description: string,
   ): Promise<void> {
     const athlete = await this.athleteRepo.findOneOrFail({

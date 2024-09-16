@@ -5,7 +5,7 @@ import { JobService } from './job.service';
 export class JobEnqueuerService {
   constructor(private jobService: JobService) {}
 
-  async enqueue<T extends object>(queue: string, job: T) {
-    await this.jobService.enqueue(queue, job);
+  async enqueue<T extends object>(queue: string, job: T, time?: Date) {
+    await this.jobService.enqueue(queue, job, time);
   }
 }

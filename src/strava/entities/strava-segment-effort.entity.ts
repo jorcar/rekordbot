@@ -4,7 +4,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { StravaActivity } from './strava-activity.entity';
 import { StravaSegment } from './strava-segment.entity';
@@ -12,8 +12,8 @@ import { StravaAthlete } from './strava-athlete.entity';
 
 @Entity()
 export class StravaSegmentEffort {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryColumn({ type: 'bigint' })
+  stravaId: bigint;
 
   @ManyToOne(() => StravaSegment, { nullable: false })
   @JoinColumn()

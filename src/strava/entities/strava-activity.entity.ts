@@ -1,21 +1,10 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { StravaAthlete } from './strava-athlete.entity';
 
 @Entity()
 export class StravaActivity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ type: 'bigint' })
-  @Index()
-  stravaId: number;
+  @PrimaryColumn({ type: 'bigint' })
+  stravaId: bigint;
 
   @Column()
   name: string;
@@ -24,7 +13,7 @@ export class StravaActivity {
   sportType: string;
 
   @Column()
-  distance: number;
+  distance: number; // centimeters
 
   @Column()
   movingTime: number;
@@ -33,7 +22,7 @@ export class StravaActivity {
   elapsedTime: number;
 
   @Column()
-  totalElevationGain: number;
+  totalElevationGain: number; // centimeters
 
   @Column({ type: 'timestamptz' })
   startDate: Date;

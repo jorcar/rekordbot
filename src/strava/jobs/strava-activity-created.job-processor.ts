@@ -10,6 +10,11 @@ import { StravaAchievementEffort } from '../entities/strava-achievement-effort.e
 import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../transaction-runner.provider';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
+import {
+  createStravaActivityRecord,
+  createStravaSAchievementEffortRecord,
+  createStravaSegmentEffortRecord,
+} from '../entities/entity-factory';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor
@@ -47,7 +52,7 @@ export class StravaActivityCreatedJobProcessor
       });
 
       this.logger.debug(`Saving activity for athlete ${athlete.id}`);
-      const stravaActivity = this.createStravaActivityRecord(activity, athlete);
+      const stravaActivity = createStravaActivityRecord(activity, athlete);
       await manager.save(StravaActivity, stravaActivity);
 
       this.logger.debug(`Saving segment efforts for athlete ${athlete.id}`);
@@ -57,7 +62,7 @@ export class StravaActivityCreatedJobProcessor
           activitySegmentEffort.segment,
         );
         this.logger.debug(`Creating segment efforts on segment ${segment.id}`);
-        const segmentEffort = this.createStravaSegmentEffortRecord(
+        const segmentEffort = createStravaSegmentEffortRecord(
           activitySegmentEffort,
           segment,
           stravaActivity,
@@ -69,50 +74,16 @@ export class StravaActivityCreatedJobProcessor
       if (activity.best_efforts) {
         this.logger.debug(`Creating best efforts ${athlete.id}`);
         for (const activityBestEffort of activity.best_efforts) {
-          const achievementEffort =
-            await this.createStravaSAchievementEffortRecord(
-              activityBestEffort,
-              stravaActivity,
-              athlete,
-            );
+          const achievementEffort = await createStravaSAchievementEffortRecord(
+            activityBestEffort,
+            stravaActivity,
+            athlete,
+          );
           this.logger.debug(`Storing best effort for athlete ${athlete.id}`);
           await manager.save(StravaAchievementEffort, achievementEffort);
         }
       }
     });
-  }
-
-  private createStravaActivityRecord(
-    activity: any,
-    athlete: StravaAthlete,
-  ): StravaActivity {
-    const activityRecord = new StravaActivity();
-    activityRecord.stravaId = activity.id;
-    activityRecord.athlete = Promise.resolve(athlete);
-    activityRecord.name = activity.name;
-    activityRecord.distance = activity.distance;
-    activityRecord.movingTime = activity.moving_time;
-    activityRecord.elapsedTime = activity.elapsed_time;
-    activityRecord.totalElevationGain = activity.total_elevation_gain;
-    activityRecord.sportType = activity.type;
-    activityRecord.startDate = new Date(activity.start_date);
-    return activityRecord;
-  }
-
-  private createStravaSegmentEffortRecord(
-    stravaEegmentEffort: any,
-    segment: StravaSegment,
-    stravaActivity: StravaActivity,
-    stravaAthlete: StravaAthlete,
-  ) {
-    const segmentEffort = new StravaSegmentEffort();
-    segmentEffort.activity = Promise.resolve(stravaActivity);
-    segmentEffort.segment = Promise.resolve(segment);
-    segmentEffort.athlete = Promise.resolve(stravaAthlete);
-    segmentEffort.elapsedTime = stravaEegmentEffort.elapsed_time;
-    segmentEffort.movingTime = stravaEegmentEffort.moving_time;
-    segmentEffort.startDate = new Date(stravaEegmentEffort.start_date);
-    return segment;
   }
 
   private async getOrCreateSegment(
@@ -137,20 +108,5 @@ export class StravaActivityCreatedJobProcessor
     newSegment.name = segment.name;
     await manager.save(newSegment);
     return newSegment;
-  }
-
-  private async createStravaSAchievementEffortRecord(
-    activityBestEffort: any,
-    stravaActivity: StravaActivity,
-    athlete: StravaAthlete,
-  ): Promise<StravaAchievementEffort> {
-    const achievementEffort = new StravaAchievementEffort();
-    achievementEffort.athlete = Promise.resolve(athlete);
-    achievementEffort.activity = Promise.resolve(stravaActivity);
-    achievementEffort.effortName = activityBestEffort.name;
-    achievementEffort.elapsedTime = activityBestEffort.elapsed_time;
-    achievementEffort.movingTime = activityBestEffort.moving_time;
-    achievementEffort.startDate = new Date(activityBestEffort.start_date);
-    return achievementEffort;
   }
 }

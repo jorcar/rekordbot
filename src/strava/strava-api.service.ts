@@ -42,11 +42,21 @@ export interface Athlete {
   profile: string;
 }
 
-export interface StravaApiActivity {
-  id: number;
-  description?: string;
+export interface StravaApiActivity extends SimpleStravaApiActivity {
   segment_efforts: any[];
   best_efforts?: any[];
+}
+
+export interface SimpleStravaApiActivity {
+  id: bigint;
+  description?: string;
+  name: string;
+  distance: number; // meters
+  moving_time: number;
+  elapsed_time: number;
+  total_elevation_gain: number; // meters
+  type: string;
+  start_date: string;
 }
 
 @Injectable()
@@ -104,7 +114,7 @@ export class StravaApiService {
   }
 
   async getActivity(
-    activityId: number,
+    activityId: bigint,
     token: string,
   ): Promise<StravaApiActivity> {
     const response = await fetch(
@@ -122,8 +132,31 @@ export class StravaApiService {
     return await response.json();
   }
 
+  async getActivities(
+    token: string,
+    before: Date,
+    page: number = 1,
+    perPage: number = 200,
+  ): Promise<SimpleStravaApiActivity[]> {
+    this.logger.debug(
+      `fetching activities for page ${page},  ${before.toISOString()}, ${perPage}`,
+    );
+    const epoch = Math.round(before.getTime() / 1000);
+    const url = `https://www.strava.com/api/v3/athlete/activities?per_page=${perPage}&before=${epoch}&page=${page}`;
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status !== 200) {
+      this.logger.error(`error code from strava: ${response.status}`);
+      throw new Error('error fetching activities');
+    }
+    return await response.json();
+  }
+
   async setDescription(
-    activityId: number,
+    activityId: bigint,
     description: string,
     token: string,
   ): Promise<void> {

@@ -62,14 +62,4 @@ export class StravaAuthController {
     await this.stravaService.exchangeToken(code, userId);
     response.redirect('/profile');
   }
-
-  @Get('reset-webhook')
-  @UseGuards(JwtAuthGuard)
-  async resetWebhook(
-    @Req()
-    request: any,
-  ) {
-    const userId = request.user.userId;
-    await this.stravaService.refreshWebhook(userId);
-  }
 }

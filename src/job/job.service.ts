@@ -9,16 +9,14 @@ export class JobService {
   private boss: PgBoss;
 
   constructor(@Inject(MODULE_OPTIONS_TOKEN) private config: JobsModuleConfig) {
-    this.boss = new PgBoss(this.config.connectionString);
+    this.boss = new PgBoss({
+      connectionString: config.connectionString,
+      max: config.maxNumberConnections,
+    });
   }
+
   public async init(): Promise<void> {
     await this.boss.start();
-    this.boss.on('error', (error) => {
-      this.logger.error('PgBoss error:', error);
-    });
-    this.boss.on('wip', (data) => {
-      this.logger.debug('PgBoss processing job', data);
-    });
   }
 
   public async registerProcessor(
@@ -41,9 +39,12 @@ export class JobService {
     });
   }
 
-  async enqueue<T extends object>(queue: string, job: T) {
+  async enqueue<T extends object>(queue: string, job: T, timestamp: Date) {
     this.logger.log(`Publishing message to queue ${queue}`);
-    await this.boss.createQueue(queue);
+    if (timestamp) {
+      await this.boss.send(queue, job, { startAfter: timestamp });
+      return;
+    }
     await this.boss.send(queue, job);
   }
 }

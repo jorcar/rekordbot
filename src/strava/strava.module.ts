@@ -18,6 +18,10 @@ import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-delete
 import { ConfigModule } from '@nestjs/config';
 import { TransactionRunner } from './transaction-runner.provider';
 import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-updated.job-processor';
+import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
+import { BackfillScheduler } from './jobs/backfill-scheduler';
+import { TestLabController } from './controllers/test-lab.controller';
+import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretation.service';
 
 @Module({
   imports: [
@@ -25,6 +29,7 @@ import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-update
       StravaAthlete,
       StravaAchievementEffort,
       StravaActivity,
+      StravaBackfillStatus,
       StravaCredentials,
       StravaSegment,
       StravaSegmentEffort,
@@ -32,7 +37,11 @@ import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-update
     UserModule,
     ConfigModule,
   ],
-  controllers: [StravaAuthController, StravaWebhookController],
+  controllers: [
+    StravaAuthController,
+    StravaWebhookController,
+    TestLabController,
+  ],
   providers: [
     StravaService,
     StravaApiService,
@@ -42,6 +51,8 @@ import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-update
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
     TransactionRunner,
+    BackfillScheduler,
+    ActivityEffortsCreationService,
   ],
   exports: [StravaService],
 })

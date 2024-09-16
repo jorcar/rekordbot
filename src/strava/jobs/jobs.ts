@@ -8,7 +8,7 @@ export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
 
 export interface StravaActivityCreatedJob {
   stravaAthleteId: number;
-  stravaActivityId: number;
+  stravaActivityId: bigint;
 }
 
 export const STRAVA_ACTIVITY_DELETED_JOB = 'strava-activity-deleted';

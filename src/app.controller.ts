@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Get, Render, Req, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
@@ -44,8 +44,9 @@ export class AppController {
     const statistics = {
       activities: stats.activityCount,
       segment_efforts: stats.segmentEffortCount,
+      achievement_efforts: stats.achievementEffortCount,
       achievements: 0,
-      segments: 0,
+      segments: stats.segmentCount,
     };
     return { athlete, user, statistics };
   }
