@@ -2,6 +2,7 @@ export const STRAVA_ATHLETE_ADDED_JOB = 'strava-athlete-added';
 
 export interface StravaAthleteAddedJob {
   athleteId: number;
+  stravaAthleteId: number;
 }
 
 export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';

@@ -20,7 +20,7 @@ export class StravaAthleteAddedJobProcessor
 
   async processJob(job: StravaAthleteAddedJob): Promise<void> {
     this.logger.log(`Setting up webhook for athlete ${job.athleteId}`);
-    await this.stravaService.registerWebhook(job.athleteId);
+    await this.stravaService.registerWebhook(job.stravaAthleteId);
     await this.jobEnqueuer.enqueueThrottled(STRAVA_BACKFILL_JOB, {
       athleteId: job.athleteId,
     });

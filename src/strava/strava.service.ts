@@ -10,16 +10,15 @@ import {
   StravaApiService,
   StravaTokenResponse,
 } from './strava-api.service';
-import { UserService } from '../user/user.service';
-import { StravaActivity } from './entities/strava-activity.entity';
-import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
 import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs/jobs';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 import { TransactionRunner } from './transaction-runner.provider';
-import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
-import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
+import {
+  createCredentialsRecord,
+  createStravaAthleteRecord,
+} from './entities/entity-factory';
 
 @Injectable()
 export class StravaService {
@@ -29,17 +28,8 @@ export class StravaService {
   constructor(
     @InjectRepository(StravaAthlete)
     private athleteRepo: Repository<StravaAthlete>,
-    @InjectRepository(StravaActivity)
-    private activityRepo: Repository<StravaActivity>,
-    @InjectRepository(StravaSegmentEffort)
-    private segmentEffortsRepo: Repository<StravaSegmentEffort>,
-    @InjectRepository(StravaAchievementEffort)
-    private achievementEffortsRepo: Repository<StravaAchievementEffort>,
     @InjectRepository(StravaCredentials)
     private credentialsRepo: Repository<StravaCredentials>,
-    @InjectRepository(StravaBackfillStatus)
-    private backfillStatusRepository: Repository<StravaBackfillStatus>,
-    private userService: UserService,
     private stravaApiService: StravaApiService,
     private jobPublisher: JobEnqueuerService,
     private configService: ConfigService,
@@ -65,6 +55,7 @@ export class StravaService {
       STRAVA_ATHLETE_ADDED_JOB,
       {
         athleteId: athlete.id,
+        stravaAthleteId: athlete.stravaId,
       },
     );
   }
@@ -74,13 +65,12 @@ export class StravaService {
     userId: number,
   ): Promise<StravaAthlete> {
     return await this.transactionRunner.runInTransaction(async (manager) => {
-      const user = await this.userService.findById(userId);
-      const stravaCredentials = this.createCredentialsRecord(tokenResponse);
+      const stravaCredentials = createCredentialsRecord(tokenResponse);
       await manager.save(StravaCredentials, stravaCredentials);
-      const stravaAthlete = this.createStravaAthleteRecord(
+      const stravaAthlete = createStravaAthleteRecord(
         tokenResponse,
         stravaCredentials,
-        user!,
+        { id: userId } as User,
       );
       await manager.save(StravaAthlete, stravaAthlete);
       this.logger.debug(`athlete added and linked:${tokenResponse.athlete.id}`);
@@ -92,23 +82,17 @@ export class StravaService {
     activity_id: bigint,
     stravaAthleteId: number,
   ): Promise<StravaApiActivity> {
-    const athlete = await this.athleteRepo.findOneOrFail({
-      where: { stravaId: stravaAthleteId },
-    });
-    const token = await this.getFreshToken(athlete);
+    const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
     return await this.stravaApiService.getActivity(activity_id, token);
   }
 
   public async fetchActivities(
-    athleteId: number,
+    stravaAthleteId: number,
     before: Date,
     page?: number,
     perPage?: number,
   ): Promise<SimpleStravaApiActivity[]> {
-    const athlete = await this.athleteRepo.findOneOrFail({
-      where: { id: athleteId },
-    });
-    const token = await this.getFreshToken(athlete);
+    const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
     return await this.stravaApiService.getActivities(
       token,
       before,
@@ -117,19 +101,19 @@ export class StravaService {
     );
   }
 
-  public async registerWebhook(athleteId: number) {
+  public async registerWebhook(stravaAthleteId: number) {
     try {
-      const athlete = await this.athleteRepo.findOneOrFail({
-        where: { id: athleteId },
-      });
-      const token = await this.getFreshToken(athlete);
+      const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
       const subscriptionId =
         await this.stravaApiService.createWebhookSubscription(
           token,
           this.webhookUrl,
         );
 
-      await this.athleteRepo.update(athleteId, { subscriptionId });
+      await this.athleteRepo.update(
+        { stravaId: stravaAthleteId },
+        { subscriptionId },
+      );
     } catch (err) {
       this.logger.error('error registering webhook', err);
     }
@@ -140,10 +124,7 @@ export class StravaService {
     stravaActivityId: bigint,
     description: string,
   ): Promise<void> {
-    const athlete = await this.athleteRepo.findOneOrFail({
-      where: { stravaId: stravaAthleteId },
-    });
-    const token = await this.getFreshToken(athlete);
+    const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
     await this.stravaApiService.setDescription(
       stravaActivityId,
       description,
@@ -151,22 +132,13 @@ export class StravaService {
     );
   }
 
-  public async refreshWebhook(userId: number) {
+  private async getFreshTokenForStravaAthlete(
+    stravaAthleteId: number,
+  ): Promise<string> {
     const athlete = await this.athleteRepo.findOneOrFail({
-      where: { user: { id: userId } as User },
+      where: { stravaId: stravaAthleteId },
     });
-    const token = await this.getFreshToken(athlete);
-    await this.stravaApiService.deleteWebhookSubscription(
-      token,
-      athlete.subscriptionId,
-    );
-    const subscriptionId =
-      await this.stravaApiService.createWebhookSubscription(
-        token,
-        this.webhookUrl,
-      );
-
-    await this.athleteRepo.update(athlete.id, { subscriptionId });
+    return await this.getFreshToken(athlete);
   }
 
   private async getFreshToken(athlete: StravaAthlete): Promise<string> {
@@ -185,28 +157,5 @@ export class StravaService {
       token = updated.access_token;
     }
     return token;
-  }
-
-  private createStravaAthleteRecord(
-    res: StravaTokenResponse,
-    stravaCredentials: StravaCredentials,
-    user: User,
-  ) {
-    const stravaAthlete = new StravaAthlete();
-    stravaAthlete.stravaId = res.athlete.id;
-    stravaAthlete.firstName = res.athlete.firstname;
-    stravaAthlete.lastName = res.athlete.lastname;
-    stravaAthlete.profileUrl = res.athlete.profile;
-    stravaAthlete.credentials = Promise.resolve(stravaCredentials);
-    stravaAthlete.user = Promise.resolve(user);
-    return stravaAthlete;
-  }
-
-  private createCredentialsRecord(res: StravaTokenResponse) {
-    const stravaCredentials: StravaCredentials = new StravaCredentials();
-    stravaCredentials.accessToken = res.access_token;
-    stravaCredentials.refreshToken = res.refresh_token;
-    stravaCredentials.tokenExpiresAt = new Date(res.expires_at * 1000);
-    return stravaCredentials;
   }
 }

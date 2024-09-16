@@ -170,7 +170,7 @@ export class StravaBackfillJobProcessor
     backfillStatus: StravaBackfillStatus,
   ) {
     const activities = await this.stravaService.fetchActivities(
-      athlete.id,
+      athlete.stravaId,
       new Date(backfillStatus.progress.synchUntil),
       backfillStatus.progress.processedPages + 1,
       200,

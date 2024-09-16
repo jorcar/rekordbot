@@ -3,10 +3,13 @@ import { StravaActivity } from './strava-activity.entity';
 import {
   SimpleStravaApiActivity,
   StravaApiActivity,
+  StravaTokenResponse,
 } from '../strava-api.service';
 import { StravaAchievementEffort } from './strava-achievement-effort.entity';
 import { StravaSegment } from './strava-segment.entity';
 import { StravaSegmentEffort } from './strava-segment-effort.entity';
+import { StravaCredentials } from './strava-credentials.entity';
+import { User } from '../../user/user.entity';
 
 export function createStravaActivityRecord(
   activity: StravaApiActivity | SimpleStravaApiActivity,
@@ -58,4 +61,27 @@ export function createStravaSegmentEffortRecord(
   segmentEffort.movingTime = stravaSegmentEffort.moving_time;
   segmentEffort.startDate = new Date(stravaSegmentEffort.start_date);
   return segmentEffort;
+}
+
+export function createStravaAthleteRecord(
+  response: StravaTokenResponse,
+  stravaCredentials: StravaCredentials,
+  user: User,
+) {
+  const stravaAthlete = new StravaAthlete();
+  stravaAthlete.stravaId = response.athlete.id;
+  stravaAthlete.firstName = response.athlete.firstname;
+  stravaAthlete.lastName = response.athlete.lastname;
+  stravaAthlete.profileUrl = response.athlete.profile;
+  stravaAthlete.credentials = Promise.resolve(stravaCredentials);
+  stravaAthlete.user = Promise.resolve(user);
+  return stravaAthlete;
+}
+
+export function createCredentialsRecord(response: StravaTokenResponse) {
+  const stravaCredentials: StravaCredentials = new StravaCredentials();
+  stravaCredentials.accessToken = response.access_token;
+  stravaCredentials.refreshToken = response.refresh_token;
+  stravaCredentials.tokenExpiresAt = new Date(response.expires_at * 1000);
+  return stravaCredentials;
 }
