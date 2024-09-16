@@ -6,7 +6,6 @@ import {
   StravaAthleteAddedJob,
 } from './jobs';
 import { Logger } from '@nestjs/common';
-import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 import { BackfillScheduler } from './backfill-scheduler';
 
 @JobProcessor(STRAVA_ATHLETE_ADDED_JOB)
