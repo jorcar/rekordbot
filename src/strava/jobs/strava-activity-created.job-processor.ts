@@ -1,6 +1,11 @@
 import { StravaService } from '../strava.service';
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_ACTIVITY_CREATED_JOB, StravaActivityCreatedJob } from './jobs';
+import {
+  STRAVA_ACTIVITY_ANALYSIS_JOB,
+  STRAVA_ACTIVITY_CREATED_JOB,
+  StravaActivityAnalysisJob,
+  StravaActivityCreatedJob,
+} from './jobs';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { Logger } from '@nestjs/common';
 import { StravaActivity } from '../entities/strava-activity.entity';
@@ -8,6 +13,7 @@ import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../transaction-runner.provider';
 import { createStravaActivityRecord } from '../entities/entity-factory';
 import { ActivityEffortsCreationService } from './activity-efforts-cretation.service';
+import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor
@@ -19,6 +25,7 @@ export class StravaActivityCreatedJobProcessor
     private stravaService: StravaService,
     private activityEffortsCreationService: ActivityEffortsCreationService,
     private transactionRunner: TransactionRunner,
+    private jobEnqueuer: JobEnqueuerService,
   ) {}
 
   async processJob(job: StravaActivityCreatedJob): Promise<void> {
@@ -33,7 +40,13 @@ export class StravaActivityCreatedJobProcessor
       job.stravaActivityId,
       '🤖 bipbopbop - rekordbot.com is analyzing efforts',
     );
-    // publish something new to trigger analysis
+    await this.jobEnqueuer.enqueue<StravaActivityAnalysisJob>(
+      STRAVA_ACTIVITY_ANALYSIS_JOB,
+      {
+        stravaActivityId: job.stravaActivityId,
+        stravaAthleteId: job.stravaAthleteId,
+      },
+    );
   }
 
   private async storeActivity(

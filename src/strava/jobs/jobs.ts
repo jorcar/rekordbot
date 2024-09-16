@@ -22,7 +22,7 @@ export const STRAVA_ACTIVITY_UPDATED_JOB = 'strava-activity-updated';
 
 export interface StravaActivityUpdatedJob {
   stravaAthleteId: number;
-  stravaActivityId: number;
+  stravaActivityId: bigint;
   activityType: string;
 }
 
@@ -30,4 +30,11 @@ export const STRAVA_BACKFILL_JOB = 'strava-backfill';
 
 export interface StravaBackfillJob {
   athleteId: number;
+}
+
+export const STRAVA_ACTIVITY_ANALYSIS_JOB = 'strava-activity-analysis';
+
+export interface StravaActivityAnalysisJob {
+  stravaAthleteId: number;
+  stravaActivityId: bigint;
 }
