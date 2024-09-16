@@ -3,10 +3,10 @@ import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 
 // in a environment with multiple instances lastEnqueued would need to be shared between instances (db + locking)
 @Injectable()
-export class BackfillScheduler {
+export class ThrottledScheduler {
   private readonly throttleMs = 15 * 60 * 1000;
 
-  private logger = new Logger(BackfillScheduler.name);
+  private logger = new Logger(ThrottledScheduler.name);
 
   private lastEnqueued?: Date;
 
@@ -14,10 +14,10 @@ export class BackfillScheduler {
 
   public async enqueueThrottled(queue: string, job: object) {
     if (!this.lastEnqueued) {
-      const now = new Date();
-      // TODO: truncate to nearest passed 0, 15, 30, 45 minute
-      this.lastEnqueued = now;
-      this.logger.debug(`Enqueuing job ${queue} at ${now.toISOString()}`);
+      this.lastEnqueued = this.truncateToNearestQuarter(new Date());
+      this.logger.debug(
+        `Enqueuing job ${queue} at ${this.lastEnqueued.toISOString()}`,
+      );
       await this.jobEnqueuer.enqueue(queue, job); // TODO: add some kind of hash as singleton key
       return;
     }
@@ -25,5 +25,14 @@ export class BackfillScheduler {
     this.logger.debug(`Enqueuing job ${queue} at ${nextEnqueue.toISOString()}`);
     await this.jobEnqueuer.enqueue(queue, job, nextEnqueue); // TODO: add some kind of hash as singleton key
     this.lastEnqueued = nextEnqueue;
+  }
+
+  private truncateToNearestQuarter(date): Date {
+    const minutes = date.getMinutes();
+    const quarterMinutes = Math.floor(minutes / 15) * 15; // Nearest passed 0, 15, 30, 45
+    date.setMinutes(quarterMinutes);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+    return date;
   }
 }

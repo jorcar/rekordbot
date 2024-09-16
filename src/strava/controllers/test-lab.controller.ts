@@ -1,7 +1,7 @@
 import { Controller, Get, Logger, Req } from '@nestjs/common';
 import { StravaService } from '../strava.service';
 import { STRAVA_BACKFILL_JOB } from '../jobs/jobs';
-import { BackfillScheduler } from '../jobs/backfill-scheduler';
+import { ThrottledScheduler } from '../jobs/throttled-scheduler.service';
 
 @Controller('/strava/testlab')
 export class TestLabController {
@@ -9,7 +9,7 @@ export class TestLabController {
 
   constructor(
     private stravaService: StravaService,
-    private jobEnqueuer: BackfillScheduler,
+    private jobEnqueuer: ThrottledScheduler,
   ) {}
 
   @Get('backfill')

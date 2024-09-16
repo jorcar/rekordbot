@@ -19,7 +19,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TransactionRunner } from './transaction-runner.provider';
 import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-updated.job-processor';
 import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
-import { BackfillScheduler } from './jobs/backfill-scheduler';
+import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
 import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretation.service';
 
@@ -51,7 +51,7 @@ import { ActivityEffortsCreationService } from './jobs/activity-efforts-cretatio
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
     TransactionRunner,
-    BackfillScheduler,
+    ThrottledScheduler,
     ActivityEffortsCreationService,
   ],
   exports: [StravaService],

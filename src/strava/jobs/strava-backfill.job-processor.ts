@@ -6,7 +6,7 @@ import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity'
 import { Logger } from '@nestjs/common';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
-import { BackfillScheduler } from './backfill-scheduler';
+import { ThrottledScheduler } from './throttled-scheduler.service';
 import { StravaActivity } from '../entities/strava-activity.entity';
 import { SimpleStravaApiActivity } from '../strava-api.service';
 import { createStravaActivityRecord } from '../entities/entity-factory';
@@ -24,7 +24,7 @@ export class StravaBackfillJobProcessor
   constructor(
     private stravaService: StravaService,
     private transactionRunner: TransactionRunner,
-    private backfillScheduler: BackfillScheduler,
+    private backfillScheduler: ThrottledScheduler,
     @InjectRepository(StravaBackfillStatus)
     private backfillStatusRepository: Repository<StravaBackfillStatus>,
     @InjectRepository(StravaAthlete)
