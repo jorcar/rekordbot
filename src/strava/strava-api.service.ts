@@ -1,8 +1,4 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { StravaAthlete } from './entities/strava-athlete.entity';
-import { StravaCredentials } from './entities/strava-credentials.entity';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 
@@ -65,11 +61,7 @@ export class StravaApiService {
   private readonly client_id: number;
   private readonly client_secret: string;
 
-  constructor(
-    @InjectRepository(StravaAthlete)
-    private credentialsRepo: Repository<StravaCredentials>,
-    private configService: ConfigService,
-  ) {
+  constructor(private configService: ConfigService) {
     const config = this.configService.get<StravaConfig>('strava');
     this.client_id = config.client_id;
     this.client_secret = config.client_secret;
@@ -200,9 +192,6 @@ export class StravaApiService {
     );
     if (!response.ok) {
       this.logger.error(`error code from strava: ${response.status}`);
-      this.logger.error(
-        `error code from strava: ${JSON.stringify(await response.json())}`,
-      );
       throw new Error('error creating webhook subscription');
     }
     const data = await response.json();

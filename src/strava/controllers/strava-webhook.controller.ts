@@ -17,7 +17,6 @@ import {
   StravaActivityDeletedJob,
   StravaActivityUpdatedJob,
 } from '../jobs/jobs';
-import { StravaActivityDeletedJobProcessor } from '../jobs/strava-activity-deleted.job-processor';
 
 @Controller('/strava/webhook')
 export class StravaWebhookController {

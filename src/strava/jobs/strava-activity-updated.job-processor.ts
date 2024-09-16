@@ -22,6 +22,7 @@ export class StravaActivityUpdatedJobProcessor
 
   async processJob(job: StravaActivityUpdatedJob): Promise<void> {
     await this.transactionRunner.runInTransaction(async (manager) => {
+      // TODO: might make sense doing this in a separate repo so we dont scatter db details all over the code
       await manager.update(
         StravaActivity,
         { where: { stravaId: job.stravaActivityId } },

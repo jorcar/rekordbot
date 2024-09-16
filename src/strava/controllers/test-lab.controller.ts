@@ -1,4 +1,4 @@
-import { Controller, Get, Logger, Req } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
 import { StravaService } from '../strava.service';
 import { STRAVA_BACKFILL_JOB } from '../jobs/jobs';
 import { ThrottledScheduler } from '../jobs/throttled-scheduler.service';

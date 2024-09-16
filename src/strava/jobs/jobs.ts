@@ -16,7 +16,7 @@ export const STRAVA_ACTIVITY_DELETED_JOB = 'strava-activity-deleted';
 
 export interface StravaActivityDeletedJob {
   stravaAthleteId: number;
-  stravaActivityId: number;
+  stravaActivityId: bigint;
 }
 
 export const STRAVA_ACTIVITY_UPDATED_JOB = 'strava-activity-updated';
