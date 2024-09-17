@@ -23,6 +23,8 @@ import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
 import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation.service';
 import { AthleteStatisticsService } from './athlete-statistics.service';
+import { StravaActivityAnalysisJobProcessor } from './jobs/strava-activity-analysis.job-processor';
+import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
 
 @Module({
   imports: [
@@ -44,6 +46,7 @@ import { AthleteStatisticsService } from './athlete-statistics.service';
     TestLabController,
   ],
   providers: [
+    ActivityAnalyzer,
     StravaService,
     StravaApiService,
     StravaActivityCreatedJobProcessor,
@@ -51,6 +54,7 @@ import { AthleteStatisticsService } from './athlete-statistics.service';
     StravaActivityUpdatedJobProcessor,
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
+    StravaActivityAnalysisJobProcessor,
     TransactionRunner,
     ThrottledScheduler,
     ActivityEffortsCreationService,
