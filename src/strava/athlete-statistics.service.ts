@@ -37,10 +37,13 @@ export class AthleteStatisticsService {
 
   public async getOnboardingStatus(
     atheleteId: number,
-  ): Promise<OnboardingStatus> {
+  ): Promise<OnboardingStatus | undefined> {
     const backfillStatus = await this.backfillStatusRepository.findOne({
       where: { athlete: { id: atheleteId } },
     });
+    if (!backfillStatus) {
+      return undefined;
+    }
     return {
       activitiesSynched: backfillStatus.progress.activitiesSynched,
       segmentEffortsSynched: backfillStatus.progress.segmentEffortsSynched,
@@ -48,8 +51,7 @@ export class AthleteStatisticsService {
         ? 100
         : Math.round(
             (backfillStatus.progress.processedPages /
-              backfillStatus.progress.processedPages +
-              1) *
+              (backfillStatus.progress.processedPages + 2)) *
               100,
           ),
       segment_effort_percentage: Math.round(

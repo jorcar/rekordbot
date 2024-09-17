@@ -56,11 +56,12 @@ export class AppController {
       await this.athleteStatisticsService.getOnboardingStatus(athlete.id);
 
     const onboarding =
-      onboardingStatus.activitiesSynched &&
-      onboardingStatus.segmentEffortsSynched
+      !onboardingStatus ||
+      (onboardingStatus.activitiesSynched &&
+        onboardingStatus.segmentEffortsSynched)
         ? undefined
         : {
-            activities_synched: true,
+            activities_synched: onboardingStatus.activitiesSynched,
             activity_percentage: onboardingStatus.activity_percentage,
             segment_effort_percentage:
               onboardingStatus.segment_effort_percentage,
