@@ -4,7 +4,7 @@ import { StravaAthlete } from './strava-athlete.entity';
 @Entity()
 export class StravaActivity {
   @PrimaryColumn({ type: 'bigint' })
-  stravaId: bigint;
+  stravaId: number;
 
   @Column()
   name: string;

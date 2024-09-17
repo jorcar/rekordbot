@@ -36,7 +36,7 @@ export function createStravaSAchievementEffortRecord(
   athlete: StravaAthlete,
 ): StravaAchievementEffort {
   const achievementEffort = new StravaAchievementEffort();
-  achievementEffort.stravaId = activityBestEffort.id;
+  achievementEffort.stravaId = activityBestEffort.id.toString(); // BigInt to string
   achievementEffort.athlete = Promise.resolve(athlete);
   achievementEffort.activity = Promise.resolve(stravaActivity);
   achievementEffort.effortName = activityBestEffort.name;
@@ -53,7 +53,7 @@ export function createStravaSegmentEffortRecord(
   stravaAthlete: StravaAthlete,
 ): StravaSegmentEffort {
   const segmentEffort = new StravaSegmentEffort();
-  segmentEffort.stravaId = stravaSegmentEffort.id;
+  segmentEffort.stravaId = stravaSegmentEffort.id.toString(); // BigInt to string
   segmentEffort.activity = Promise.resolve(stravaActivity);
   segmentEffort.segment = Promise.resolve(segment);
   segmentEffort.athlete = Promise.resolve(stravaAthlete);

@@ -9,21 +9,21 @@ export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
 
 export interface StravaActivityCreatedJob {
   stravaAthleteId: number;
-  stravaActivityId: bigint;
+  stravaActivityId: number;
 }
 
 export const STRAVA_ACTIVITY_DELETED_JOB = 'strava-activity-deleted';
 
 export interface StravaActivityDeletedJob {
   stravaAthleteId: number;
-  stravaActivityId: bigint;
+  stravaActivityId: number;
 }
 
 export const STRAVA_ACTIVITY_UPDATED_JOB = 'strava-activity-updated';
 
 export interface StravaActivityUpdatedJob {
   stravaAthleteId: number;
-  stravaActivityId: bigint;
+  stravaActivityId: number;
   activityType: string;
 }
 
@@ -37,5 +37,5 @@ export const STRAVA_ACTIVITY_ANALYSIS_JOB = 'strava-activity-analysis';
 
 export interface StravaActivityAnalysisJob {
   stravaAthleteId: number;
-  stravaActivityId: bigint;
+  stravaActivityId: number;
 }

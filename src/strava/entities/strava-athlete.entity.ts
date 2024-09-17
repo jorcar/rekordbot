@@ -5,7 +5,6 @@ import {
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
-  Unique,
 } from 'typeorm';
 import { User } from '../../user/user.entity';
 import { StravaCredentials } from './strava-credentials.entity';
@@ -15,7 +14,7 @@ export class StravaAthlete {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ unique: true }) // might need to change to bigint
+  @Column({ type: 'bigint', unique: true })
   @Index()
   stravaId: number;
 

@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
+import * as json_bigint from 'json-bigint';
 
 export interface StravaTokenResponse {
   access_token: string;
@@ -44,7 +45,7 @@ export interface StravaApiActivity extends SimpleStravaApiActivity {
 }
 
 export interface SimpleStravaApiActivity {
-  id: bigint;
+  id: number;
   description?: string;
   name: string;
   distance: number; // meters
@@ -106,7 +107,7 @@ export class StravaApiService {
   }
 
   async getActivity(
-    activityId: bigint,
+    activityId: number,
     token: string,
   ): Promise<StravaApiActivity> {
     const response = await fetch(
@@ -121,7 +122,7 @@ export class StravaApiService {
       this.logger.error(`error code from strava: ${response.status}`);
       return undefined;
     }
-    return await response.json();
+    return json_bigint.parse(await response.text()); // to not loose precision on bigints
   }
 
   async getActivities(
@@ -148,7 +149,7 @@ export class StravaApiService {
   }
 
   async setDescription(
-    activityId: bigint,
+    activityId: number,
     description: string,
     token: string,
   ): Promise<void> {

@@ -79,7 +79,7 @@ export class StravaService {
   }
 
   public async fetchActivity(
-    activity_id: bigint,
+    activity_id: number,
     stravaAthleteId: number,
   ): Promise<StravaApiActivity> {
     const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
@@ -121,7 +121,7 @@ export class StravaService {
 
   async setDescription(
     stravaAthleteId: number,
-    stravaActivityId: bigint,
+    stravaActivityId: number,
     description: string,
   ): Promise<void> {
     const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);

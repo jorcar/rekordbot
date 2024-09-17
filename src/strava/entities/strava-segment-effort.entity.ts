@@ -12,8 +12,8 @@ import { StravaAthlete } from './strava-athlete.entity';
 
 @Entity()
 export class StravaSegmentEffort {
-  @PrimaryColumn({ type: 'bigint' })
-  stravaId: bigint;
+  @PrimaryColumn()
+  stravaId: string;
 
   @ManyToOne(() => StravaSegment, { nullable: false })
   @JoinColumn()
