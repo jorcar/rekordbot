@@ -40,7 +40,7 @@ export interface Athlete {
 }
 
 export interface StravaApiActivity extends SimpleStravaApiActivity {
-  segment_efforts: any[];
+  segment_efforts?: any[];
   best_efforts?: any[];
 }
 
@@ -120,7 +120,7 @@ export class StravaApiService {
     );
     if (response.status !== 200) {
       this.logger.error(`error code from strava: ${response.status}`);
-      return undefined;
+      throw new Error('error fetching activity');
     }
     return json_bigint.parse(await response.text()); // to not loose precision on bigints
   }
@@ -193,6 +193,7 @@ export class StravaApiService {
     );
     if (!response.ok) {
       this.logger.error(`error code from strava: ${response.status}`);
+      this.logger.error(await response.text());
       throw new Error('error creating webhook subscription');
     }
     const data = await response.json();
@@ -212,6 +213,7 @@ export class StravaApiService {
     });
     if (!response.ok) {
       this.logger.error(`error code from strava: ${response.status}`);
+      this.logger.error(await response.text());
       throw new Error('error deleting webhook subscription');
     }
     const data = await response.json();

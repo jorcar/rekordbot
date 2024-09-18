@@ -25,6 +25,13 @@ export class TestLabController {
       athleteId: 1,
     });
   }
+
+  @Get('re-register')
+  async getWebhook() {
+    this.logger.log('Trigger reregister');
+    await this.stravaService.disableWebhookSubscription(1168772);
+    await this.stravaService.registerWebhook(1168772);
+  }
   @Get('analyze')
   analyze() {
     this.logger.log('Trigger backfill');

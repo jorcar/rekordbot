@@ -21,22 +21,24 @@ export class ActivityEffortsCreationService {
     activity: StravaActivity,
     manager: EntityManager,
   ) {
-    this.logger.debug(`Saving segment efforts for athlete ${athlete.id}`);
-    for (const activitySegmentEffort of stravaActivity.segment_efforts) {
-      const segment = await this.getOrCreateSegment(
-        manager,
-        activitySegmentEffort.segment,
-      );
-      this.logger.debug(
-        `Creating segment efforts on segment ${segment.id}, ${segment.stravaId}, ${activitySegmentEffort.id}`,
-      );
-      const segmentEffort = createStravaSegmentEffortRecord(
-        activitySegmentEffort,
-        segment,
-        activity,
-        athlete,
-      );
-      await manager.save(StravaSegmentEffort, segmentEffort);
+    if (stravaActivity.segment_efforts) {
+      this.logger.debug(`Saving segment efforts for athlete ${athlete.id}`);
+      for (const activitySegmentEffort of stravaActivity.segment_efforts) {
+        const segment = await this.getOrCreateSegment(
+          manager,
+          activitySegmentEffort.segment,
+        );
+        this.logger.debug(
+          `Creating segment efforts on segment ${segment.id}, ${segment.stravaId}, ${activitySegmentEffort.id}`,
+        );
+        const segmentEffort = createStravaSegmentEffortRecord(
+          activitySegmentEffort,
+          segment,
+          activity,
+          athlete,
+        );
+        await manager.save(StravaSegmentEffort, segmentEffort);
+      }
     }
 
     if (stravaActivity.best_efforts) {

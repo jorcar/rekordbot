@@ -119,6 +119,27 @@ export class StravaService {
     }
   }
 
+  public async disableWebhookSubscription(stravaAthleteId: number) {
+    try {
+      const athlete = await this.athleteRepo.findOneOrFail({
+        where: { stravaId: stravaAthleteId },
+      });
+      const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
+      const subscriptionId =
+        await this.stravaApiService.deleteWebhookSubscription(
+          token,
+          athlete.subscriptionId,
+        );
+
+      await this.athleteRepo.update(
+        { stravaId: stravaAthleteId },
+        { subscriptionId },
+      );
+    } catch (err) {
+      this.logger.error('error registering webhook', err);
+    }
+  }
+
   async setDescription(
     stravaAthleteId: number,
     stravaActivityId: number,
