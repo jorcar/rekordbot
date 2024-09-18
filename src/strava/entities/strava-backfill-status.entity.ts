@@ -12,6 +12,7 @@ export interface StravaBackfillProgress {
   segmentEffortsSynched: boolean;
   lastProcessedActivityIdx?: number;
   synchUntil: string;
+  synchCutOff: string;
   processedPages: number;
 }
 

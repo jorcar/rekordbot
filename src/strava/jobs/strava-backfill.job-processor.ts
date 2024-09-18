@@ -13,6 +13,7 @@ import { createStravaActivityRecord } from '../entities/entity-factory';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
+import { DateTime } from 'luxon';
 
 const FIFTEEN_MINUTE_BUDGET = 9;
 
@@ -155,6 +156,7 @@ export class StravaBackfillJobProcessor
         activitiesSynched: false,
         segmentEffortsSynched: false,
         synchUntil: now.toISOString(),
+        synchCutOff: DateTime.fromJSDate(now).minus({ days: 365 }).toISO(),
         processedPages: 0,
       };
       backfillStatus.createdAt = now;
@@ -177,7 +179,11 @@ export class StravaBackfillJobProcessor
     );
     // store activities
     await this.createActivities(activities, athlete, manager);
-    return activities.length < 200;
+    return (
+      activities.length < 200 ||
+      activities[activities.length - 1].start_date <
+        backfillStatus.progress.synchCutOff
+    );
   }
 
   private async createActivities(
