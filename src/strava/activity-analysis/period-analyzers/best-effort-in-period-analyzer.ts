@@ -81,6 +81,9 @@ export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
       (a) => a.startDate >= dateCutOff,
     );
     if (activitiesInPeriod.length < 2) {
+      this.logger.debug(
+        `Found only ${activitiesInPeriod.length} activities in rankin period beginning ${dateCutOff.toISOString()}`,
+      );
       return undefined;
     }
     this.logger.debug(

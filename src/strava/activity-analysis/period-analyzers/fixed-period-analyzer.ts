@@ -20,12 +20,18 @@ export class FixedPeriodBestEffortAnalyzer<
   protected getPeriods(): RankPeriod[] {
     return [
       {
-        cutoffDate: DateTime.utc().startOf('month').toJSDate(),
+        cutoffDate: DateTime.fromJSDate(this.activity.startDate)
+          .toUTC()
+          .startOf('month')
+          .toJSDate(),
         description: 'this month',
       },
 
       {
-        cutoffDate: DateTime.utc().startOf('year').toJSDate(),
+        cutoffDate: DateTime.fromJSDate(this.activity.startDate)
+          .toUTC()
+          .startOf('year')
+          .toJSDate(),
         description: 'this year',
       },
     ];

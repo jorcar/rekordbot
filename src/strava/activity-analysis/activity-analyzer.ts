@@ -15,18 +15,15 @@ export class ActivityAnalyzer {
   // TODO: might make sense to encapsulate repo classes to not ripple db details all over
 
   constructor(
-    @InjectRepository(StravaActivity)
-    private activityRepo: Repository<StravaActivity>,
     private activityAchievementsAnalyzer: ActivityAchievementsAnalyzer,
     private segmentEffortsAnalyzer: SegmentEffortsAnalyzer,
     private achievementEffortsAnalyzer: AchievementEffortsAnalyzer,
   ) {}
 
-  public async analyzeActivity(stravaActivityId: number): Promise<string[]> {
-    this.logger.debug(`Analyzing activity ${stravaActivityId}`);
-    const activity = await this.activityRepo.findOneOrFail({
-      where: { stravaId: stravaActivityId },
-    });
+  public async analyzeActivity(
+    stravaActivity: StravaActivity,
+  ): Promise<string[]> {
+    this.logger.debug(`Analyzing activity ${stravaActivity.stravaId}`);
 
     const analyzers = [
       this.activityAchievementsAnalyzer,
@@ -34,13 +31,15 @@ export class ActivityAnalyzer {
       this.achievementEffortsAnalyzer,
     ];
 
-    const twelveMonthsAgo = DateTime.fromJSDate(activity.startDate)
+    const twelveMonthsAgo = DateTime.fromJSDate(stravaActivity.startDate)
       .minus({ months: 12 })
       .toJSDate();
 
     const results: RankedAchievement[] = [];
     for (const analyzer of analyzers) {
-      results.push(...(await analyzer.analyze(activity, twelveMonthsAgo)));
+      results.push(
+        ...(await analyzer.analyze(stravaActivity, twelveMonthsAgo)),
+      );
     }
 
     // sort all results by rank

@@ -18,6 +18,7 @@ import configuration, {
 } from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StravaBackfillStatus } from './strava/entities/strava-backfill-status.entity';
+import { Achievement } from './strava/entities/achievement.entity';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { StravaBackfillStatus } from './strava/entities/strava-backfill-status.e
           }*/
           poolSize: 5,
           entities: [
+            Achievement,
             StravaSegment,
             StravaSegmentEffort,
             StravaAthlete,

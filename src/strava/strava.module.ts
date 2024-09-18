@@ -28,10 +28,12 @@ import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
 import { ActivityAchievementsAnalyzer } from './activity-analysis/grouped-analyzers/activity-achievements-analyzer';
 import { SegmentEffortsAnalyzer } from './activity-analysis/grouped-analyzers/segment-efforts-analyzer';
 import { AchievementEffortsAnalyzer } from './activity-analysis/grouped-analyzers/achievement-efforts-analyzer';
+import { Achievement } from './entities/achievement.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
+      Achievement,
       StravaAthlete,
       StravaAchievementEffort,
       StravaActivity,

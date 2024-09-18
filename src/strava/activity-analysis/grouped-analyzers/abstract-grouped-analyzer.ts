@@ -32,20 +32,20 @@ export abstract class AbstractGroupedAnalyzer<T extends RankableActivity> {
     fromDate: Date,
   ): Promise<RankedAchievement[]> {
     const athlete = await activity.athlete;
-    const efforts = await this.getEfforts(activity);
-    this.logger.debug(`${efforts.length} efforts found for analysis`);
+    const effortsToAnalyze = await this.getEfforts(activity);
+    this.logger.debug(`${effortsToAnalyze.length} efforts found for analysis`);
 
     const results: RankedAchievement[] = [];
-    for (const effort of efforts) {
-      const allEfforts = await this.getHistoricalEffortsForSameEntity(
+    for (const effort of effortsToAnalyze) {
+      const historicalEfforts = await this.getHistoricalEffortsForSameEntity(
         athlete,
         effort,
         fromDate,
       );
       this.logger.debug(
-        `${allEfforts.length} historical efforts found for entity`,
+        `${historicalEfforts.length} historical efforts found for entity`,
       );
-      const analyzers = this.buildPeriodAnalyzers(effort, efforts);
+      const analyzers = this.buildPeriodAnalyzers(effort, historicalEfforts);
 
       for (const analyzer of analyzers) {
         results.push(...(await analyzer.analyze()));

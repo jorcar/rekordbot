@@ -23,7 +23,8 @@ export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<Strava
     entity: StravaActivity,
     fromDate: Date,
   ): Promise<StravaActivity[]> {
-    return await this.activityRepo.find({
+    console.log('getHistoricalEffortsForSameEntity');
+    const a = await this.activityRepo.find({
       where: {
         sportType: entity.sportType,
         athlete: athlete,
@@ -33,6 +34,8 @@ export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<Strava
         startDate: 'DESC',
       },
     });
+    console.log(a.length);
+    return a;
   }
 
   getAnalysisParams(): AnalysisParams[] {
