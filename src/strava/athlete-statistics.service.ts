@@ -5,6 +5,7 @@ import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
 import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
+import { Achievement } from './entities/achievement.entity';
 
 export interface OnboardingStatus {
   activitiesSynched: boolean;
@@ -18,6 +19,7 @@ export interface AthleteStats {
   segmentEffortCount: number;
   segmentCount: number;
   achievementEffortCount: number;
+  achievementCount: number;
 }
 
 @Injectable()
@@ -25,6 +27,8 @@ export class AthleteStatisticsService {
   private readonly logger = new Logger(AthleteStatisticsService.name);
 
   constructor(
+    @InjectRepository(Achievement)
+    private achievementRepository: Repository<Achievement>,
     @InjectRepository(StravaActivity)
     private activityRepo: Repository<StravaActivity>,
     @InjectRepository(StravaSegmentEffort)
@@ -79,22 +83,30 @@ export class AthleteStatisticsService {
     const achievementEffortCountPromise = this.achievementEffortsRepo.count({
       where: { athlete: { id: athleteId } },
     });
+
+    const achievementCountPromise = this.achievementRepository.count({
+      where: { athlete: { id: athleteId } },
+    });
+
     const [
       activityCount,
       segmentEffortCount,
       [segmentCount],
       achievementEffortCount,
+      achievementCount,
     ] = await Promise.all([
       activityCountPromise,
       segmentEffortCountPromise,
       segmentCountPromise,
       achievementEffortCountPromise,
+      achievementCountPromise,
     ]);
     return {
       activityCount,
       segmentEffortCount,
       segmentCount: segmentCount.count,
       achievementEffortCount,
+      achievementCount,
     };
   }
 }

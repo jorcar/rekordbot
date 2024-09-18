@@ -49,7 +49,7 @@ export class AppController {
       activities: stats.activityCount,
       segment_efforts: stats.segmentEffortCount,
       achievement_efforts: stats.achievementEffortCount,
-      achievements: 0,
+      achievements: stats.achievementCount,
       segments: stats.segmentCount,
     };
     const onboardingStatus =
