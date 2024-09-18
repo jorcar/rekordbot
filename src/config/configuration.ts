@@ -46,7 +46,7 @@ const test: Config = {
     client_id: 27973,
     client_secret: 'bfb397cb3618f6df91fa939456ce39f7864eb3ae',
     oauth_redirect_uri: 'http://localhost:3000/auth/strava/callback',
-    webhook_url: 'https://c407-90-225-125-107.ngrok-free.app/strava/webhook',
+    webhook_url: 'https://ewe-engaged-nationally.ngrok-free.app/strava/webhook',
   },
 };
 
