@@ -10,8 +10,10 @@ import {
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 
 export interface RankedAchievement {
+  cutOffDate: Date;
   rank: number;
   description: string;
+  hash: string;
 }
 
 export abstract class AbstractGroupedAnalyzer<T extends RankableActivity> {

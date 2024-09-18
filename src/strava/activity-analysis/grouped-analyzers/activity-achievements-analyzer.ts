@@ -5,6 +5,7 @@ import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyz
 import { describeRank } from '../rank-utils';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
+import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
 
 export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<StravaActivity> {
   constructor(
@@ -23,7 +24,6 @@ export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<Strava
     entity: StravaActivity,
     fromDate: Date,
   ): Promise<StravaActivity[]> {
-    console.log('getHistoricalEffortsForSameEntity');
     const a = await this.activityRepo.find({
       where: {
         sportType: entity.sportType,
@@ -43,18 +43,27 @@ export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<Strava
       field: 'distance',
       order: 'largest',
       rankDescriptionGenerator: this.generateLongestDistanceDescription,
+      hashGenerator: async (rank, entity) => {
+        return 'longest-distance-' + rank + entity.stravaId.toString();
+      },
     };
 
     const timeAnalysisParams: AnalysisParams = {
       field: 'movingTime',
       order: 'largest',
       rankDescriptionGenerator: this.generateLongestDurationDescription,
+      hashGenerator: async (rank, entity) => {
+        return 'longest-duration-' + rank + entity.stravaId.toString();
+      },
     };
 
     const biggestClimbAnalysisParams: AnalysisParams = {
       field: 'totalElevationGain',
       order: 'largest',
       rankDescriptionGenerator: this.generateBiggestClimbDescription,
+      hashGenerator: async (rank, entity) => {
+        return 'highest-elevation-' + rank + entity.stravaId.toString();
+      },
     };
     return [
       distanceAnalysisParams,

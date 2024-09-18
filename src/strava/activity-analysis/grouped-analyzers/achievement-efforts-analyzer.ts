@@ -6,6 +6,7 @@ import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
+import { isNumber } from '@nestjs/common/utils/shared.utils';
 
 export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(
@@ -42,6 +43,7 @@ export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAc
         field: 'movingTime',
         order: 'smallest',
         rankDescriptionGenerator: this.generateRankDescription,
+        hashGenerator: this.generateResultHash,
       },
     ];
   }
@@ -52,5 +54,12 @@ export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAc
     periodDescription: string,
   ): Promise<string> {
     return `${describeRank(rank)} fastest ${entity.effortName} ${periodDescription}`;
+  }
+
+  private async generateResultHash(
+    rank: number,
+    entity: StravaAchievementEffort,
+  ): Promise<string> {
+    return `${entity.effortName}-${rank}`;
   }
 }

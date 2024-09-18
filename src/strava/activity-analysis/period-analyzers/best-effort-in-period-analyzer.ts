@@ -19,6 +19,7 @@ export interface AnalysisParams {
     T,
     periodDescription: string,
   ) => Promise<string>;
+  hashGenerator: (number, T) => Promise<string>;
 }
 
 export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
@@ -41,7 +42,7 @@ export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
       (a, b) => b.cutoffDate.getTime() - a.cutoffDate.getTime(),
     );
 
-    let lastRank: number | undefined;
+    // TODO: refactor this - lets push em all, add a hash of what it measures + rank and pick the ones with the longest distance
     for (const period of rankPeriods) {
       const rank = this.rank(
         this.activity,
@@ -50,14 +51,11 @@ export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
         this.analysisParams.field,
       );
       if (rank) {
-        if (lastRank && rank >= lastRank) {
-          lastRank = rank;
-          break;
-        }
-        lastRank = rank;
         if (rank <= 3) {
           achievements.push({
             rank,
+            cutOffDate: period.cutoffDate,
+            hash: await this.analysisParams.hashGenerator(rank, this.activity),
             description: await this.analysisParams.rankDescriptionGenerator(
               rank,
               this.activity,

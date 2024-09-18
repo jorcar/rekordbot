@@ -42,8 +42,16 @@ export class ActivityAnalyzer {
       );
     }
 
-    // sort all results by rank
-    return results
+    // now group all ranks by hash and pick the one with the best rank for each hash. then sort by rank in a list
+    const resultsByHash = new Map<string, RankedAchievement>();
+    for (const result of results) {
+      const existingResult = resultsByHash.get(result.hash);
+      if (!existingResult || existingResult.rank > result.rank) {
+        resultsByHash.set(result.hash, result);
+      }
+    }
+
+    return Array.from(resultsByHash.values())
       .sort((a, b) => a.rank - b.rank)
       .map((result) => result.description);
   }

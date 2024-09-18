@@ -6,6 +6,7 @@ import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
+import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
 
 export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmentEffort> {
   constructor(
@@ -43,6 +44,7 @@ export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmen
         field: 'movingTime',
         order: 'smallest',
         rankDescriptionGenerator: this.generateRankDescription,
+        hashGenerator: this.generateResultHash,
       },
     ];
   }
@@ -54,5 +56,13 @@ export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmen
   ): Promise<string> {
     const segment = await entity.segment;
     return `${describeRank(rank)} fastest time on ${segment.name} ${periodDescription}`;
+  }
+
+  private async generateResultHash(
+    rank: number,
+    entity: StravaSegmentEffort,
+  ): Promise<string> {
+    const segment = await entity.segment;
+    return `fastest-${segment.stravaId}-${rank}`;
   }
 }
