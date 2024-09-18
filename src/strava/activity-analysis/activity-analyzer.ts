@@ -3,9 +3,10 @@ import { StravaActivity } from '../entities/strava-activity.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { DateTime } from 'luxon';
-import { ActivityAchievementsAnalyzer } from './activity-achievements-analyzer';
-import { SegmentEffortsAnalyzer } from './segment-efforts-analyzer';
-import { AchievementEffortsAnalyzer } from './achievement-efforts-analyzer';
+import { ActivityAchievementsAnalyzer } from './grouped-analyzers/activity-achievements-analyzer';
+import { SegmentEffortsAnalyzer } from './grouped-analyzers/segment-efforts-analyzer';
+import { AchievementEffortsAnalyzer } from './grouped-analyzers/achievement-efforts-analyzer';
+import { RankedAchievement } from './grouped-analyzers/abstract-grouped-analyzer';
 
 @Injectable()
 export class ActivityAnalyzer {
@@ -16,7 +17,6 @@ export class ActivityAnalyzer {
   constructor(
     @InjectRepository(StravaActivity)
     private activityRepo: Repository<StravaActivity>,
-    // TODO: figure out how to get these injected as an array of analyzers
     private activityAchievementsAnalyzer: ActivityAchievementsAnalyzer,
     private segmentEffortsAnalyzer: SegmentEffortsAnalyzer,
     private achievementEffortsAnalyzer: AchievementEffortsAnalyzer,
@@ -38,11 +38,14 @@ export class ActivityAnalyzer {
       .minus({ months: 12 })
       .toJSDate();
 
-    const results = [];
+    const results: RankedAchievement[] = [];
     for (const analyzer of analyzers) {
       results.push(...(await analyzer.analyze(activity, twelveMonthsAgo)));
     }
 
-    return results;
+    // sort all results by rank
+    return results
+      .sort((a, b) => a.rank - b.rank)
+      .map((result) => result.description);
   }
 }

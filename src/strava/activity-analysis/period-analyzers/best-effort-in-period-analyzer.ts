@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { RankedAchievement } from '../analyzer';
+import { RankedAchievement } from '../grouped-analyzers/abstract-grouped-analyzer';
 
 export interface RankableActivity {
   stravaId: any;

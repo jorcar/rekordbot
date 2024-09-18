@@ -1,12 +1,13 @@
-import { StravaActivity } from '../entities/strava-activity.entity';
+import { StravaActivity } from '../../entities/strava-activity.entity';
 import { Between, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { StravaAchievementEffort } from '../entities/strava-achievement-effort.entity';
-import { AbstractEffortAnalyzer } from './abstract-effort-analyzer';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { describeRank } from './rank-utils';
+import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
+import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
+import { StravaAthlete } from '../../entities/strava-athlete.entity';
+import { describeRank } from '../rank-utils';
+import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
 
-export class AchievementEffortsAnalyzer extends AbstractEffortAnalyzer<StravaAchievementEffort> {
+export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(
     @InjectRepository(StravaAchievementEffort)
     private achievementEffortRepository: Repository<StravaAchievementEffort>,
@@ -35,7 +36,17 @@ export class AchievementEffortsAnalyzer extends AbstractEffortAnalyzer<StravaAch
     });
   }
 
-  async generateRankDescription(
+  getAnalysisParams(): AnalysisParams[] {
+    return [
+      {
+        field: 'movingTime',
+        order: 'smallest',
+        rankDescriptionGenerator: this.generateRankDescription,
+      },
+    ];
+  }
+
+  private async generateRankDescription(
     rank: number,
     entity: StravaAchievementEffort,
     periodDescription: string,

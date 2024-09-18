@@ -25,9 +25,9 @@ import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation
 import { AthleteStatisticsService } from './athlete-statistics.service';
 import { StravaActivityAnalysisJobProcessor } from './jobs/strava-activity-analysis.job-processor';
 import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
-import { ActivityAchievementsAnalyzer } from './activity-analysis/activity-achievements-analyzer';
-import { SegmentEffortsAnalyzer } from './activity-analysis/segment-efforts-analyzer';
-import { AchievementEffortsAnalyzer } from './activity-analysis/achievement-efforts-analyzer';
+import { ActivityAchievementsAnalyzer } from './activity-analysis/grouped-analyzers/activity-achievements-analyzer';
+import { SegmentEffortsAnalyzer } from './activity-analysis/grouped-analyzers/segment-efforts-analyzer';
+import { AchievementEffortsAnalyzer } from './activity-analysis/grouped-analyzers/achievement-efforts-analyzer';
 
 @Module({
   imports: [
