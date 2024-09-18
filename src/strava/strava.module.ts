@@ -25,6 +25,9 @@ import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation
 import { AthleteStatisticsService } from './athlete-statistics.service';
 import { StravaActivityAnalysisJobProcessor } from './jobs/strava-activity-analysis.job-processor';
 import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
+import { ActivityAchievementsAnalyzer } from './activity-analysis/activity-achievements-analyzer';
+import { SegmentEffortsAnalyzer } from './activity-analysis/segment-efforts-analyzer';
+import { AchievementEffortsAnalyzer } from './activity-analysis/achievement-efforts-analyzer';
 
 @Module({
   imports: [
@@ -59,6 +62,9 @@ import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
     ThrottledScheduler,
     ActivityEffortsCreationService,
     AthleteStatisticsService,
+    ActivityAchievementsAnalyzer,
+    SegmentEffortsAnalyzer,
+    AchievementEffortsAnalyzer,
   ],
   exports: [StravaService, AthleteStatisticsService],
 })

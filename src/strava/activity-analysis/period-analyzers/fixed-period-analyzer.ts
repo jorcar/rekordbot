@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon';
 import {
-  BestEffortAnalyzer,
-  FieldDescription,
+  AnalysisParams,
+  BestEffortInPeriodAnalyzer,
   RankableActivity,
-} from './best-effort-analyzer';
+} from './best-effort-in-period-analyzer';
 
 export interface RankPeriod {
   cutoffDate: Date;
@@ -12,12 +12,12 @@ export interface RankPeriod {
 
 export class FixedPeriodBestEffortAnalyzer<
   T extends RankableActivity,
-> extends BestEffortAnalyzer<T> {
-  constructor(activity: T, activities: T[], comparisonField: FieldDescription) {
-    super(activity, activities, comparisonField);
+> extends BestEffortInPeriodAnalyzer<T> {
+  constructor(activity: T, activities: T[], analysisParams: AnalysisParams) {
+    super(activity, activities, analysisParams);
   }
 
-  protected createRankPeriods(): RankPeriod[] {
+  protected getPeriods(): RankPeriod[] {
     return [
       {
         cutoffDate: DateTime.utc().startOf('month').toJSDate(),

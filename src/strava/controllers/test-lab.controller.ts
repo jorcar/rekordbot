@@ -31,7 +31,8 @@ export class TestLabController {
     return this.job.enqueue<StravaActivityAnalysisJob>(
       STRAVA_ACTIVITY_ANALYSIS_JOB,
       {
-        stravaActivityId: 12213188308,
+        stravaActivityId: 12213188308, // bike
+        // stravaActivityId: 12432276229, //run
         stravaAthleteId: 1168772,
       },
     );

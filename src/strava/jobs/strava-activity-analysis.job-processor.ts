@@ -24,11 +24,11 @@ export class StravaActivityAnalysisJobProcessor
     this.logger.debug(`Achievements identified: ${achievements}`);
     if (achievements.length > 0) {
       const str = achievements.join('\n');
-      await this.stravaService.setDescription(
+      /*   await this.stravaService.setDescription(
         job.stravaAthleteId,
         job.stravaActivityId,
         `${str}\n\n🤖 activity analysis by rekordbot.com`,
-      );
+      );*/
     }
   }
 }
