@@ -37,6 +37,9 @@ import { StravaSegmentEffortRepository } from './repositories/strava-segment-eff
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
 import { AchievementRepository } from './repositories/achievement.repository';
 import { BackfillStatusRepository } from './repositories/backfill-status.repository';
+import { Backfiller } from './backfill/backfiller';
+import { ActivityBackfiller } from './backfill/activity-backfiller';
+import { EffortBackfiller } from './backfill/effort-backfiller';
 
 @Module({
   imports: [
@@ -83,6 +86,9 @@ import { BackfillStatusRepository } from './repositories/backfill-status.reposit
     StravaAchievementEffortRepository,
     AchievementRepository,
     BackfillStatusRepository,
+    Backfiller,
+    ActivityBackfiller,
+    EffortBackfiller,
   ],
   exports: [StravaService, AthleteStatisticsService],
 })
