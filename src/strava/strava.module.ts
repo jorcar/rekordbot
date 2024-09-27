@@ -35,6 +35,7 @@ import { StravaActivityRepository } from './repositories/strava-activity.reposit
 import { StravaSegmentRepository } from './repositories/strava-segment.repository';
 import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
+import { AchievementRepository } from './repositories/achievement.repository';
 
 @Module({
   imports: [
@@ -79,6 +80,7 @@ import { StravaAchievementEffortRepository } from './repositories/strava-achieve
     StravaSegmentRepository,
     StravaSegmentEffortRepository,
     StravaAchievementEffortRepository,
+    AchievementRepository,
   ],
   exports: [StravaService, AthleteStatisticsService],
 })

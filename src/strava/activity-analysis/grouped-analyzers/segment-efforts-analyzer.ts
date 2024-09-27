@@ -1,17 +1,13 @@
 import { StravaActivity } from '../../entities/strava-activity.entity';
-import { Between, Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { StravaSegmentEffort } from '../../entities/strava-segment-effort.entity';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
+import { StravaSegmentEffortRepository } from '../../repositories/strava-segment-effort.repository';
 
 export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmentEffort> {
-  constructor(
-    @InjectRepository(StravaSegmentEffort)
-    private segmentEffortRepository: Repository<StravaSegmentEffort>,
-  ) {
+  constructor(private segmentEffortRepository: StravaSegmentEffortRepository) {
     super();
   }
 
@@ -25,16 +21,12 @@ export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmen
     fromDate: Date,
   ): Promise<StravaSegmentEffort[]> {
     const segment = await entity.segment;
-    return this.segmentEffortRepository.find({
-      where: {
-        segment: { id: segment.id },
-        athlete,
-        startDate: Between(fromDate, entity.startDate),
-      },
-      order: {
-        startDate: 'DESC',
-      },
-    });
+    return this.segmentEffortRepository.getEfforts(
+      athlete,
+      segment,
+      fromDate,
+      entity.startDate,
+    );
   }
 
   getAnalysisParams(): AnalysisParams[] {

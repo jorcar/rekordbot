@@ -1,16 +1,14 @@
 import { StravaActivity } from '../../entities/strava-activity.entity';
-import { Between, Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
+import { StravaAchievementEffortRepository } from '../../repositories/strava-achievement-effort.repository';
 
 export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(
-    @InjectRepository(StravaAchievementEffort)
-    private achievementEffortRepository: Repository<StravaAchievementEffort>,
+    private achievementEffortRepository: StravaAchievementEffortRepository,
   ) {
     super();
   }
@@ -24,16 +22,12 @@ export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAc
     entity: StravaAchievementEffort,
     fromDate: Date,
   ): Promise<StravaAchievementEffort[]> {
-    return this.achievementEffortRepository.find({
-      where: {
-        effortName: entity.effortName,
-        athlete,
-        startDate: Between(fromDate, entity.startDate),
-      },
-      order: {
-        startDate: 'DESC',
-      },
-    });
+    return this.achievementEffortRepository.getAchievementEfforts(
+      athlete,
+      entity.effortName,
+      fromDate,
+      entity.startDate,
+    );
   }
 
   getAnalysisParams(): AnalysisParams[] {

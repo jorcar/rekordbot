@@ -1,7 +1,8 @@
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractTransactionalRepository } from './abstract-transactional.repository';
 import { StravaAchievementEffort } from '../entities/strava-achievement-effort.entity';
+import { StravaAthlete } from '../entities/strava-athlete.entity';
 
 export class StravaAchievementEffortRepository extends AbstractTransactionalRepository<
   StravaAchievementEffort,
@@ -18,5 +19,23 @@ export class StravaAchievementEffortRepository extends AbstractTransactionalRepo
     effort: StravaAchievementEffort,
   ): Promise<void> {
     await this.repo.save(effort);
+  }
+
+  public async getAchievementEfforts(
+    athlete: StravaAthlete,
+    effortName: string,
+    fromDate: Date,
+    toDate: Date,
+  ): Promise<StravaAchievementEffort[]> {
+    return this.repo.find({
+      where: {
+        effortName,
+        athlete,
+        startDate: Between(fromDate, toDate),
+      },
+      order: {
+        startDate: 'DESC',
+      },
+    });
   }
 }
