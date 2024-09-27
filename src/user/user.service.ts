@@ -1,23 +1,18 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { User } from './user.entity';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { PasswordHashService } from '../auth-utils/password-hash.service';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UserService {
   private readonly logger = new Logger(UserService.name);
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
+    private userRepository: UserRepository,
     private passwordHashService: PasswordHashService,
   ) {}
 
   async findByEmail(email: string): Promise<User | undefined> {
-    return await this.userRepository.findOne({ where: { email } });
-  }
-
-  async findById(id: number): Promise<User | undefined> {
-    return await this.userRepository.findOne({ where: { id } });
+    return await this.userRepository.findByEmail(email);
   }
 
   async registerUser(
@@ -33,6 +28,6 @@ export class UserService {
     user.email = email;
     user.password = await this.passwordHashService.hashPassword(password);
     this.logger.log('User created');
-    return await this.userRepository.save(user);
+    return await this.userRepository.saveUser(user);
   }
 }

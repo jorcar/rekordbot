@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AbstractTransactionalRepository } from './abstract-transactional.repository';
+import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
 import { StravaSegment } from '../entities/strava-segment.entity';
 
 export class StravaSegmentRepository extends AbstractTransactionalRepository<

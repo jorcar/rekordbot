@@ -2,7 +2,7 @@ import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { User } from '../../user/user.entity';
-import { AbstractTransactionalRepository } from './abstract-transactional.repository';
+import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
 
 export class StravaAthleteRepository extends AbstractTransactionalRepository<
   StravaAthlete,

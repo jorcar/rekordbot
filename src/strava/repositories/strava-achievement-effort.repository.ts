@@ -1,6 +1,6 @@
 import { Between, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AbstractTransactionalRepository } from './abstract-transactional.repository';
+import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
 import { StravaAchievementEffort } from '../entities/strava-achievement-effort.entity';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 

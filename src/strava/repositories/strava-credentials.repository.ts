@@ -1,7 +1,7 @@
 import { StravaCredentials } from '../entities/strava-credentials.entity';
 import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AbstractTransactionalRepository } from './abstract-transactional.repository';
+import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
 
 export class StravaCredentialsRepository extends AbstractTransactionalRepository<
   StravaCredentials,
