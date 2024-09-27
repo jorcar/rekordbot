@@ -1,9 +1,9 @@
-import { StravaActivity } from '../../entities/strava-activity.entity';
+import { StravaActivity } from '../../../strava/entities/strava-activity.entity';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
 import { describeRank } from '../rank-utils';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
-import { StravaAthlete } from '../../entities/strava-athlete.entity';
-import { StravaActivityRepository } from '../../repositories/strava-activity.repository';
+import { StravaAthlete } from '../../../strava/entities/strava-athlete.entity';
+import { StravaActivityRepository } from '../../../strava/repositories/strava-activity.repository';
 
 export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<StravaActivity> {
   constructor(private activityRepo: StravaActivityRepository) {

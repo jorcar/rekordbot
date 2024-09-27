@@ -1,10 +1,10 @@
-import { StravaActivity } from '../../entities/strava-activity.entity';
-import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
+import { StravaActivity } from '../../../strava/entities/strava-activity.entity';
+import { StravaAchievementEffort } from '../../../strava/entities/strava-achievement-effort.entity';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
-import { StravaAthlete } from '../../entities/strava-athlete.entity';
+import { StravaAthlete } from '../../../strava/entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
-import { StravaAchievementEffortRepository } from '../../repositories/strava-achievement-effort.repository';
+import { StravaAchievementEffortRepository } from '../../../strava/repositories/strava-achievement-effort.repository';
 
 export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(

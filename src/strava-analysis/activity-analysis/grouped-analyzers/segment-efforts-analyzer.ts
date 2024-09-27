@@ -1,10 +1,10 @@
-import { StravaActivity } from '../../entities/strava-activity.entity';
-import { StravaSegmentEffort } from '../../entities/strava-segment-effort.entity';
+import { StravaActivity } from '../../../strava/entities/strava-activity.entity';
+import { StravaSegmentEffort } from '../../../strava/entities/strava-segment-effort.entity';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
-import { StravaAthlete } from '../../entities/strava-athlete.entity';
+import { StravaAthlete } from '../../../strava/entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
-import { StravaSegmentEffortRepository } from '../../repositories/strava-segment-effort.repository';
+import { StravaSegmentEffortRepository } from '../../../strava/repositories/strava-segment-effort.repository';
 
 export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmentEffort> {
   constructor(private segmentEffortRepository: StravaSegmentEffortRepository) {

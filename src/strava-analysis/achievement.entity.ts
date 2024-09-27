@@ -6,8 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { StravaAthlete } from './strava-athlete.entity';
-import { StravaActivity } from './strava-activity.entity';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
+import { StravaActivity } from '../strava/entities/strava-activity.entity';
 
 @Entity()
 export class Achievement {

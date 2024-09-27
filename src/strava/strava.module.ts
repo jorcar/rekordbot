@@ -23,19 +23,19 @@ import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
 import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation.service';
 import { AthleteStatisticsService } from './athlete-statistics.service';
-import { StravaActivityAnalysisJobProcessor } from './jobs/strava-activity-analysis.job-processor';
-import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
-import { ActivityAchievementsAnalyzer } from './activity-analysis/grouped-analyzers/activity-achievements-analyzer';
-import { SegmentEffortsAnalyzer } from './activity-analysis/grouped-analyzers/segment-efforts-analyzer';
-import { AchievementEffortsAnalyzer } from './activity-analysis/grouped-analyzers/achievement-efforts-analyzer';
-import { Achievement } from './entities/achievement.entity';
+import { StravaActivityAnalysisJobProcessor } from '../strava-analysis/strava-activity-analysis.job-processor';
+import { ActivityAnalyzer } from '../strava-analysis/activity-analysis/activity-analyzer';
+import { ActivityAchievementsAnalyzer } from '../strava-analysis/activity-analysis/grouped-analyzers/activity-achievements-analyzer';
+import { SegmentEffortsAnalyzer } from '../strava-analysis/activity-analysis/grouped-analyzers/segment-efforts-analyzer';
+import { AchievementEffortsAnalyzer } from '../strava-analysis/activity-analysis/grouped-analyzers/achievement-efforts-analyzer';
+import { Achievement } from '../strava-analysis/achievement.entity';
 import { StravaCredentialsRepository } from './repositories/strava-credentials.repository';
 import { StravaAthleteRepository } from './repositories/strava-athlete.repository';
 import { StravaActivityRepository } from './repositories/strava-activity.repository';
 import { StravaSegmentRepository } from './repositories/strava-segment.repository';
 import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
-import { AchievementRepository } from './repositories/achievement.repository';
+import { AchievementRepository } from '../strava-analysis/achievement.repository';
 import { BackfillStatusRepository } from './repositories/backfill-status.repository';
 import { Backfiller } from './backfill/backfiller';
 import { ActivityBackfiller } from './backfill/activity-backfiller';
@@ -62,7 +62,6 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     TestLabController,
   ],
   providers: [
-    ActivityAnalyzer,
     StravaService,
     StravaApiService,
     StravaActivityCreatedJobProcessor,
@@ -70,14 +69,10 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     StravaActivityUpdatedJobProcessor,
     StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
-    StravaActivityAnalysisJobProcessor,
     TransactionRunner,
     ThrottledScheduler,
     ActivityEffortsCreationService,
     AthleteStatisticsService,
-    ActivityAchievementsAnalyzer,
-    SegmentEffortsAnalyzer,
-    AchievementEffortsAnalyzer,
     StravaCredentialsRepository,
     StravaAthleteRepository,
     StravaActivityRepository,
@@ -90,6 +85,6 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     ActivityBackfiller,
     EffortBackfiller,
   ],
-  exports: [StravaService, AthleteStatisticsService],
+  exports: [StravaService, AthleteStatisticsService, StravaActivityRepository],
 })
 export class StravaModule {}

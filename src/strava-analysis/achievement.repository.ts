@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
-import { StravaActivity } from '../entities/strava-activity.entity';
-import { Achievement } from '../entities/achievement.entity';
+import { AbstractTransactionalRepository } from '../common/abstract-transactional.repository';
+import { StravaActivity } from '../strava/entities/strava-activity.entity';
+import { Achievement } from './achievement.entity';
 
 export class AchievementRepository extends AbstractTransactionalRepository<
   Achievement,

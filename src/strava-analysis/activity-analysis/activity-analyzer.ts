@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { StravaActivity } from '../entities/strava-activity.entity';
+import { StravaActivity } from '../../strava/entities/strava-activity.entity';
 import { DateTime } from 'luxon';
 import { ActivityAchievementsAnalyzer } from './grouped-analyzers/activity-achievements-analyzer';
 import { SegmentEffortsAnalyzer } from './grouped-analyzers/segment-efforts-analyzer';

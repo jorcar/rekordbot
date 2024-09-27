@@ -1,17 +1,17 @@
-import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
+import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
 import {
   STRAVA_ACTIVITY_ANALYSIS_JOB,
   StravaActivityAnalysisJob,
-} from '../../jobs';
+} from '../jobs';
 import { Logger } from '@nestjs/common';
-import { ActivityAnalyzer } from '../activity-analysis/activity-analyzer';
-import { StravaService } from '../strava.service';
-import { TransactionRunner } from '../../common/transaction-runner.provider';
-import { Achievement } from '../entities/achievement.entity';
-import { StravaActivityRepository } from '../repositories/strava-activity.repository';
-import { AchievementRepository } from '../repositories/achievement.repository';
-import { StravaActivity } from '../entities/strava-activity.entity';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
+import { ActivityAnalyzer } from './activity-analysis/activity-analyzer';
+import { StravaService } from '../strava/strava.service';
+import { TransactionRunner } from '../common/transaction-runner.provider';
+import { Achievement } from './achievement.entity';
+import { StravaActivityRepository } from '../strava/repositories/strava-activity.repository';
+import { AchievementRepository } from './achievement.repository';
+import { StravaActivity } from '../strava/entities/strava-activity.entity';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
 
 @JobProcessor(STRAVA_ACTIVITY_ANALYSIS_JOB)
 export class StravaActivityAnalysisJobProcessor

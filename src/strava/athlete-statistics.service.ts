@@ -5,7 +5,7 @@ import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
 import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
-import { Achievement } from './entities/achievement.entity';
+import { Achievement } from '../strava-analysis/achievement.entity';
 
 export interface OnboardingStatus {
   activitiesSynched: boolean;

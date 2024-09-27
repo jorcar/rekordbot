@@ -18,7 +18,8 @@ import configuration, {
 } from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StravaBackfillStatus } from './strava/entities/strava-backfill-status.entity';
-import { Achievement } from './strava/entities/achievement.entity';
+import { Achievement } from './strava-analysis/achievement.entity';
+import { StravaAnalysisModule } from './strava-analysis/strava-analysis.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { Achievement } from './strava/entities/achievement.entity';
     }),
     UserModule,
     StravaModule,
+    StravaAnalysisModule,
     AuthModule,
     JobModule.forRootAsync({
       imports: [ConfigModule],
