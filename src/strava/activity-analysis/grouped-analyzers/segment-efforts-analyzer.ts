@@ -6,7 +6,6 @@ import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
-import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
 
 export class SegmentEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaSegmentEffort> {
   constructor(

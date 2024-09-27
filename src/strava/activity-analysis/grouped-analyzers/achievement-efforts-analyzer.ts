@@ -6,7 +6,6 @@ import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
-import { isNumber } from '@nestjs/common/utils/shared.utils';
 
 export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(

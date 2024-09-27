@@ -5,7 +5,6 @@ import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyz
 import { describeRank } from '../rank-utils';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../entities/strava-athlete.entity';
-import { StravaAchievementEffort } from '../../entities/strava-achievement-effort.entity';
 
 export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<StravaActivity> {
   constructor(

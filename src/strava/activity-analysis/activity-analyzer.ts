@@ -1,7 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { StravaActivity } from '../entities/strava-activity.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { DateTime } from 'luxon';
 import { ActivityAchievementsAnalyzer } from './grouped-analyzers/activity-achievements-analyzer';
 import { SegmentEffortsAnalyzer } from './grouped-analyzers/segment-efforts-analyzer';
@@ -11,8 +9,6 @@ import { RankedAchievement } from './grouped-analyzers/abstract-grouped-analyzer
 @Injectable()
 export class ActivityAnalyzer {
   private readonly logger = new Logger(ActivityAnalyzer.name);
-
-  // TODO: might make sense to encapsulate repo classes to not ripple db details all over
 
   constructor(
     private activityAchievementsAnalyzer: ActivityAchievementsAnalyzer,

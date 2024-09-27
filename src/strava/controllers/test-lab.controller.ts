@@ -45,7 +45,3 @@ export class TestLabController {
     );
   }
 }
-
-/*(BigInt.prototype as any).toJSON = function () {
-  return this.toString();
-};*/

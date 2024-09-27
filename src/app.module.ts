@@ -56,7 +56,7 @@ import { Achievement } from './strava/entities/achievement.entity';
             columnName: 'snake_case',
             relationName: 'snake_case',
           }*/
-          poolSize: 5,
+          poolSize: 3,
           entities: [
             Achievement,
             StravaSegment,

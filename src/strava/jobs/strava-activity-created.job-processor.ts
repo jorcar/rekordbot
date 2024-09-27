@@ -35,11 +35,6 @@ export class StravaActivityCreatedJobProcessor
     );
     this.logger.debug(`Found activity on Strava ${activity.id}`);
     await this.storeActivity(activity, job.stravaAthleteId);
-    await this.stravaService.setDescription(
-      job.stravaAthleteId,
-      job.stravaActivityId,
-      '🤖 bipbopbop - rekordbot.com is analyzing efforts',
-    );
     await this.jobEnqueuer.enqueue<StravaActivityAnalysisJob>(
       STRAVA_ACTIVITY_ANALYSIS_JOB,
       {

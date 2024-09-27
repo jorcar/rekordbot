@@ -24,7 +24,6 @@ export interface AnalysisParams {
 
 export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
   private readonly logger = new Logger(BestEffortInPeriodAnalyzer.name);
-  private readonly activityType: string;
   protected constructor(
     protected activity: T,
     private activities: T[],
@@ -42,7 +41,6 @@ export abstract class BestEffortInPeriodAnalyzer<T extends RankableActivity> {
       (a, b) => b.cutoffDate.getTime() - a.cutoffDate.getTime(),
     );
 
-    // TODO: refactor this - lets push em all, add a hash of what it measures + rank and pick the ones with the longest distance
     for (const period of rankPeriods) {
       const rank = this.rank(
         this.activity,
