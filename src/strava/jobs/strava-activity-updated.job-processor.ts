@@ -7,7 +7,7 @@ import {
   StravaActivityUpdatedJob,
 } from '../../jobs';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
-import { TransactionRunner } from '../transaction-runner.provider';
+import { TransactionRunner } from '../../common/transaction-runner.provider';
 import { StravaActivityRepository } from '../repositories/strava-activity.repository';
 
 @JobProcessor(STRAVA_ACTIVITY_UPDATED_JOB)

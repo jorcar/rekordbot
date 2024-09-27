@@ -1,6 +1,6 @@
 import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
-import { TransactionRunner } from '../transaction-runner.provider';
+import { TransactionRunner } from '../../common/transaction-runner.provider';
 import { BackfillStatusRepository } from '../repositories/backfill-status.repository';
 import { EffortBackfiller } from './effort-backfiller';
 import { ActivityBackfiller } from './activity-backfiller';

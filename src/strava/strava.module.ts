@@ -16,7 +16,7 @@ import { StravaBackfillJobProcessor } from './jobs/strava-backfill.job-processor
 import { StravaAthleteAddedJobProcessor } from './jobs/strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
-import { TransactionRunner } from './transaction-runner.provider';
+import { TransactionRunner } from '../common/transaction-runner.provider';
 import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-updated.job-processor';
 import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
 import { ThrottledScheduler } from './jobs/throttled-scheduler.service';

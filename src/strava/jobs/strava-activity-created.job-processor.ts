@@ -8,7 +8,7 @@ import {
 } from '../../jobs';
 import { Logger } from '@nestjs/common';
 import { StravaApiActivity } from '../strava-api.service';
-import { TransactionRunner } from '../transaction-runner.provider';
+import { TransactionRunner } from '../../common/transaction-runner.provider';
 import { createStravaActivityRecord } from '../entities/entity-factory';
 import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
