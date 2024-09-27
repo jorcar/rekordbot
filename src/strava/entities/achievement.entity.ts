@@ -25,14 +25,4 @@ export class Achievement {
   @ManyToOne(() => StravaAthlete, { nullable: false })
   @JoinColumn()
   athlete: Promise<StravaAthlete>;
-
-  /*@ManyToOne(() => StravaAthlete, (athlete) => athlete.id, {
-    nullable: false,
-  })
-  athlete: Promise<StravaAthlete>;*/
-
-  /*@ManyToOne(() => StravaActivity, (activity) => activity.stravaId, {
-    nullable: false,
-  })
-  activity: Promise<StravaActivity>;*/
 }

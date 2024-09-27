@@ -4,6 +4,7 @@ import {
   SimpleStravaApiActivity,
   StravaApiActivity,
   StravaTokenResponse,
+  StravaTokenResponseWithAthlete,
 } from '../strava-api.service';
 import { StravaAchievementEffort } from './strava-achievement-effort.entity';
 import { StravaSegment } from './strava-segment.entity';
@@ -64,7 +65,7 @@ export function createStravaSegmentEffortRecord(
 }
 
 export function createStravaAthleteRecord(
-  response: StravaTokenResponse,
+  response: StravaTokenResponseWithAthlete,
   stravaCredentials: StravaCredentials,
   user: User,
 ) {

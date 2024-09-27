@@ -33,7 +33,6 @@ export class StravaBackfillJobProcessor
     private activityEffortCreationService: ActivityEffortsCreationService,
   ) {}
 
-  // TODO: 365 days backfill should suffice
   async processJob(job: StravaBackfillJob): Promise<void> {
     this.logger.log(`Backfilling data for athlete ${job.athleteId}`);
     const athlete = await this.athleteRepository.findOneOrFail({
@@ -59,48 +58,56 @@ export class StravaBackfillJobProcessor
       }
     }
     if (!backfillStatus.progress.segmentEffortsSynched) {
+      let done = false;
       while (budget > 0) {
-        await this.transactionRunner.runInTransaction(async (manager) => {
-          const index = isNaN(backfillStatus.progress.lastProcessedActivityIdx)
-            ? 0
-            : backfillStatus.progress.lastProcessedActivityIdx + 1;
+        done = await this.transactionRunner.runInTransaction(
+          async (manager) => {
+            const index = isNaN(
+              backfillStatus.progress.lastProcessedActivityIdx,
+            )
+              ? 0
+              : backfillStatus.progress.lastProcessedActivityIdx + 1;
 
-          const [activity] = await manager.find(StravaActivity, {
-            where: { athlete: { id: job.athleteId } },
-            order: { stravaId: 'DESC' },
-            take: 1,
-            skip: index,
-          });
-          backfillStatus.progress.lastProcessedActivityIdx = index;
-          backfillStatus.updatedAt = new Date();
-          await manager.save(StravaBackfillStatus, backfillStatus);
-          if (!activity) {
-            this.logger.log('No activity found, backfill complete!');
-            backfillStatus.progress.segmentEffortsSynched = true;
+            const [activity] = await manager.find(StravaActivity, {
+              where: { athlete: { id: job.athleteId } },
+              order: { stravaId: 'DESC' },
+              take: 1,
+              skip: index,
+            });
+            backfillStatus.progress.lastProcessedActivityIdx = index;
+            backfillStatus.updatedAt = new Date();
             await manager.save(StravaBackfillStatus, backfillStatus);
-            return;
-          } else {
-            this.logger.log(`Processing activity ${activity.stravaId}`);
-            const stravaActivity = await this.stravaService.fetchActivity(
-              activity.stravaId,
-              athlete.stravaId,
-            );
-            budget--;
-            await this.activityEffortCreationService.extractAndCreateEfforts(
-              athlete,
-              stravaActivity,
-              activity,
-              manager,
-            );
-          }
+            if (!activity) {
+              this.logger.log('No activity found, backfill complete!');
+              backfillStatus.progress.segmentEffortsSynched = true;
+              await manager.save(StravaBackfillStatus, backfillStatus);
+              return true;
+            } else {
+              this.logger.log(`Processing activity ${activity.stravaId}`);
+              const stravaActivity = await this.stravaService.fetchActivity(
+                activity.stravaId,
+                athlete.stravaId,
+              );
+              budget--;
+              await this.activityEffortCreationService.extractAndCreateEfforts(
+                athlete,
+                stravaActivity,
+                activity,
+                manager,
+              );
+            }
+            return false;
+          },
+        );
+      }
+      if (!done) {
+        this.logger.log(
+          'Budget consumed backfilling efforts - scheduling next backfill',
+        );
+        await this.backfillScheduler.enqueueThrottled('strava-backfill', {
+          athleteId: job.athleteId,
         });
       }
-      this.logger.log(
-        'Budget consumed backfilling efforts - scheduling next backfill',
-      );
-      await this.backfillScheduler.enqueueThrottled('strava-backfill', {
-        athleteId: job.athleteId,
-      });
     }
   }
 

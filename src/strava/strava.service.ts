@@ -8,7 +8,7 @@ import {
   SimpleStravaApiActivity,
   StravaApiActivity,
   StravaApiService,
-  StravaTokenResponse,
+  StravaTokenResponseWithAthlete,
 } from './strava-api.service';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
 import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs/jobs';
@@ -61,7 +61,7 @@ export class StravaService {
   }
 
   private async createAthlete(
-    tokenResponse: StravaTokenResponse,
+    tokenResponse: StravaTokenResponseWithAthlete,
     userId: number,
   ): Promise<StravaAthlete> {
     return await this.transactionRunner.runInTransaction(async (manager) => {

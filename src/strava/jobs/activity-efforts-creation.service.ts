@@ -19,6 +19,46 @@ export class ActivityEffortsCreationService {
     athlete: StravaAthlete,
     stravaActivity: StravaApiActivity,
     activity: StravaActivity,
+    entityManager: EntityManager,
+  ) {
+    await this.saveSegmentEfforts(
+      stravaActivity,
+      athlete,
+      activity,
+      entityManager,
+    );
+    await this.saveBestEfforts(
+      stravaActivity,
+      athlete,
+      activity,
+      entityManager,
+    );
+  }
+
+  private async saveBestEfforts(
+    stravaActivity: StravaApiActivity,
+    athlete: StravaAthlete,
+    activity: StravaActivity,
+    manager: EntityManager,
+  ) {
+    if (stravaActivity.best_efforts) {
+      this.logger.debug(`Creating best efforts ${athlete.id}`);
+      for (const activityBestEffort of stravaActivity.best_efforts) {
+        const achievementEffort = await createStravaSAchievementEffortRecord(
+          activityBestEffort,
+          activity,
+          athlete,
+        );
+        this.logger.debug(`Storing best effort for athlete ${athlete.id}`);
+        await manager.save(StravaAchievementEffort, achievementEffort);
+      }
+    }
+  }
+
+  private async saveSegmentEfforts(
+    stravaActivity: StravaApiActivity,
+    athlete: StravaAthlete,
+    activity: StravaActivity,
     manager: EntityManager,
   ) {
     if (stravaActivity.segment_efforts) {
@@ -40,25 +80,13 @@ export class ActivityEffortsCreationService {
         await manager.save(StravaSegmentEffort, segmentEffort);
       }
     }
-
-    if (stravaActivity.best_efforts) {
-      this.logger.debug(`Creating best efforts ${athlete.id}`);
-      for (const activityBestEffort of stravaActivity.best_efforts) {
-        const achievementEffort = await createStravaSAchievementEffortRecord(
-          activityBestEffort,
-          activity,
-          athlete,
-        );
-        this.logger.debug(`Storing best effort for athlete ${athlete.id}`);
-        await manager.save(StravaAchievementEffort, achievementEffort);
-      }
-    }
   }
 
   private async getOrCreateSegment(
     manager: EntityManager,
     segment: any,
   ): Promise<StravaSegment> {
+    // TODO: this feels brittle... we should group all repo-like code
     const segmentRecord = await manager.findOne(StravaSegment, {
       where: { stravaId: segment.id },
     });

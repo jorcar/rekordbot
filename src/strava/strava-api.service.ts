@@ -7,23 +7,9 @@ export interface StravaTokenResponse {
   access_token: string;
   refresh_token: string;
   expires_at: number;
-  athlete: {
-    id: number;
-    username: string;
-    resource_state: number;
-    firstname: string;
-    lastname: string;
-    city: string;
-    state: string;
-    country: string;
-    profile: string;
-  };
 }
 
 export interface StravaTokenResponseWithAthlete extends StravaTokenResponse {
-  access_token: string;
-  refresh_token: string;
-  expires_at: number;
   athlete: Athlete;
 }
 
@@ -131,9 +117,7 @@ export class StravaApiService {
     page: number = 1,
     perPage: number = 200,
   ): Promise<SimpleStravaApiActivity[]> {
-    this.logger.debug(
-      `fetching activities for page ${page},  ${before.toISOString()}, ${perPage}`,
-    );
+    this.logger.debug(`fetching activities for page ${page}...`);
     const epoch = Math.round(before.getTime() / 1000);
     const url = `https://www.strava.com/api/v3/athlete/activities?per_page=${perPage}&before=${epoch}&page=${page}`;
     const response = await fetch(url, {
