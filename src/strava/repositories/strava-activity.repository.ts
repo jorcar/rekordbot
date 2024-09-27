@@ -55,4 +55,17 @@ export class StravaActivityRepository extends AbstractTransactionalRepository<
       },
     });
   }
+
+  public async findNthActivityForAthlete(
+    athlete: StravaAthlete,
+    skip: number,
+  ): Promise<StravaActivity | undefined> {
+    const [activity] = await this.repo.find({
+      where: { athlete },
+      order: { stravaId: 'DESC' },
+      take: 1,
+      skip,
+    });
+    return activity;
+  }
 }

@@ -51,7 +51,7 @@ export class StravaActivityCreatedJobProcessor
     stravaAthleteId: number,
   ) {
     const athlete =
-      await this.stravaAthleteRepository.findAthlete(stravaAthleteId);
+      await this.stravaAthleteRepository.findAthleteByStravaId(stravaAthleteId);
     await this.transactionRunner.runInTransaction(async (manager) => {
       this.logger.debug(`Saving activity for athlete ${athlete.id}`);
       const stravaActivity = createStravaActivityRecord(activity, athlete);

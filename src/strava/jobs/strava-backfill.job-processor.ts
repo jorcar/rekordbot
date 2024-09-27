@@ -7,13 +7,13 @@ import { Logger } from '@nestjs/common';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
 import { ThrottledScheduler } from './throttled-scheduler.service';
-import { StravaActivity } from '../entities/strava-activity.entity';
 import { SimpleStravaApiActivity } from '../strava-api.service';
 import { createStravaActivityRecord } from '../entities/entity-factory';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
 import { DateTime } from 'luxon';
+import { StravaAthleteRepository } from '../repositories/strava-athlete.repository';
+import { BackfillStatusRepository } from '../repositories/backfill-status.repository';
+import { StravaActivityRepository } from '../repositories/strava-activity.repository';
 
 const FIFTEEN_MINUTE_BUDGET = 9;
 
@@ -26,20 +26,17 @@ export class StravaBackfillJobProcessor
     private stravaService: StravaService,
     private transactionRunner: TransactionRunner,
     private backfillScheduler: ThrottledScheduler,
-    @InjectRepository(StravaBackfillStatus)
-    private backfillStatusRepository: Repository<StravaBackfillStatus>,
-    @InjectRepository(StravaAthlete)
-    private athleteRepository: Repository<StravaAthlete>,
+    private backfillStatusRepository: BackfillStatusRepository,
+    private athleteRepository: StravaAthleteRepository,
+    private stravaActivityRepository: StravaActivityRepository,
     private activityEffortCreationService: ActivityEffortsCreationService,
   ) {}
 
   async processJob(job: StravaBackfillJob): Promise<void> {
     this.logger.log(`Backfilling data for athlete ${job.athleteId}`);
-    const athlete = await this.athleteRepository.findOneOrFail({
-      where: { id: job.athleteId },
-    });
-    // check if status exists or create it
-    const backfillStatus = await this.findOrCreteBackfillStatus(job, athlete);
+    const athlete = await this.athleteRepository.findAthleteById(job.athleteId);
+    const backfillStatus = await this.findOrCreteBackfillStatus(athlete);
+
     let budget = FIFTEEN_MINUTE_BUDGET;
     if (!backfillStatus.progress.activitiesSynched) {
       const { remainingBudget, done } = await this.backfillActivities(
@@ -68,19 +65,21 @@ export class StravaBackfillJobProcessor
               ? 0
               : backfillStatus.progress.lastProcessedActivityIdx + 1;
 
-            const [activity] = await manager.find(StravaActivity, {
-              where: { athlete: { id: job.athleteId } },
-              order: { stravaId: 'DESC' },
-              take: 1,
-              skip: index,
-            });
+            const activity = await this.stravaActivityRepository
+              .transactional(manager)
+              .findNthActivityForAthlete(athlete, index);
+
             backfillStatus.progress.lastProcessedActivityIdx = index;
             backfillStatus.updatedAt = new Date();
-            await manager.save(StravaBackfillStatus, backfillStatus);
+            await this.backfillStatusRepository
+              .transactional(manager)
+              .saveStatus(backfillStatus);
             if (!activity) {
               this.logger.log('No activity found, backfill complete!');
               backfillStatus.progress.segmentEffortsSynched = true;
-              await manager.save(StravaBackfillStatus, backfillStatus);
+              await this.backfillStatusRepository
+                .transactional(manager)
+                .saveStatus(backfillStatus);
               return true;
             } else {
               this.logger.log(`Processing activity ${activity.stravaId}`);
@@ -123,7 +122,7 @@ export class StravaBackfillJobProcessor
         `Backfilling activities: budget: ${budget}, done: ${done}`,
       );
       await this.transactionRunner.runInTransaction(async (manager) => {
-        done = await this.backfillPageOfActivites(
+        done = await this.backfillPageOfActivities(
           athlete,
           manager,
           backfillStatus,
@@ -134,7 +133,9 @@ export class StravaBackfillJobProcessor
         }
         backfillStatus.progress.processedPages += 1;
         backfillStatus.updatedAt = new Date();
-        await manager.save(StravaBackfillStatus, backfillStatus);
+        await this.backfillStatusRepository
+          .transactional(manager)
+          .saveStatus(backfillStatus);
         this.logger.log(
           `Processed page ${backfillStatus.progress.processedPages}`,
         );
@@ -148,12 +149,11 @@ export class StravaBackfillJobProcessor
   }
 
   private async findOrCreteBackfillStatus(
-    job: StravaBackfillJob,
     athlete: StravaAthlete,
   ): Promise<StravaBackfillStatus> {
-    let backfillStatus = await this.backfillStatusRepository.findOne({
-      where: { athlete: { id: job.athleteId } },
-    });
+    let backfillStatus =
+      await this.backfillStatusRepository.findByAthlete(athlete);
+
     if (!backfillStatus) {
       const now = new Date();
       this.logger.log('Creating backfill status entry');
@@ -168,12 +168,12 @@ export class StravaBackfillJobProcessor
       };
       backfillStatus.createdAt = now;
       backfillStatus.updatedAt = now;
-      await this.backfillStatusRepository.save(backfillStatus);
+      await this.backfillStatusRepository.saveStatus(backfillStatus);
     }
     return backfillStatus;
   }
 
-  private async backfillPageOfActivites(
+  private async backfillPageOfActivities(
     athlete: StravaAthlete,
     manager: EntityManager,
     backfillStatus: StravaBackfillStatus,
@@ -184,7 +184,6 @@ export class StravaBackfillJobProcessor
       backfillStatus.progress.processedPages + 1,
       200,
     );
-    // store activities
     await this.createActivities(activities, athlete, manager);
     return (
       activities.length < 200 ||
@@ -199,8 +198,9 @@ export class StravaBackfillJobProcessor
     manager: EntityManager,
   ) {
     for (const activity of activities) {
-      const a = createStravaActivityRecord(activity, athlete);
-      await manager.save(StravaActivity, a);
+      await this.stravaActivityRepository
+        .transactional(manager)
+        .saveActivity(createStravaActivityRecord(activity, athlete));
     }
   }
 }

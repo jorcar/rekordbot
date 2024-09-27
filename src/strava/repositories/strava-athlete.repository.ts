@@ -19,9 +19,17 @@ export class StravaAthleteRepository extends AbstractTransactionalRepository<
     await this.repo.save(athlete);
   }
 
-  public async findAthlete(stravaAthleteId: number): Promise<StravaAthlete> {
+  public async findAthleteByStravaId(
+    stravaAthleteId: number,
+  ): Promise<StravaAthlete> {
     return await this.repo.findOneOrFail({
       where: { stravaId: stravaAthleteId },
+    });
+  }
+
+  public async findAthleteById(id: number): Promise<StravaAthlete> {
+    return await this.repo.findOneOrFail({
+      where: { id },
     });
   }
 

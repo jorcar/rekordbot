@@ -117,7 +117,8 @@ export class StravaService {
 
   public async disableWebhookSubscription(stravaAthleteId: number) {
     try {
-      const athlete = await this.athleteRepo.findAthlete(stravaAthleteId);
+      const athlete =
+        await this.athleteRepo.findAthleteByStravaId(stravaAthleteId);
       const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
       const subscriptionId =
         await this.stravaApiService.deleteWebhookSubscription(
@@ -147,7 +148,8 @@ export class StravaService {
   private async getFreshTokenForStravaAthlete(
     stravaAthleteId: number,
   ): Promise<string> {
-    const athlete = await this.athleteRepo.findAthlete(stravaAthleteId);
+    const athlete =
+      await this.athleteRepo.findAthleteByStravaId(stravaAthleteId);
     return await this.getFreshToken(athlete);
   }
 
