@@ -4,7 +4,7 @@ import {
   STRAVA_ACTIVITY_ANALYSIS_JOB,
   STRAVA_BACKFILL_JOB,
   StravaActivityAnalysisJob,
-} from '../jobs/jobs';
+} from '../../jobs';
 import { ThrottledScheduler } from '../jobs/throttled-scheduler.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 

@@ -5,7 +5,7 @@ import {
   STRAVA_ACTIVITY_CREATED_JOB,
   StravaActivityAnalysisJob,
   StravaActivityCreatedJob,
-} from './jobs';
+} from '../../jobs';
 import { Logger } from '@nestjs/common';
 import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../transaction-runner.provider';

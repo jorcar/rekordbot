@@ -16,7 +16,7 @@ import {
   StravaActivityCreatedJob,
   StravaActivityDeletedJob,
   StravaActivityUpdatedJob,
-} from '../jobs/jobs';
+} from '../../jobs';
 
 @Controller('/strava/webhook')
 export class StravaWebhookController {

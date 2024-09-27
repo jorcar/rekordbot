@@ -5,7 +5,7 @@ import {
   STRAVA_ACTIVITY_UPDATED_JOB,
   StravaActivityAnalysisJob,
   StravaActivityUpdatedJob,
-} from './jobs';
+} from '../../jobs';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 import { TransactionRunner } from '../transaction-runner.provider';
 import { StravaActivityRepository } from '../repositories/strava-activity.repository';

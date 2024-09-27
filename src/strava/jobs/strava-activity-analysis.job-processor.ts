@@ -2,7 +2,7 @@ import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
 import {
   STRAVA_ACTIVITY_ANALYSIS_JOB,
   StravaActivityAnalysisJob,
-} from './jobs';
+} from '../../jobs';
 import { Logger } from '@nestjs/common';
 import { ActivityAnalyzer } from '../activity-analysis/activity-analyzer';
 import { StravaService } from '../strava.service';

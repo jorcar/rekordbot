@@ -1,5 +1,8 @@
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_ACTIVITY_DELETED_JOB, StravaActivityDeletedJob } from './jobs';
+import {
+  STRAVA_ACTIVITY_DELETED_JOB,
+  StravaActivityDeletedJob,
+} from '../../jobs';
 import { Logger } from '@nestjs/common';
 import { StravaActivityRepository } from '../repositories/strava-activity.repository';
 

@@ -4,7 +4,7 @@ import {
   STRAVA_ATHLETE_ADDED_JOB,
   STRAVA_BACKFILL_JOB,
   StravaAthleteAddedJob,
-} from './jobs';
+} from '../../jobs';
 import { Logger } from '@nestjs/common';
 import { ThrottledScheduler } from './throttled-scheduler.service';
 

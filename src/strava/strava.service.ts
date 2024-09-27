@@ -8,7 +8,7 @@ import {
   StravaTokenResponseWithAthlete,
 } from './strava-api.service';
 import { JobEnqueuerService } from '../job/job-enqueuer.service';
-import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from './jobs/jobs';
+import { STRAVA_ATHLETE_ADDED_JOB, StravaAthleteAddedJob } from '../jobs';
 import { ConfigService } from '@nestjs/config';
 import { StravaConfig } from '../config/configuration';
 import { TransactionRunner } from './transaction-runner.provider';

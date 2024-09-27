@@ -1,5 +1,5 @@
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from './jobs';
+import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from '../../jobs';
 import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
 import { Logger } from '@nestjs/common';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
