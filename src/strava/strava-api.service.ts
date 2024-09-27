@@ -26,8 +26,21 @@ export interface Athlete {
 }
 
 export interface StravaApiActivity extends SimpleStravaApiActivity {
-  segment_efforts?: any[];
-  best_efforts?: any[];
+  segment_efforts?: StravaApiSegmentEffort[];
+  best_efforts?: any[]; // TODO: typing
+}
+
+export interface StravaApiSegmentEffort {
+  id: bigint;
+  elapsed_time: number;
+  moving_time: number;
+  start_date: string;
+  segment: Segment;
+}
+
+export interface Segment {
+  id: string;
+  name: string;
 }
 
 export interface SimpleStravaApiActivity {

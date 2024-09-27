@@ -6,14 +6,14 @@ import {
   StravaActivityAnalysisJob,
   StravaActivityCreatedJob,
 } from './jobs';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { Logger } from '@nestjs/common';
-import { StravaActivity } from '../entities/strava-activity.entity';
 import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../transaction-runner.provider';
 import { createStravaActivityRecord } from '../entities/entity-factory';
 import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
+import { StravaActivityRepository } from '../repositories/strava-activity.repository';
+import { StravaAthleteRepository } from '../repositories/strava-athlete.repository';
 
 @JobProcessor(STRAVA_ACTIVITY_CREATED_JOB)
 export class StravaActivityCreatedJobProcessor
@@ -25,6 +25,8 @@ export class StravaActivityCreatedJobProcessor
     private stravaService: StravaService,
     private activityEffortsCreationService: ActivityEffortsCreationService,
     private transactionRunner: TransactionRunner,
+    private stravaActivityRepository: StravaActivityRepository,
+    private stravaAthleteRepository: StravaAthleteRepository,
     private jobEnqueuer: JobEnqueuerService,
   ) {}
 
@@ -48,14 +50,14 @@ export class StravaActivityCreatedJobProcessor
     activity: StravaApiActivity,
     stravaAthleteId: number,
   ) {
+    const athlete =
+      await this.stravaAthleteRepository.findAthlete(stravaAthleteId);
     await this.transactionRunner.runInTransaction(async (manager) => {
-      const athlete = await manager.findOneOrFail(StravaAthlete, {
-        where: { stravaId: stravaAthleteId },
-      });
-
       this.logger.debug(`Saving activity for athlete ${athlete.id}`);
       const stravaActivity = createStravaActivityRecord(activity, athlete);
-      await manager.save(StravaActivity, stravaActivity);
+      await this.stravaActivityRepository
+        .transactional(manager)
+        .saveActivity(stravaActivity);
 
       await this.activityEffortsCreationService.extractAndCreateEfforts(
         athlete,

@@ -1,9 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../user/user.entity';
-import { Repository } from 'typeorm';
 import { StravaAthlete } from './entities/strava-athlete.entity';
-import { StravaCredentials } from './entities/strava-credentials.entity';
 import {
   SimpleStravaApiActivity,
   StravaApiActivity,
@@ -19,6 +16,8 @@ import {
   createCredentialsRecord,
   createStravaAthleteRecord,
 } from './entities/entity-factory';
+import { StravaCredentialsRepository } from './repositories/strava-credentials.repository';
+import { StravaAthleteRepository } from './repositories/strava-athlete.repository';
 
 @Injectable()
 export class StravaService {
@@ -26,10 +25,8 @@ export class StravaService {
   private readonly webhookUrl: string;
 
   constructor(
-    @InjectRepository(StravaAthlete)
-    private athleteRepo: Repository<StravaAthlete>,
-    @InjectRepository(StravaCredentials)
-    private credentialsRepo: Repository<StravaCredentials>,
+    private athleteRepo: StravaAthleteRepository,
+    private credentialsRepo: StravaCredentialsRepository,
     private stravaApiService: StravaApiService,
     private jobPublisher: JobEnqueuerService,
     private configService: ConfigService,
@@ -42,7 +39,7 @@ export class StravaService {
   public async getAthleteForUser(
     user: User,
   ): Promise<StravaAthlete | undefined> {
-    return this.athleteRepo.findOne({ where: { user } });
+    return this.athleteRepo.findAthleteForUser(user);
   }
 
   public async exchangeToken(code: string, userId: number): Promise<void> {
@@ -66,13 +63,15 @@ export class StravaService {
   ): Promise<StravaAthlete> {
     return await this.transactionRunner.runInTransaction(async (manager) => {
       const stravaCredentials = createCredentialsRecord(tokenResponse);
-      await manager.save(StravaCredentials, stravaCredentials);
+      await this.credentialsRepo
+        .transactional(manager)
+        .saveCredentials(stravaCredentials);
       const stravaAthlete = createStravaAthleteRecord(
         tokenResponse,
         stravaCredentials,
         { id: userId } as User,
       );
-      await manager.save(StravaAthlete, stravaAthlete);
+      await this.athleteRepo.transactional(manager).saveAthlete(stravaAthlete);
       this.logger.debug(`athlete added and linked:${tokenResponse.athlete.id}`);
       return stravaAthlete;
     });
@@ -110,10 +109,7 @@ export class StravaService {
           this.webhookUrl,
         );
 
-      await this.athleteRepo.update(
-        { stravaId: stravaAthleteId },
-        { subscriptionId },
-      );
+      await this.athleteRepo.updateAthlete(stravaAthleteId, { subscriptionId });
     } catch (err) {
       this.logger.error('error registering webhook', err);
     }
@@ -121,9 +117,7 @@ export class StravaService {
 
   public async disableWebhookSubscription(stravaAthleteId: number) {
     try {
-      const athlete = await this.athleteRepo.findOneOrFail({
-        where: { stravaId: stravaAthleteId },
-      });
+      const athlete = await this.athleteRepo.findAthlete(stravaAthleteId);
       const token = await this.getFreshTokenForStravaAthlete(stravaAthleteId);
       const subscriptionId =
         await this.stravaApiService.deleteWebhookSubscription(
@@ -131,10 +125,7 @@ export class StravaService {
           athlete.subscriptionId,
         );
 
-      await this.athleteRepo.update(
-        { stravaId: stravaAthleteId },
-        { subscriptionId },
-      );
+      await this.athleteRepo.update(stravaAthleteId, { subscriptionId });
     } catch (err) {
       this.logger.error('error registering webhook', err);
     }
@@ -156,9 +147,7 @@ export class StravaService {
   private async getFreshTokenForStravaAthlete(
     stravaAthleteId: number,
   ): Promise<string> {
-    const athlete = await this.athleteRepo.findOneOrFail({
-      where: { stravaId: stravaAthleteId },
-    });
+    const athlete = await this.athleteRepo.findAthlete(stravaAthleteId);
     return await this.getFreshToken(athlete);
   }
 
@@ -170,7 +159,7 @@ export class StravaService {
       const updated = await this.stravaApiService.refreshAccessToken(
         credentials.refreshToken,
       );
-      await this.credentialsRepo.update(credentials.id, {
+      await this.credentialsRepo.updateCredentials(credentials.id, {
         accessToken: updated.access_token,
         refreshToken: updated.refresh_token,
         tokenExpiresAt: new Date(updated.expires_at * 1000),

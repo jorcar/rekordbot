@@ -29,6 +29,12 @@ import { ActivityAchievementsAnalyzer } from './activity-analysis/grouped-analyz
 import { SegmentEffortsAnalyzer } from './activity-analysis/grouped-analyzers/segment-efforts-analyzer';
 import { AchievementEffortsAnalyzer } from './activity-analysis/grouped-analyzers/achievement-efforts-analyzer';
 import { Achievement } from './entities/achievement.entity';
+import { StravaCredentialsRepository } from './repositories/strava-credentials.repository';
+import { StravaAthleteRepository } from './repositories/strava-athlete.repository';
+import { StravaActivityRepository } from './repositories/strava-activity.repository';
+import { StravaSegmentRepository } from './repositories/strava-segment.repository';
+import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
+import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
 
 @Module({
   imports: [
@@ -67,6 +73,12 @@ import { Achievement } from './entities/achievement.entity';
     ActivityAchievementsAnalyzer,
     SegmentEffortsAnalyzer,
     AchievementEffortsAnalyzer,
+    StravaCredentialsRepository,
+    StravaAthleteRepository,
+    StravaActivityRepository,
+    StravaSegmentRepository,
+    StravaSegmentEffortRepository,
+    StravaAchievementEffortRepository,
   ],
   exports: [StravaService, AthleteStatisticsService],
 })

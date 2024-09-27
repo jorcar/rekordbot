@@ -1,19 +1,27 @@
 import { Injectable, Logger } from '@nestjs/common';
 import {
-  createStravaSAchievementEffortRecord,
+  createStravaAchievementEffortRecord,
   createStravaSegmentEffortRecord,
+  createStravaSegmentRecord,
 } from '../entities/entity-factory';
-import { StravaSegmentEffort } from '../entities/strava-segment-effort.entity';
-import { StravaAchievementEffort } from '../entities/strava-achievement-effort.entity';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { StravaApiActivity } from '../strava-api.service';
+import { Segment, StravaApiActivity } from '../strava-api.service';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
 import { StravaSegment } from '../entities/strava-segment.entity';
 import { StravaActivity } from '../entities/strava-activity.entity';
+import { StravaSegmentRepository } from '../repositories/strava-segment.repository';
+import { StravaSegmentEffortRepository } from '../repositories/strava-segment-effort.repository';
+import { StravaAchievementEffortRepository } from '../repositories/strava-achievement-effort.repository';
 
 @Injectable()
 export class ActivityEffortsCreationService {
   private logger = new Logger(ActivityEffortsCreationService.name);
+
+  constructor(
+    private segmentRepo: StravaSegmentRepository,
+    private segmentEffortRepo: StravaSegmentEffortRepository,
+    private achievementEffortRepo: StravaAchievementEffortRepository,
+  ) {}
 
   public async extractAndCreateEfforts(
     athlete: StravaAthlete,
@@ -44,13 +52,15 @@ export class ActivityEffortsCreationService {
     if (stravaActivity.best_efforts) {
       this.logger.debug(`Creating best efforts ${athlete.id}`);
       for (const activityBestEffort of stravaActivity.best_efforts) {
-        const achievementEffort = await createStravaSAchievementEffortRecord(
+        const achievementEffort = await createStravaAchievementEffortRecord(
           activityBestEffort,
           activity,
           athlete,
         );
         this.logger.debug(`Storing best effort for athlete ${athlete.id}`);
-        await manager.save(StravaAchievementEffort, achievementEffort);
+        await this.achievementEffortRepo
+          .transactional(manager)
+          .saveAchievementEffort(achievementEffort);
       }
     }
   }
@@ -77,19 +87,21 @@ export class ActivityEffortsCreationService {
           activity,
           athlete,
         );
-        await manager.save(StravaSegmentEffort, segmentEffort);
+        await this.segmentEffortRepo
+          .transactional(manager)
+          .saveSegmentEffort(segmentEffort);
       }
     }
   }
 
   private async getOrCreateSegment(
     manager: EntityManager,
-    segment: any,
+    segment: Segment,
   ): Promise<StravaSegment> {
-    // TODO: this feels brittle... we should group all repo-like code
-    const segmentRecord = await manager.findOne(StravaSegment, {
-      where: { stravaId: segment.id },
-    });
+    // TODO: consider refactoring to use stravaId as primary key to better handle duplicates
+    const segmentRecord = await this.segmentRepo
+      .transactional(manager)
+      .findSegment(segment.id);
     if (segmentRecord) {
       return segmentRecord;
     }
@@ -98,12 +110,10 @@ export class ActivityEffortsCreationService {
 
   private async createSegmentRecord(
     manager: EntityManager,
-    segment: any,
+    segment: Segment,
   ): Promise<StravaSegment> {
-    const newSegment = new StravaSegment();
-    newSegment.stravaId = segment.id;
-    newSegment.name = segment.name;
-    await manager.save(newSegment);
+    const newSegment = createStravaSegmentRecord(segment);
+    await this.segmentRepo.transactional(manager).saveSegment(newSegment);
     return newSegment;
   }
 }

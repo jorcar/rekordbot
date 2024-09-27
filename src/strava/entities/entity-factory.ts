@@ -1,8 +1,10 @@
 import { StravaAthlete } from './strava-athlete.entity';
 import { StravaActivity } from './strava-activity.entity';
 import {
+  Segment,
   SimpleStravaApiActivity,
   StravaApiActivity,
+  StravaApiSegmentEffort,
   StravaTokenResponse,
   StravaTokenResponseWithAthlete,
 } from '../strava-api.service';
@@ -31,7 +33,7 @@ export function createStravaActivityRecord(
   return activityRecord;
 }
 
-export function createStravaSAchievementEffortRecord(
+export function createStravaAchievementEffortRecord(
   activityBestEffort: any,
   stravaActivity: StravaActivity,
   athlete: StravaAthlete,
@@ -48,7 +50,7 @@ export function createStravaSAchievementEffortRecord(
 }
 
 export function createStravaSegmentEffortRecord(
-  stravaSegmentEffort: any,
+  stravaSegmentEffort: StravaApiSegmentEffort,
   segment: StravaSegment,
   stravaActivity: StravaActivity,
   stravaAthlete: StravaAthlete,
@@ -62,6 +64,13 @@ export function createStravaSegmentEffortRecord(
   segmentEffort.movingTime = stravaSegmentEffort.moving_time;
   segmentEffort.startDate = new Date(stravaSegmentEffort.start_date);
   return segmentEffort;
+}
+
+export function createStravaSegmentRecord(segment: Segment): StravaSegment {
+  const stravaSegment = new StravaSegment();
+  stravaSegment.stravaId = segment.id;
+  stravaSegment.name = segment.name;
+  return stravaSegment;
 }
 
 export function createStravaAthleteRecord(
