@@ -3,6 +3,7 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
 import { AthleteStatisticsService } from './strava/athlete-statistics.service';
+import { AchievementRepository } from './strava-analysis/achievement.repository';
 
 @Controller()
 export class AppController {
@@ -10,6 +11,7 @@ export class AppController {
     private userService: UserService,
     private stravaService: StravaService,
     private athleteStatisticsService: AthleteStatisticsService,
+    private achievementRepository: AchievementRepository,
   ) {}
 
   @Get()
@@ -45,11 +47,13 @@ export class AppController {
     const stats = await this.athleteStatisticsService.getAthleteStats(
       athlete.id,
     );
+    const achievementCount =
+      await this.achievementRepository.countAchievementsForAthlete(athlete.id);
     const statistics = {
       activities: stats.activityCount,
       segment_efforts: stats.segmentEffortCount,
       achievement_efforts: stats.achievementEffortCount,
-      achievements: stats.achievementCount,
+      achievements: achievementCount,
       segments: stats.segmentCount,
     };
     const onboardingStatus =

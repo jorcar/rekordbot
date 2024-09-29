@@ -22,6 +22,6 @@ import { TransactionRunner } from '../common/transaction-runner.provider';
     AchievementRepository,
     TransactionRunner,
   ],
-  exports: [],
+  exports: [AchievementRepository],
 })
 export class StravaAnalysisModule {}
