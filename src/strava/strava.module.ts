@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { StravaAuthController } from './controllers/strava-auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StravaAthlete } from './entities/strava-athlete.entity';
@@ -12,13 +12,13 @@ import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaSegment } from './entities/strava-segment.entity';
 import { StravaActivityCreatedJobProcessor } from './jobs/strava-activity-created.job-processor';
-import { StravaBackfillJobProcessor } from './jobs/strava-backfill.job-processor';
+import { StravaBackfillJobProcessor } from '../strava-backfill/strava-backfill.job-processor';
 import { StravaAthleteAddedJobProcessor } from './jobs/strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
 import { TransactionRunner } from '../common/transaction-runner.provider';
 import { StravaActivityUpdatedJobProcessor } from './jobs/strava-activity-updated.job-processor';
-import { StravaBackfillStatus } from './entities/strava-backfill-status.entity';
+import { StravaBackfillStatus } from '../strava-backfill/strava-backfill-status.entity';
 import { ThrottledScheduler } from './jobs/throttled-scheduler.service';
 import { TestLabController } from './controllers/test-lab.controller';
 import { ActivityEffortsCreationService } from './jobs/activity-efforts-creation.service';
@@ -30,10 +30,7 @@ import { StravaActivityRepository } from './repositories/strava-activity.reposit
 import { StravaSegmentRepository } from './repositories/strava-segment.repository';
 import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
-import { BackfillStatusRepository } from './repositories/backfill-status.repository';
-import { Backfiller } from './backfill/backfiller';
-import { ActivityBackfiller } from './backfill/activity-backfiller';
-import { EffortBackfiller } from './backfill/effort-backfiller';
+import { StravaBackfillModule } from '../strava-backfill/strava-backfill.module';
 
 @Module({
   imports: [
@@ -61,7 +58,6 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     StravaActivityCreatedJobProcessor,
     StravaActivityDeletedJobProcessor,
     StravaActivityUpdatedJobProcessor,
-    StravaBackfillJobProcessor,
     StravaAthleteAddedJobProcessor,
     TransactionRunner,
     ThrottledScheduler,
@@ -73,10 +69,6 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     StravaSegmentRepository,
     StravaSegmentEffortRepository,
     StravaAchievementEffortRepository,
-    BackfillStatusRepository,
-    Backfiller,
-    ActivityBackfiller,
-    EffortBackfiller,
   ],
   exports: [
     StravaService,
@@ -84,6 +76,8 @@ import { EffortBackfiller } from './backfill/effort-backfiller';
     StravaActivityRepository,
     StravaSegmentEffortRepository,
     StravaAchievementEffortRepository,
+    ActivityEffortsCreationService,
+    StravaAthleteRepository,
   ],
 })
 export class StravaModule {}

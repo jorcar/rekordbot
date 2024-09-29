@@ -1,8 +1,8 @@
 import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
+import { AbstractTransactionalRepository } from '../common/abstract-transactional.repository';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
+import { StravaBackfillStatus } from './strava-backfill-status.entity';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

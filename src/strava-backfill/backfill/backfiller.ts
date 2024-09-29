@@ -1,7 +1,7 @@
-import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
+import { StravaBackfillStatus } from '../strava-backfill-status.entity';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
 import { TransactionRunner } from '../../common/transaction-runner.provider';
-import { BackfillStatusRepository } from '../repositories/backfill-status.repository';
+import { BackfillStatusRepository } from '../backfill-status.repository';
 import { EffortBackfiller } from './effort-backfiller';
 import { ActivityBackfiller } from './activity-backfiller';
 import { Injectable, Logger } from '@nestjs/common';

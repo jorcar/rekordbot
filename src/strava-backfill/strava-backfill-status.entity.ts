@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { StravaAthlete } from './strava-athlete.entity';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
 
 export interface StravaBackfillProgress {
   activitiesSynched: boolean;

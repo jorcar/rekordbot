@@ -4,6 +4,7 @@ import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
 import { AthleteStatisticsService } from './strava/athlete-statistics.service';
 import { AchievementRepository } from './strava-analysis/achievement.repository';
+import { StravaBackfillService } from './strava-backfill/strava-backfill.service';
 
 @Controller()
 export class AppController {
@@ -12,6 +13,7 @@ export class AppController {
     private stravaService: StravaService,
     private athleteStatisticsService: AthleteStatisticsService,
     private achievementRepository: AchievementRepository,
+    private stravaBackfillService: StravaBackfillService,
   ) {}
 
   @Get()
@@ -57,7 +59,7 @@ export class AppController {
       segments: stats.segmentCount,
     };
     const onboardingStatus =
-      await this.athleteStatisticsService.getOnboardingStatus(athlete.id);
+      await this.stravaBackfillService.getOnboardingStatus(athlete.id);
 
     const onboarding =
       !onboardingStatus ||

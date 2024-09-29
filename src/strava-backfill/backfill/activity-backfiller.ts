@@ -1,12 +1,12 @@
 import { PartialBackfiller } from './backfiller';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
-import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
+import { StravaBackfillStatus } from '../strava-backfill-status.entity';
 import { Injectable, Logger } from '@nestjs/common';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { SimpleStravaApiActivity } from '../strava-api.service';
-import { createStravaActivityRecord } from '../entities/entity-factory';
-import { StravaService } from '../strava.service';
-import { StravaActivityRepository } from '../repositories/strava-activity.repository';
+import { StravaAthlete } from '../../strava/entities/strava-athlete.entity';
+import { SimpleStravaApiActivity } from '../../strava/strava-api.service';
+import { createStravaActivityRecord } from '../../strava/entities/entity-factory';
+import { StravaService } from '../../strava/strava.service';
+import { StravaActivityRepository } from '../../strava/repositories/strava-activity.repository';
 
 @Injectable()
 export class ActivityBackfiller implements PartialBackfiller {

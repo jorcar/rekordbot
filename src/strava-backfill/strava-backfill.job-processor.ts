@@ -1,13 +1,13 @@
-import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
-import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from '../../jobs';
-import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
+import { JobProcessor, QueuedJobProcessor } from '../job/job-processor';
+import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from '../jobs';
+import { StravaBackfillStatus } from './strava-backfill-status.entity';
 import { Logger } from '@nestjs/common';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { ThrottledScheduler } from './throttled-scheduler.service';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
+import { ThrottledScheduler } from '../strava/jobs/throttled-scheduler.service';
 import { DateTime } from 'luxon';
-import { StravaAthleteRepository } from '../repositories/strava-athlete.repository';
-import { BackfillStatusRepository } from '../repositories/backfill-status.repository';
-import { Backfiller } from '../backfill/backfiller';
+import { StravaAthleteRepository } from '../strava/repositories/strava-athlete.repository';
+import { Backfiller } from './backfill/backfiller';
+import { BackfillStatusRepository } from './backfill-status.repository';
 
 @JobProcessor(STRAVA_BACKFILL_JOB)
 export class StravaBackfillJobProcessor
@@ -39,8 +39,8 @@ export class StravaBackfillJobProcessor
   private async findOrCreateBackfillStatus(
     athlete: StravaAthlete,
   ): Promise<StravaBackfillStatus> {
-    let backfillStatus =
-      await this.backfillStatusRepository.findByAthlete(athlete);
+    let backfillStatus = undefined;
+    await this.backfillStatusRepository.findByAthlete(athlete);
 
     if (!backfillStatus) {
       const now = new Date();

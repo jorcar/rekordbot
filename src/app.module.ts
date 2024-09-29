@@ -17,9 +17,10 @@ import configuration, {
   toConnectionString,
 } from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { StravaBackfillStatus } from './strava/entities/strava-backfill-status.entity';
+import { StravaBackfillStatus } from './strava-backfill/strava-backfill-status.entity';
 import { Achievement } from './strava-analysis/achievement.entity';
 import { StravaAnalysisModule } from './strava-analysis/strava-analysis.module';
+import { StravaBackfillModule } from './strava-backfill/strava-backfill.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { StravaAnalysisModule } from './strava-analysis/strava-analysis.module';
     UserModule,
     StravaModule,
     StravaAnalysisModule,
+    StravaBackfillModule,
     AuthModule,
     JobModule.forRootAsync({
       imports: [ConfigModule],
