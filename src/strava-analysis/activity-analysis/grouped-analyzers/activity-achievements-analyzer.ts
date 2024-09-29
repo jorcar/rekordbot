@@ -9,7 +9,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<StravaActivity> {
   constructor(private activityRepo: StravaActivityRepository) {
-    console.log('ActivityAchievementsAnalyzer', activityRepo);
     super();
   }
 

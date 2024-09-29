@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 
+// TODO: we should consider where this lives
 // in a environment with multiple instances lastEnqueued would need to be shared between instances (db + locking)
 @Injectable()
 export class ThrottledScheduler {

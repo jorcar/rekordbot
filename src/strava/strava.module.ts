@@ -1,4 +1,4 @@
-import { forwardRef, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { StravaAuthController } from './controllers/strava-auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StravaAthlete } from './entities/strava-athlete.entity';
@@ -12,7 +12,6 @@ import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaSegment } from './entities/strava-segment.entity';
 import { StravaActivityCreatedJobProcessor } from './jobs/strava-activity-created.job-processor';
-import { StravaBackfillJobProcessor } from '../strava-backfill/strava-backfill.job-processor';
 import { StravaAthleteAddedJobProcessor } from './jobs/strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
@@ -30,7 +29,6 @@ import { StravaActivityRepository } from './repositories/strava-activity.reposit
 import { StravaSegmentRepository } from './repositories/strava-segment.repository';
 import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
-import { StravaBackfillModule } from '../strava-backfill/strava-backfill.module';
 
 @Module({
   imports: [
