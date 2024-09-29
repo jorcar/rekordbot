@@ -10,7 +10,7 @@ import { Logger } from '@nestjs/common';
 import { StravaApiActivity } from '../strava-api.service';
 import { TransactionRunner } from '../../common/transaction-runner.provider';
 import { createStravaActivityRecord } from '../entities/entity-factory';
-import { ActivityEffortsCreationService } from './activity-efforts-creation.service';
+import { ActivityEffortsCreationService } from '../activity-efforts-creation.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
 import { StravaActivityRepository } from '../repositories/strava-activity.repository';
 import { StravaAthleteRepository } from '../repositories/strava-athlete.repository';

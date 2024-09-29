@@ -3,15 +3,15 @@ import {
   createStravaAchievementEffortRecord,
   createStravaSegmentEffortRecord,
   createStravaSegmentRecord,
-} from '../entities/entity-factory';
-import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { Segment, StravaApiActivity } from '../strava-api.service';
+} from './entities/entity-factory';
+import { StravaAthlete } from './entities/strava-athlete.entity';
+import { Segment, StravaApiActivity } from './strava-api.service';
 import { EntityManager } from 'typeorm/entity-manager/EntityManager';
-import { StravaSegment } from '../entities/strava-segment.entity';
-import { StravaActivity } from '../entities/strava-activity.entity';
-import { StravaSegmentRepository } from '../repositories/strava-segment.repository';
-import { StravaSegmentEffortRepository } from '../repositories/strava-segment-effort.repository';
-import { StravaAchievementEffortRepository } from '../repositories/strava-achievement-effort.repository';
+import { StravaSegment } from './entities/strava-segment.entity';
+import { StravaActivity } from './entities/strava-activity.entity';
+import { StravaSegmentRepository } from './repositories/strava-segment.repository';
+import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
+import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
 
 @Injectable()
 export class ActivityEffortsCreationService {

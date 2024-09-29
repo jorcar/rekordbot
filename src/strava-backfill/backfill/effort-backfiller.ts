@@ -4,7 +4,7 @@ import { StravaBackfillStatus } from '../strava-backfill-status.entity';
 import { Injectable, Logger } from '@nestjs/common';
 import { StravaService } from '../../strava/strava.service';
 import { StravaActivityRepository } from '../../strava/repositories/strava-activity.repository';
-import { ActivityEffortsCreationService } from '../../strava/jobs/activity-efforts-creation.service';
+import { ActivityEffortsCreationService } from '../../strava/activity-efforts-creation.service';
 
 @Injectable()
 export class EffortBackfiller implements PartialBackfiller {
