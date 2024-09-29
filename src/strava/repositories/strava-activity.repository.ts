@@ -18,7 +18,7 @@ export class StravaActivityRepository extends AbstractTransactionalRepository<
   }
 
   public async saveActivity(activity: StravaActivity): Promise<void> {
-    await this.repo.save(activity);
+    await this.repo.upsert(activity, ['stravaId']);
   }
 
   public async deleteActivity(stravaActivityId: number): Promise<void> {
