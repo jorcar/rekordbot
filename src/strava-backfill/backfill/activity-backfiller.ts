@@ -8,6 +8,8 @@ import { createStravaActivityRecord } from '../../strava/entities/entity-factory
 import { StravaService } from '../../strava/strava.service';
 import { StravaActivityRepository } from '../../strava/repositories/strava-activity.repository';
 
+export const ACTIVITIES_PER_PAGE = 200;
+
 @Injectable()
 export class ActivityBackfiller implements PartialBackfiller {
   private readonly logger = new Logger(ActivityBackfiller.name);
@@ -44,11 +46,11 @@ export class ActivityBackfiller implements PartialBackfiller {
       athlete.stravaId,
       new Date(backfillStatus.progress.synchUntil),
       backfillStatus.progress.processedPages + 1,
-      200,
+      ACTIVITIES_PER_PAGE,
     );
     await this.createActivities(activities, athlete, manager);
     return (
-      activities.length < 200 ||
+      activities.length < ACTIVITIES_PER_PAGE ||
       activities[activities.length - 1].start_date <
         backfillStatus.progress.synchCutOff
     );

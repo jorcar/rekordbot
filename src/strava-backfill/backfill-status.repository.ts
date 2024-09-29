@@ -1,4 +1,4 @@
-import { DeepPartial, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractTransactionalRepository } from '../common/abstract-transactional.repository';
 import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
@@ -25,12 +25,5 @@ export class BackfillStatusRepository extends AbstractTransactionalRepository<
     athlete: StravaAthlete,
   ): Promise<StravaBackfillStatus | undefined> {
     return await this.repo.findOne({ where: { athlete } });
-  }
-
-  public async updateStatus(
-    id: number,
-    entity: DeepPartial<StravaBackfillStatus>,
-  ): Promise<void> {
-    await this.repo.update({ id }, entity);
   }
 }

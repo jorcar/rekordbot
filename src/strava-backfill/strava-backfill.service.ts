@@ -1,7 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { StravaBackfillStatus } from './strava-backfill-status.entity';
+import { BackfillStatusRepository } from './backfill-status.repository';
+import { Athlete } from '../strava/strava-api.service';
+import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
+import { ACTIVITIES_PER_PAGE } from './backfill/activity-backfiller';
 
 export interface OnboardingStatus {
   activitiesSynched: boolean;
@@ -14,17 +15,14 @@ export interface OnboardingStatus {
 export class StravaBackfillService {
   private readonly logger = new Logger(StravaBackfillService.name);
 
-  constructor(
-    @InjectRepository(StravaBackfillStatus)
-    private backfillStatusRepository: Repository<StravaBackfillStatus>,
-  ) {}
+  constructor(private backfillStatusRepository: BackfillStatusRepository) {}
 
   public async getOnboardingStatus(
     atheleteId: number,
   ): Promise<OnboardingStatus | undefined> {
-    const backfillStatus = await this.backfillStatusRepository.findOne({
-      where: { athlete: { id: atheleteId } },
-    });
+    const backfillStatus = await this.backfillStatusRepository.findByAthlete({
+      id: atheleteId,
+    } as StravaAthlete);
     if (!backfillStatus) {
       return undefined;
     }
@@ -40,7 +38,7 @@ export class StravaBackfillService {
           ),
       segment_effort_percentage: Math.round(
         ((backfillStatus.progress.lastProcessedActivityIdx || 0) /
-          (backfillStatus.progress.processedPages * 200)) *
+          (backfillStatus.progress.processedPages * ACTIVITIES_PER_PAGE)) *
           100,
       ),
     };
