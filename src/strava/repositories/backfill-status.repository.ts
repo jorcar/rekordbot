@@ -1,12 +1,11 @@
-import { Between, DeepPartial, Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
-import { StravaActivity } from '../entities/strava-activity.entity';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
-import { StravaSegment } from '../entities/strava-segment.entity';
-import { StravaSegmentEffort } from '../entities/strava-segment-effort.entity';
 import { StravaBackfillStatus } from '../entities/strava-backfill-status.entity';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class BackfillStatusRepository extends AbstractTransactionalRepository<
   StravaBackfillStatus,
   BackfillStatusRepository

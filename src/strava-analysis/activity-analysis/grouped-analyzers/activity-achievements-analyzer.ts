@@ -4,9 +4,12 @@ import { describeRank } from '../rank-utils';
 import { AbstractGroupedAnalyzer } from './abstract-grouped-analyzer';
 import { StravaAthlete } from '../../../strava/entities/strava-athlete.entity';
 import { StravaActivityRepository } from '../../../strava/repositories/strava-activity.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class ActivityAchievementsAnalyzer extends AbstractGroupedAnalyzer<StravaActivity> {
   constructor(private activityRepo: StravaActivityRepository) {
+    console.log('ActivityAchievementsAnalyzer', activityRepo);
     super();
   }
 

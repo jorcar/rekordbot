@@ -5,7 +5,9 @@ import { StravaAthlete } from '../../../strava/entities/strava-athlete.entity';
 import { describeRank } from '../rank-utils';
 import { AnalysisParams } from '../period-analyzers/best-effort-in-period-analyzer';
 import { StravaAchievementEffortRepository } from '../../../strava/repositories/strava-achievement-effort.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class AchievementEffortsAnalyzer extends AbstractGroupedAnalyzer<StravaAchievementEffort> {
   constructor(
     private achievementEffortRepository: StravaAchievementEffortRepository,

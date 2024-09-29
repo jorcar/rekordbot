@@ -4,7 +4,9 @@ import { AbstractTransactionalRepository } from '../../common/abstract-transacti
 import { StravaSegmentEffort } from '../entities/strava-segment-effort.entity';
 import { StravaSegment } from '../entities/strava-segment.entity';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class StravaSegmentEffortRepository extends AbstractTransactionalRepository<
   StravaSegmentEffort,
   StravaSegmentEffortRepository

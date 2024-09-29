@@ -3,7 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { StravaAthlete } from '../entities/strava-athlete.entity';
 import { User } from '../../user/user.entity';
 import { AbstractTransactionalRepository } from '../../common/abstract-transactional.repository';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class StravaAthleteRepository extends AbstractTransactionalRepository<
   StravaAthlete,
   StravaAthleteRepository
