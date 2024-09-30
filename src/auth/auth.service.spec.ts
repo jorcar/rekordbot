@@ -1,10 +1,8 @@
-import { AuthController } from './auth.controller';
 import { Test } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { CookieService } from '../auth-utils/cookie.service';
 import { PasswordHashService } from '../auth-utils/password-hash.service';
 import { UserService } from '../user/user.service';
-import autoMockOn = jest.autoMockOn;
 import { User } from '../user/user.entity';
 import { when } from 'jest-when';
 
@@ -16,12 +14,12 @@ describe('AuthService', () => {
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [],
-      controllers: [AuthController],
+      controllers: [],
       providers: [
         AuthService,
-        { provide: CookieService, useValue: autoMockOn() },
-        { provide: PasswordHashService, useValue: autoMockOn() },
-        { provide: UserService, useValue: autoMockOn() },
+        { provide: CookieService, useValue: {} },
+        { provide: PasswordHashService, useValue: {} },
+        { provide: UserService, useValue: {} },
       ],
     }).compile();
 

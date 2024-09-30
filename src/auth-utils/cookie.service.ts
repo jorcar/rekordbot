@@ -6,7 +6,7 @@ import { TokenService } from './token.service';
 export class CookieService {
   constructor(private tokenService: TokenService) {}
 
-  async generateCookie(
+  public async generateCookie(
     user: User,
   ): Promise<{ token: string; cookie_options: any }> {
     const token = await this.tokenService.generateToken(user);
