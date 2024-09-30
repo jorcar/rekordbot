@@ -1,28 +1,13 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { JobService } from './job.service';
 import { JobEnqueuerService } from './job-enqueuer.service';
-import { MODULE_OPTIONS_TOKEN } from './job.module-definition';
+import { createTestingModule } from './test-utils';
 
 describe('JobEnqueuerService', () => {
   let jobEnqueuerService: JobEnqueuerService;
   let jobService: JobService;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
-      imports: [],
-      controllers: [],
-      providers: [
-        JobEnqueuerService,
-        JobService,
-        {
-          provide: MODULE_OPTIONS_TOKEN,
-          useValue: {
-            connectionString: '',
-            maxNumberConnections: 5,
-          },
-        },
-      ],
-    }).compile();
+    const app = await createTestingModule();
 
     jobEnqueuerService = app.get<JobEnqueuerService>(JobEnqueuerService);
     jobService = app.get<JobService>(JobService);

@@ -39,8 +39,8 @@ export class StravaBackfillJobProcessor
   private async findOrCreateBackfillStatus(
     athlete: StravaAthlete,
   ): Promise<StravaBackfillStatus> {
-    let backfillStatus = undefined;
-    await this.backfillStatusRepository.findByAthlete(athlete);
+    let backfillStatus =
+      await this.backfillStatusRepository.findByAthlete(athlete);
 
     if (!backfillStatus) {
       const now = new Date();

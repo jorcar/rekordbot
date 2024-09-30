@@ -1,21 +1,15 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import * as PgBoss from 'pg-boss';
-import { default_retry_options, JobsModuleConfig } from './job-module-config';
-import { MODULE_OPTIONS_TOKEN } from './job.module-definition';
+import { default_retry_options } from './job-module-config';
 
 @Injectable()
 export class JobService {
   private readonly logger = new Logger(JobService.name);
-  private boss: PgBoss;
 
-  constructor(@Inject(MODULE_OPTIONS_TOKEN) private config: JobsModuleConfig) {
-    this.boss = new PgBoss({
-      connectionString: config.connectionString,
-      max: config.maxNumberConnections,
-    });
-  }
+  constructor(private boss: PgBoss) {}
 
   public async init(): Promise<void> {
+    this.logger.log('Starting job service');
     await this.boss.start();
   }
 
@@ -39,7 +33,7 @@ export class JobService {
     });
   }
 
-  async enqueue<T extends object>(queue: string, job: T, timestamp: Date) {
+  async enqueue<T extends object>(queue: string, job: T, timestamp?: Date) {
     this.logger.log(`Publishing message to queue ${queue}`);
     if (timestamp) {
       await this.boss.send(queue, job, { startAfter: timestamp });
