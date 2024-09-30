@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { User } from '../user/user.entity';
 import { JwtService } from '@nestjs/jwt';
 
@@ -9,7 +9,6 @@ export interface TokenPayload {
 
 @Injectable()
 export class TokenService {
-  private readonly logger = new Logger(TokenService.name);
   constructor(private jwtService: JwtService) {}
 
   async generateToken(user: User): Promise<string> {
