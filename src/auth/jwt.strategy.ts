@@ -16,7 +16,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(configService: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
-        JwtStrategy.extractJWT,
+        JwtStrategy.extractJWTFromCookie,
         ExtractJwt.fromAuthHeaderAsBearerToken(),
       ]),
       ignoreExpiration: false,
@@ -24,12 +24,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  private static extractJWT(req: RequestType): string | null {
+  private static extractJWTFromCookie(req: RequestType): string | null {
     if (req.cookies && 'token' in req.cookies && req.cookies.token.length > 0) {
       return req.cookies.token;
     }
   }
 
+  // invoked by framework
   validate(payload: TokenPayload): ValidatedUser {
     return { userId: payload.sub, user: payload.user };
   }
