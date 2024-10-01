@@ -51,7 +51,7 @@ export class StravaSegmentEffortRepository extends AbstractTransactionalReposito
   ): Promise<number> {
     const [count] = await this.repo.query(
       'SELECT COUNT(DISTINCT "segmentId") FROM strava_segment_effort WHERE "athleteId" = $1',
-      [athlete.stravaId],
+      [athlete.id],
     );
     return count.count;
   }
