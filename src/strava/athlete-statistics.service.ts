@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
-import { StravaAchievementEffort } from './entities/strava-achievement-effort.entity';
 import { StravaActivityRepository } from './repositories/strava-activity.repository';
+import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
 
 export interface AthleteStats {
   activityCount: number;
@@ -20,8 +20,7 @@ export class AthleteStatisticsService {
     private activityRepo: StravaActivityRepository,
     @InjectRepository(StravaSegmentEffort)
     private segmentEffortsRepo: Repository<StravaSegmentEffort>,
-    @InjectRepository(StravaAchievementEffort)
-    private achievementEffortsRepo: Repository<StravaAchievementEffort>,
+    private achievementEffortsRepo: StravaAchievementEffortRepository,
   ) {}
 
   public async getAthleteStats(athleteId: number): Promise<AthleteStats> {
@@ -38,9 +37,8 @@ export class AthleteStatisticsService {
       [athleteId],
     );
 
-    const achievementEffortCountPromise = this.achievementEffortsRepo.count({
-      where: { athlete: { id: athleteId } },
-    });
+    const achievementEffortCountPromise =
+      this.achievementEffortsRepo.countEffortsForAthlete(athlete);
 
     const [
       activityCount,

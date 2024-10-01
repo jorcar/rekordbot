@@ -38,4 +38,10 @@ export class StravaAchievementEffortRepository extends AbstractTransactionalRepo
       },
     });
   }
+
+  public async countEffortsForAthlete(athlete: StravaAthlete): Promise<number> {
+    return this.repo.count({
+      where: { athlete },
+    });
+  }
 }
