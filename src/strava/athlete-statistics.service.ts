@@ -1,9 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaActivityRepository } from './repositories/strava-activity.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
+import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
+import { StravaAthlete } from './entities/strava-athlete.entity';
 
 export interface AthleteStats {
   activityCount: number;
@@ -18,24 +17,20 @@ export class AthleteStatisticsService {
 
   constructor(
     private activityRepo: StravaActivityRepository,
-    @InjectRepository(StravaSegmentEffort)
-    private segmentEffortsRepo: Repository<StravaSegmentEffort>,
+    private segmentEffortsRepo: StravaSegmentEffortRepository,
     private achievementEffortsRepo: StravaAchievementEffortRepository,
   ) {}
 
   public async getAthleteStats(athleteId: number): Promise<AthleteStats> {
-    const athlete = { athlete: { id: athleteId } } as any;
+    const athlete = { id: athleteId } as StravaAthlete;
     const activityCountPromise =
       this.activityRepo.countActivitiesForAthlete(athlete);
 
-    const segmentEffortCountPromise = this.segmentEffortsRepo.count({
-      where: { athlete: { id: athleteId } },
-    });
+    const segmentEffortCountPromise =
+      this.segmentEffortsRepo.countEffortsForAthlete(athlete);
 
-    const segmentCountPromise = this.segmentEffortsRepo.query(
-      'SELECT COUNT(DISTINCT "segmentId") FROM strava_segment_effort WHERE "athleteId" = $1',
-      [athleteId],
-    );
+    const segmentCountPromise =
+      this.segmentEffortsRepo.countSegmentsForAthlete(athlete);
 
     const achievementEffortCountPromise =
       this.achievementEffortsRepo.countEffortsForAthlete(athlete);
@@ -43,7 +38,7 @@ export class AthleteStatisticsService {
     const [
       activityCount,
       segmentEffortCount,
-      [segmentCount],
+      segmentCount,
       achievementEffortCount,
     ] = await Promise.all([
       activityCountPromise,
@@ -54,7 +49,7 @@ export class AthleteStatisticsService {
     return {
       activityCount,
       segmentEffortCount,
-      segmentCount: segmentCount.count,
+      segmentCount: segmentCount,
       achievementEffortCount,
     };
   }

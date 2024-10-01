@@ -39,4 +39,20 @@ export class StravaSegmentEffortRepository extends AbstractTransactionalReposito
       },
     });
   }
+
+  public async countEffortsForAthlete(athlete: StravaAthlete): Promise<number> {
+    return this.repo.count({
+      where: { athlete },
+    });
+  }
+
+  public async countSegmentsForAthlete(
+    athlete: StravaAthlete,
+  ): Promise<number> {
+    const [count] = await this.repo.query(
+      'SELECT COUNT(DISTINCT "segmentId") FROM strava_segment_effort WHERE "athleteId" = $1',
+      [athlete.stravaId],
+    );
+    return count.count;
+  }
 }
