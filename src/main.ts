@@ -8,7 +8,7 @@ import * as hbs from 'hbs';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-
+  //app.setGlobalPrefix('api'); // TODO: consider this change
   app.useStaticAssets(join(__dirname, '..', 'public'), {
     prefix: '/public/',
   });

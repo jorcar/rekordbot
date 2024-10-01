@@ -28,6 +28,7 @@ export class StravaWebhookController {
   ) {}
 
   @Get()
+  @HttpCode(200)
   get(@Req() req: any) {
     this.logger.log('Echoing Strava challenge');
     const challenge = req.query['hub.challenge'];

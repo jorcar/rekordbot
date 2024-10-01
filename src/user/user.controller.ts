@@ -8,6 +8,7 @@ export class UserController {
     private userService: UserService,
     private cookieService: CookieService,
   ) {}
+
   @Post('register')
   async register(@Body() bo: any, @Res() res: any) {
     const email = bo.email.trim();

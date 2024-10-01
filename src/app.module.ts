@@ -60,7 +60,7 @@ import { StravaBackfillModule } from './strava-backfill/strava-backfill.module';
             columnName: 'snake_case',
             relationName: 'snake_case',
           }*/
-          poolSize: 3,
+          poolSize: config.poolSize,
           entities: [
             Achievement,
             StravaSegment,

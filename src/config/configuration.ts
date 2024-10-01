@@ -8,6 +8,7 @@ export interface DatabaseConfig {
   password: string;
   database: string;
   synchronize: boolean;
+  poolSize: number;
 }
 
 export interface StravaConfig {
@@ -41,6 +42,7 @@ const test: Config = {
     password: '',
     database: 'my_database',
     synchronize: true, // TODO: deal with this for production
+    poolSize: 3,
   },
   strava: {
     client_id: 27973,
