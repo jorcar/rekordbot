@@ -68,4 +68,12 @@ export class StravaActivityRepository extends AbstractTransactionalRepository<
     });
     return activity;
   }
+
+  public async countActivitiesForAthlete(
+    athlete: StravaAthlete,
+  ): Promise<number> {
+    return this.repo.count({
+      where: { athlete },
+    });
+  }
 }

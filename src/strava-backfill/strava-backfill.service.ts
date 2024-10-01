@@ -1,6 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { BackfillStatusRepository } from './backfill-status.repository';
-import { Athlete } from '../strava/strava-api.service';
 import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
 import { ACTIVITIES_PER_PAGE } from './backfill/activity-backfiller';
 
