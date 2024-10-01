@@ -23,17 +23,6 @@ export class AthleteStatisticsService {
 
   public async getAthleteStats(athleteId: number): Promise<AthleteStats> {
     const athlete = { id: athleteId } as StravaAthlete;
-    const activityCountPromise =
-      this.activityRepo.countActivitiesForAthlete(athlete);
-
-    const segmentEffortCountPromise =
-      this.segmentEffortsRepo.countEffortsForAthlete(athlete);
-
-    const segmentCountPromise =
-      this.segmentEffortsRepo.countSegmentsForAthlete(athlete);
-
-    const achievementEffortCountPromise =
-      this.achievementEffortsRepo.countEffortsForAthlete(athlete);
 
     const [
       activityCount,
@@ -41,15 +30,15 @@ export class AthleteStatisticsService {
       segmentCount,
       achievementEffortCount,
     ] = await Promise.all([
-      activityCountPromise,
-      segmentEffortCountPromise,
-      segmentCountPromise,
-      achievementEffortCountPromise,
+      this.activityRepo.countActivitiesForAthlete(athlete),
+      this.segmentEffortsRepo.countEffortsForAthlete(athlete),
+      this.segmentEffortsRepo.countSegmentsForAthlete(athlete),
+      this.achievementEffortsRepo.countEffortsForAthlete(athlete),
     ]);
     return {
       activityCount,
       segmentEffortCount,
-      segmentCount: segmentCount,
+      segmentCount,
       achievementEffortCount,
     };
   }
