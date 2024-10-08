@@ -38,6 +38,14 @@ export class StravaActivityRepository extends AbstractTransactionalRepository<
     });
   }
 
+  public async findOptionalActivity(
+    stravaActivityId: number,
+  ): Promise<StravaActivity | undefined> {
+    return await this.repo.findOne({
+      where: { stravaId: stravaActivityId },
+    });
+  }
+
   public async findActivitiesOfType(
     athlete: StravaAthlete,
     sportType: string,

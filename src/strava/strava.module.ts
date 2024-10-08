@@ -11,7 +11,6 @@ import { StravaAchievementEffort } from './entities/strava-achievement-effort.en
 import { StravaActivity } from './entities/strava-activity.entity';
 import { StravaSegmentEffort } from './entities/strava-segment-effort.entity';
 import { StravaSegment } from './entities/strava-segment.entity';
-import { StravaActivityCreatedJobProcessor } from './jobs/strava-activity-created.job-processor';
 import { StravaAthleteAddedJobProcessor } from './jobs/strava-athlete-added-job.processor';
 import { StravaActivityDeletedJobProcessor } from './jobs/strava-activity-deleted.job-processor';
 import { ConfigModule } from '@nestjs/config';
@@ -28,7 +27,6 @@ import { StravaActivityRepository } from './repositories/strava-activity.reposit
 import { StravaSegmentRepository } from './repositories/strava-segment.repository';
 import { StravaSegmentEffortRepository } from './repositories/strava-segment-effort.repository';
 import { StravaAchievementEffortRepository } from './repositories/strava-achievement-effort.repository';
-import { ThrottledScheduler } from '../job/throttled-scheduler.service';
 
 @Module({
   imports: [
@@ -53,7 +51,6 @@ import { ThrottledScheduler } from '../job/throttled-scheduler.service';
   providers: [
     StravaService,
     StravaApiService,
-    StravaActivityCreatedJobProcessor,
     StravaActivityDeletedJobProcessor,
     StravaActivityUpdatedJobProcessor,
     StravaAthleteAddedJobProcessor,
