@@ -5,13 +5,6 @@ export interface StravaAthleteAddedJob {
   stravaAthleteId: number;
 }
 
-export const STRAVA_ACTIVITY_CREATED_JOB = 'strava-activity-created';
-
-export interface StravaActivityCreatedJob {
-  stravaAthleteId: number;
-  stravaActivityId: number;
-}
-
 export const STRAVA_ACTIVITY_DELETED_JOB = 'strava-activity-deleted';
 
 export interface StravaActivityDeletedJob {
@@ -24,7 +17,7 @@ export const STRAVA_ACTIVITY_UPDATED_JOB = 'strava-activity-updated';
 export interface StravaActivityUpdatedJob {
   stravaAthleteId: number;
   stravaActivityId: number;
-  activityType: string;
+  updates: any;
 }
 
 export const STRAVA_BACKFILL_JOB = 'strava-backfill';

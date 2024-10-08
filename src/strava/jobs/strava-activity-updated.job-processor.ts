@@ -48,23 +48,10 @@ export class StravaActivityUpdatedJobProcessor
         } else {
           if (job.updates?.type) {
             this.logger.log('Activity type has changed, processing changes');
-            // activity type has changed, update the activity
-            this.logger.debug(
-              `Updating activity type for activity ${job.stravaActivityId}`,
+            await this.stravaActivityRepository.deleteActivity(
+              job.stravaActivityId,
             );
-            await this.stravaActivityRepository
-              .transactional(manager)
-              .updateActivity(job.stravaActivityId, {
-                sportType: job.updates.type,
-              });
-            //likely new efforts, probably smarter to just reprocess the activity
-            await this.jobEnqueuer.enqueue<StravaActivityAnalysisJob>(
-              STRAVA_ACTIVITY_ANALYSIS_JOB,
-              {
-                stravaActivityId: job.stravaActivityId,
-                stravaAthleteId: job.stravaAthleteId,
-              },
-            );
+            await this.createActivity(job, manager);
           }
         }
       }
