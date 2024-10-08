@@ -17,7 +17,7 @@ export class Achievement {
   @Column()
   description: string;
 
-  @ManyToOne(() => StravaActivity, { nullable: false })
+  @ManyToOne(() => StravaActivity, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn()
   @Index()
   activity: Promise<StravaActivity>;
