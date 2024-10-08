@@ -12,6 +12,10 @@ export class UnauthorizedExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
+    if (ctx.getRequest().url === '/') {
+      response.redirect('/start');
+      return;
+    }
     response.redirect('/login');
   }
 }

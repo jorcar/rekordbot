@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserService } from './user/user.service';
 import { StravaService } from './strava/strava.service';
@@ -17,10 +17,16 @@ export class AppController {
   ) {}
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   @Render('index')
-  index() {}
+  index(@Res() res: any) {
+    res.redirect('/profile');
+  }
 
-  // TODO: redirect to /profile if already logged in
+  @Get('start')
+  @Render('index')
+  start() {}
+
   @Get('login')
   @Render('login')
   login(@Req() req: any) {
