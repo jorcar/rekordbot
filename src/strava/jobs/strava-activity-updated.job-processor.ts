@@ -1,4 +1,3 @@
-import { StravaService } from '../strava.service';
 import { JobProcessor, QueuedJobProcessor } from '../../job/job-processor';
 import {
   STRAVA_ACTIVITY_ANALYSIS_JOB,
@@ -15,7 +14,6 @@ export class StravaActivityUpdatedJobProcessor
   implements QueuedJobProcessor<StravaActivityUpdatedJob>
 {
   constructor(
-    private stravaService: StravaService,
     private jobEnqueuer: JobEnqueuerService,
     private transactionRunner: TransactionRunner,
     private stravaActivityRepository: StravaActivityRepository,
