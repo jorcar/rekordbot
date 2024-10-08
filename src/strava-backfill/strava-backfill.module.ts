@@ -9,7 +9,6 @@ import { StravaBackfillStatus } from './strava-backfill-status.entity';
 import { TransactionRunner } from '../common/transaction-runner.provider';
 import { StravaBackfillService } from './strava-backfill.service';
 import { StravaBackfillJobProcessor } from './strava-backfill.job-processor';
-import { ThrottledScheduler } from '../strava/jobs/throttled-scheduler.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([StravaBackfillStatus]), StravaModule],
@@ -22,7 +21,6 @@ import { ThrottledScheduler } from '../strava/jobs/throttled-scheduler.service';
     TransactionRunner,
     StravaBackfillService,
     StravaBackfillJobProcessor,
-    ThrottledScheduler,
   ],
   exports: [StravaBackfillService],
 })

@@ -3,11 +3,11 @@ import { STRAVA_BACKFILL_JOB, StravaBackfillJob } from '../jobs';
 import { StravaBackfillStatus } from './strava-backfill-status.entity';
 import { Logger } from '@nestjs/common';
 import { StravaAthlete } from '../strava/entities/strava-athlete.entity';
-import { ThrottledScheduler } from '../strava/jobs/throttled-scheduler.service';
 import { DateTime } from 'luxon';
 import { StravaAthleteRepository } from '../strava/repositories/strava-athlete.repository';
 import { Backfiller } from './backfill/backfiller';
 import { BackfillStatusRepository } from './backfill-status.repository';
+import { ThrottledScheduler } from '../job/throttled-scheduler.service';
 
 @JobProcessor(STRAVA_BACKFILL_JOB)
 export class StravaBackfillJobProcessor

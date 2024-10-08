@@ -6,7 +6,7 @@ import {
   StravaAthleteAddedJob,
 } from '../../jobs';
 import { Logger } from '@nestjs/common';
-import { ThrottledScheduler } from './throttled-scheduler.service';
+import { ThrottledScheduler } from '../../job/throttled-scheduler.service';
 
 @JobProcessor(STRAVA_ATHLETE_ADDED_JOB)
 export class StravaAthleteAddedJobProcessor

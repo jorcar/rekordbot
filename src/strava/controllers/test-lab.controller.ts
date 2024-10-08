@@ -5,8 +5,8 @@ import {
   STRAVA_BACKFILL_JOB,
   StravaActivityAnalysisJob,
 } from '../../jobs';
-import { ThrottledScheduler } from '../jobs/throttled-scheduler.service';
 import { JobEnqueuerService } from '../../job/job-enqueuer.service';
+import { ThrottledScheduler } from '../../job/throttled-scheduler.service';
 
 @Controller('/strava/testlab')
 export class TestLabController {

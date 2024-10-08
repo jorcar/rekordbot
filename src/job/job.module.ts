@@ -8,6 +8,7 @@ import { DiscoveryModule, DiscoveryService } from '@nestjs/core';
 import { JobEnqueuerService } from './job-enqueuer.service';
 import { JobService } from './job.service';
 import * as PgBoss from 'pg-boss';
+import { ThrottledScheduler } from './throttled-scheduler.service';
 
 @Global()
 @Module({
@@ -15,10 +16,10 @@ import * as PgBoss from 'pg-boss';
   providers: [
     JobService,
     JobEnqueuerService,
+    ThrottledScheduler,
     {
       provide: PgBoss,
       useFactory: (config: any) => {
-        console.log('config', config);
         return new PgBoss({
           connectionString: config.connectionString,
           max: config.maxNumberConnections,
@@ -27,7 +28,7 @@ import * as PgBoss from 'pg-boss';
       inject: [MODULE_OPTIONS_TOKEN],
     },
   ],
-  exports: [JobEnqueuerService],
+  exports: [JobEnqueuerService, ThrottledScheduler],
 })
 export class JobModule extends ConfigurableModuleClass {
   constructor(
